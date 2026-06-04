@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-white: #FAFAF8;
+  --color-off-white: #F4F3F0;
+  --color-cream: #EDE9E0;
+  --color-sage: #8A9E8C;
+  --color-sage-dark: #5A7A5C;
+  --color-slate: #2C3E35;
+  --color-charcoal: #1A2420;
+  --color-gold: #C4A45A;
+  --color-gold-light: #E8D4A0;
+  --color-mist: #D4DDD6;
+  --font-family-serif: "Cormorant Garamond", Georgia, serif;
+  --font-family-sans: "DM Sans", system-ui, sans-serif;
+}
+
+:root {
+  --white: #FAFAF8;
+  --off-white: #F4F3F0;
+  --cream: #EDE9E0;
+  --sage: #8A9E8C;
+  --sage-dark: #5A7A5C;
+  --slate: #2C3E35;
+  --charcoal: #1A2420;
+  --gold: #C4A45A;
+  --gold-light: #E8D4A0;
+  --mist: #D4DDD6;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--white);
+  color: var(--charcoal);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes rotateSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes spinBlade { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes floatUp { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
+
+.animate-fade-up { animation: fadeUp 0.8s ease forwards; }
+.animate-fade-in { animation: fadeIn 1s ease forwards; }
+.animate-delay-1 { animation-delay: 0.15s; }
+.animate-delay-2 { animation-delay: 0.3s; }
+.animate-delay-3 { animation-delay: 0.45s; }
+.animate-delay-4 { animation-delay: 0.6s; }
+.animate-delay-5 { animation-delay: 0.75s; }
+.opacity-0 { opacity: 0; }
+
+.turbine-blade { animation: spinBlade 8s linear infinite; transform-origin: 50% 50%; }
+.float-anim { animation: floatUp 6s ease-in-out infinite; }
+
+.hover-underline { position: relative; display: inline-block; }
+.hover-underline::after {
+  content: ''; position: absolute; bottom: -2px; left: 0;
+  width: 0; height: 1px; background: var(--sage-dark);
+  transition: width 0.35s ease;
+}
+.hover-underline:hover::after { width: 100%; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--off-white); }
+::-webkit-scrollbar-thumb { background: var(--mist); border-radius: 2px; }
