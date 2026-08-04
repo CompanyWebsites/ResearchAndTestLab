@@ -10,6 +10,10 @@ const QuerySchema = new mongoose.Schema(
     phone: String,
     query_type: String,
     msg: String,
+    read: {
+      type: Boolean,
+      default: false
+    }
 
   }
 );

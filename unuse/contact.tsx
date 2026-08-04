@@ -1,58 +1,16 @@
 "use client";
 import { useState } from "react";
 
-const queryTypes = [
-  "Product Information",
-  "Request a Quote",
-  "Request Investor Deck",
-  "Research Collaboration",
-  "Site Assessment",
-  "Media / Press",
-  "Other",
-];
-
-export default function Query() {
+export default function Contact() {
   const [form, setForm] = useState({
     name: "",
-    org: "",
     email: "",
-    phone: "",
-    queryType: "",
+    subject: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [sent, setSent] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-
-    try {
-      const res = await fetch("/api/query", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          full_name: form.name,
-          org: form.org,
-          email: form.email,
-          phone_num: form.phone,
-          query_type: form.queryType,
-          msg: form.message,
-        }),
-      });
-
-      if (!res.ok) throw new Error("Submission failed");
-      setSubmitted(true);
-    } catch {
-      setError("Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const inputStyle = {
+  const inputStyle: React.CSSProperties = {
     width: "100%",
     padding: "14px 16px",
     background: "#F4F3F0",
@@ -61,7 +19,6 @@ export default function Query() {
     fontSize: 14,
     color: "#1A2420",
     outline: "none",
-    transition: "border-color 0.25s",
     fontWeight: 300,
   };
 
@@ -84,7 +41,7 @@ export default function Query() {
               marginBottom: 20,
             }}
           >
-            Submit a Query
+            Contact Us
           </div>
           <h1
             style={{
@@ -97,109 +54,201 @@ export default function Query() {
               marginBottom: 24,
             }}
           >
-            Ask us
-            <br />
-            <em style={{ color: "#5A7A5C", fontStyle: "italic" }}>anything.</em>
+            Let's start a<br />
+            <em style={{ color: "#5A7A5C", fontStyle: "italic" }}>
+              conversation.
+            </em>
           </h1>
-          <p
-            style={{
-              fontSize: 15,
-              color: "#8A9E8C",
-              maxWidth: 480,
-              lineHeight: 1.9,
-              fontWeight: 300,
-            }}
-          >
-            Whether you are a potential client, investor, researcher, or simply
-            curious — we are here. Every query receives a personal response
-            within 48 hours.
-          </p>
         </div>
       </section>
 
-      {/* Form */}
+      {/* Contact Grid */}
       <section style={{ padding: "7rem 2.5rem", background: "#FAFAF8" }}>
         <div
           style={{
             maxWidth: 1280,
             margin: "0 auto",
             display: "grid",
-            gridTemplateColumns: "1fr 2fr",
+            gridTemplateColumns: "1fr 1.5fr",
             gap: "6rem",
           }}
         >
-          {/* Sidebar info */}
+          {/* Info */}
           <div>
-            <div
-              style={{
-                fontSize: 11,
-                letterSpacing: "0.2em",
-                color: "#C4A45A",
-                textTransform: "uppercase",
-                marginBottom: 24,
-              }}
-            >
-              Response Time
-            </div>
-            <div
-              style={{
-                fontFamily: "Cormorant Garamond, serif",
-                fontSize: 52,
-                color: "#1A2420",
-                fontWeight: 300,
-                marginBottom: 8,
-              }}
-            >
-              48 hrs
-            </div>
-            <div
-              style={{
-                fontSize: 14,
-                color: "#8A9E8C",
-                fontWeight: 300,
-                lineHeight: 1.8,
-                marginBottom: 40,
-              }}
-            >
-              We personally read and respond to every inquiry. No bots, no form
-              letters.
+            <div style={{ marginBottom: "3rem" }}>
+              <div
+                style={{
+                  fontSize: 11,
+                  letterSpacing: "0.2em",
+                  color: "#C4A45A",
+                  textTransform: "uppercase",
+                  marginBottom: 16,
+                }}
+              >
+                Office
+              </div>
+              <div
+                style={{
+                  fontFamily: "Cormorant Garamond, serif",
+                  fontSize: 22,
+                  color: "#1A2420",
+                  fontWeight: 300,
+                  lineHeight: 1.6,
+                }}
+              >
+                Thapak Research & TestLab
+                <br />
+                Plot 14, Industrial Zone Phase II
+                <br />
+                Adhartal, Jabalpur
+                <br />
+                Madhya Pradesh — 482 004
+                <br />
+                India
+              </div>
             </div>
 
-            <div style={{ borderTop: "1px solid #EDE9E0", paddingTop: 32 }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "2rem",
+                marginBottom: "3rem",
+              }}
+            >
               {[
-                // { label: "General Enquiries", val: "hello@thapakresearch.in" },
-                { label: "support", val: "support@thapak.co.in" },
-                // { label: "Research Desk", val: "lab@thapakresearch.in" },
-                // { label: "Phone", val: "+91 98765 43210" },
+                {
+                  dept: "General",
+                  email: "hello@thapakresearch.in",
+                  phone: "+91 98765 43210",
+                },
+                {
+                  dept: "Investors",
+                  email: "invest@thapakresearch.in",
+                  phone: "+91 98765 43211",
+                },
+                {
+                  dept: "Research",
+                  email: "lab@thapakresearch.in",
+                  phone: "+91 98765 43212",
+                },
+                {
+                  dept: "Media",
+                  email: "press@thapakresearch.in",
+                  phone: "+91 98765 43213",
+                },
               ].map((c) => (
-                <div key={c.label} style={{ marginBottom: 20 }}>
+                <div
+                  key={c.dept}
+                  style={{ padding: "20px", background: "#F4F3F0" }}
+                >
                   <div
                     style={{
-                      fontSize: 11,
-                      color: "#8A9E8C",
-                      letterSpacing: "0.1em",
+                      fontSize: 10,
+                      letterSpacing: "0.18em",
+                      color: "#C4A45A",
                       textTransform: "uppercase",
+                      marginBottom: 10,
                     }}
                   >
-                    {c.label}
+                    {c.dept}
                   </div>
-                  <div style={{ fontSize: 13, color: "#1A2420", marginTop: 4 }}>
-                    {c.val}
+                  <div
+                    style={{ fontSize: 12, color: "#5A7A5C", marginBottom: 4 }}
+                  >
+                    {c.email}
+                  </div>
+                  <div style={{ fontSize: 12, color: "#8A9E8C" }}>
+                    {c.phone}
                   </div>
                 </div>
               ))}
             </div>
+
+            <div>
+              <div
+                style={{
+                  fontSize: 11,
+                  letterSpacing: "0.2em",
+                  color: "#C4A45A",
+                  textTransform: "uppercase",
+                  marginBottom: 16,
+                }}
+              >
+                Working Hours
+              </div>
+              <div
+                style={{
+                  fontSize: 14,
+                  color: "#8A9E8C",
+                  lineHeight: 1.9,
+                  fontWeight: 300,
+                }}
+              >
+                Monday – Friday: 9:00 AM – 6:00 PM IST
+                <br />
+                Saturday: 10:00 AM – 2:00 PM IST
+                <br />
+                Sunday: Closed
+              </div>
+            </div>
+
+            {/* Map placeholder */}
+            <div
+              style={{
+                marginTop: "2.5rem",
+                background: "#EDE9E0",
+                height: 200,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                position: "relative",
+                overflow: "hidden",
+              }}
+            >
+              <div style={{ textAlign: "center" }}>
+                <div style={{ fontSize: 32, marginBottom: 8 }}>📍</div>
+                <div style={{ fontSize: 13, color: "#8A9E8C" }}>
+                  Adhartal, Jabalpur, MP
+                </div>
+                <div style={{ fontSize: 11, color: "#D4DDD6", marginTop: 4 }}>
+                  Open in Google Maps →
+                </div>
+              </div>
+              {/* Decorative grid */}
+              <svg
+                style={{ position: "absolute", inset: 0, opacity: 0.15 }}
+                width="100%"
+                height="100%"
+              >
+                <defs>
+                  <pattern
+                    id="grid"
+                    width="20"
+                    height="20"
+                    patternUnits="userSpaceOnUse"
+                  >
+                    <path
+                      d="M 20 0 L 0 0 0 20"
+                      fill="none"
+                      stroke="#5A7A5C"
+                      strokeWidth="0.5"
+                    />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+              </svg>
+            </div>
           </div>
 
           {/* Form */}
-          {submitted ? (
+          {sent ? (
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
-                minHeight: 400,
                 textAlign: "center",
               }}
             >
@@ -222,31 +271,24 @@ export default function Query() {
                   marginBottom: 16,
                 }}
               >
-                Query Received
+                Message Sent
               </h2>
               <p
                 style={{
                   fontSize: 15,
                   color: "#8A9E8C",
-                  maxWidth: 400,
+                  maxWidth: 380,
                   lineHeight: 1.8,
                   fontWeight: 300,
                 }}
               >
-                Thank you for reaching out. A member of our team will respond to{" "}
+                We have received your message and will be in touch at{" "}
                 {form.email} within 48 hours.
               </p>
               <button
                 onClick={() => {
-                  setSubmitted(false);
-                  setForm({
-                    name: "",
-                    org: "",
-                    email: "",
-                    phone: "",
-                    queryType: "",
-                    message: "",
-                  });
+                  setSent(false);
+                  setForm({ name: "", email: "", subject: "", message: "" });
                 }}
                 style={{
                   marginTop: 32,
@@ -260,11 +302,29 @@ export default function Query() {
                   cursor: "pointer",
                 }}
               >
-                Submit Another
+                Send Another
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit}>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                setSent(true);
+              }}
+            >
+              <div style={{ marginBottom: "1.5rem" }}>
+                <div
+                  style={{
+                    fontSize: 11,
+                    letterSpacing: "0.2em",
+                    color: "#C4A45A",
+                    textTransform: "uppercase",
+                    marginBottom: 24,
+                  }}
+                >
+                  Send a Message
+                </div>
+              </div>
               <div
                 style={{
                   display: "grid",
@@ -284,14 +344,14 @@ export default function Query() {
                       marginBottom: 8,
                     }}
                   >
-                    Full Name *
+                    Name *
                   </label>
                   <input
                     required
                     style={inputStyle}
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    placeholder="Your name"
+                    placeholder="Your full name"
                   />
                 </div>
                 <div>
@@ -305,27 +365,7 @@ export default function Query() {
                       marginBottom: 8,
                     }}
                   >
-                    Organisation
-                  </label>
-                  <input
-                    style={inputStyle}
-                    value={form.org}
-                    onChange={(e) => setForm({ ...form, org: e.target.value })}
-                    placeholder="Company / Institution"
-                  />
-                </div>
-                <div>
-                  <label
-                    style={{
-                      display: "block",
-                      fontSize: 11,
-                      color: "#8A9E8C",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      marginBottom: 8,
-                    }}
-                  >
-                    Email Address *
+                    Email *
                   </label>
                   <input
                     required
@@ -335,33 +375,10 @@ export default function Query() {
                     onChange={(e) =>
                       setForm({ ...form, email: e.target.value })
                     }
-                    placeholder="you@example.com"
-                  />
-                </div>
-                <div>
-                  <label
-                    style={{
-                      display: "block",
-                      fontSize: 11,
-                      color: "#8A9E8C",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      marginBottom: 8,
-                    }}
-                  >
-                    Phone
-                  </label>
-                  <input
-                    style={inputStyle}
-                    value={form.phone}
-                    onChange={(e) =>
-                      setForm({ ...form, phone: e.target.value })
-                    }
-                    placeholder="+91 XXXXX XXXXX"
+                    placeholder="your@email.com"
                   />
                 </div>
               </div>
-
               <div style={{ marginBottom: "1.5rem" }}>
                 <label
                   style={{
@@ -373,25 +390,18 @@ export default function Query() {
                     marginBottom: 8,
                   }}
                 >
-                  Query Type *
+                  Subject *
                 </label>
-                <select
+                <input
                   required
-                  style={{ ...inputStyle, cursor: "pointer" }}
-                  value={form.queryType}
+                  style={inputStyle}
+                  value={form.subject}
                   onChange={(e) =>
-                    setForm({ ...form, queryType: e.target.value })
+                    setForm({ ...form, subject: e.target.value })
                   }
-                >
-                  <option value="">Select a category</option>
-                  {queryTypes.map((qt) => (
-                    <option key={qt} value={qt}>
-                      {qt}
-                    </option>
-                  ))}
-                </select>
+                  placeholder="How can we help?"
+                />
               </div>
-
               <div style={{ marginBottom: "2.5rem" }}>
                 <label
                   style={{
@@ -403,31 +413,23 @@ export default function Query() {
                     marginBottom: 8,
                   }}
                 >
-                  Your Message *
+                  Message *
                 </label>
                 <textarea
                   required
-                  rows={6}
+                  rows={8}
                   style={{ ...inputStyle, resize: "vertical" }}
                   value={form.message}
                   onChange={(e) =>
                     setForm({ ...form, message: e.target.value })
                   }
-                  placeholder="Describe your requirement, site, or question in detail..."
+                  placeholder="Tell us more..."
                 />
               </div>
-
-              {error && (
-                <p style={{ fontSize: 13, color: "#C0392B", marginBottom: 16 }}>
-                  {error}
-                </p>
-              )}
-
               <button
                 type="submit"
-                disabled={loading}
                 style={{
-                  background: loading ? "#8A9E8C" : "#1A2420",
+                  background: "#1A2420",
                   color: "#FAFAF8",
                   padding: "16px 48px",
                   fontFamily: "DM Sans, sans-serif",
@@ -435,18 +437,17 @@ export default function Query() {
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   border: "none",
-                  cursor: loading ? "not-allowed" : "pointer",
+                  cursor: "pointer",
                   fontWeight: 400,
-                  transition: "background 0.3s",
                 }}
-                onMouseOver={(e) => {
-                  if (!loading) e.currentTarget.style.background = "#5A7A5C";
-                }}
-                onMouseOut={(e) => {
-                  if (!loading) e.currentTarget.style.background = "#1A2420";
-                }}
+                onMouseOver={(e) =>
+                  (e.currentTarget.style.background = "#5A7A5C")
+                }
+                onMouseOut={(e) =>
+                  (e.currentTarget.style.background = "#1A2420")
+                }
               >
-                {loading ? "Submitting…" : "Submit Query →"}
+                Send Message →
               </button>
             </form>
           )}

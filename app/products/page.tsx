@@ -10,7 +10,6 @@ const SEC_PY = "clamp(3rem, 7vw, 6rem)";
 const SEC_SM = "clamp(2rem, 4vw, 3.5rem)";
 // ─────────────────────────────────────────────────────────────────────────────
 
-
 function ScrollRow({
   children,
   style,
@@ -38,7 +37,10 @@ function ScrollRow({
     el.addEventListener("scroll", checkScroll, { passive: true });
     const ro = new ResizeObserver(checkScroll);
     ro.observe(el);
-    return () => { el.removeEventListener("scroll", checkScroll); ro.disconnect(); };
+    return () => {
+      el.removeEventListener("scroll", checkScroll);
+      ro.disconnect();
+    };
   }, [checkScroll]);
 
   const scroll = (dir: "left" | "right") => {
@@ -48,11 +50,21 @@ function ScrollRow({
   };
 
   const arrowBase: React.CSSProperties = {
-    position: "absolute", top: 0, bottom: 0, width: 40,
-    display: "flex", alignItems: "center", justifyContent: "center",
-    border: "none", cursor: "pointer", zIndex: 2,
-    background: "linear-gradient(to right, rgba(26,36,32,0.85) 60%, transparent)",
-    color: "#FAFAF8", fontSize: 18, transition: "opacity 0.2s",
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    width: 40,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    border: "none",
+    cursor: "pointer",
+    zIndex: 2,
+    background:
+      "linear-gradient(to right, rgba(26,36,32,0.85) 60%, transparent)",
+    color: "#FAFAF8",
+    fontSize: 18,
+    transition: "opacity 0.2s",
   };
 
   return (
@@ -62,7 +74,9 @@ function ScrollRow({
           onClick={() => scroll("left")}
           aria-label="Scroll left"
           style={{ ...arrowBase, left: 0 }}
-        >‹</button>
+        >
+          ‹
+        </button>
       )}
       <div
         ref={rowRef}
@@ -82,9 +96,12 @@ function ScrollRow({
           style={{
             ...arrowBase,
             right: 0,
-            background: "linear-gradient(to left, rgba(26,36,32,0.85) 60%, transparent)",
+            background:
+              "linear-gradient(to left, rgba(26,36,32,0.85) 60%, transparent)",
           }}
-        >›</button>
+        >
+          ›
+        </button>
       )}
     </div>
   );
@@ -93,7 +110,15 @@ function ScrollRow({
 // ─── Shared sub-components ────────────────────────────────────────────────────
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ fontSize: 11, letterSpacing: "0.22em", color: "#8A9E8C", textTransform: "uppercase", marginBottom: 18 }}>
+    <div
+      style={{
+        fontSize: 11,
+        letterSpacing: "0.22em",
+        color: "#8A9E8C",
+        textTransform: "uppercase",
+        marginBottom: 18,
+      }}
+    >
       {children}
     </div>
   );
@@ -101,7 +126,15 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 
 function GoldLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#C4A45A", textTransform: "uppercase", marginBottom: 14 }}>
+    <div
+      style={{
+        fontSize: 11,
+        letterSpacing: "0.16em",
+        color: "#C4A45A",
+        textTransform: "uppercase",
+        marginBottom: 14,
+      }}
+    >
       {children}
     </div>
   );
@@ -109,14 +142,42 @@ function GoldLabel({ children }: { children: React.ReactNode }) {
 
 function TurbineViz({ color }: { color: string }) {
   return (
-    <svg viewBox="0 0 180 210" fill="none" style={{ width: "100%", maxWidth: 180, height: "auto" }}>
+    <svg
+      viewBox="0 0 180 210"
+      fill="none"
+      style={{ width: "100%", maxWidth: 180, height: "auto" }}
+    >
       <circle cx="90" cy="90" r="6" fill={color} />
       <g>
         <ellipse cx="90" cy="48" rx="9" ry="40" fill={color} opacity="0.9" />
-        <ellipse cx="90" cy="48" rx="9" ry="40" fill={color} opacity="0.6" transform="rotate(120 90 90)" />
-        <ellipse cx="90" cy="48" rx="9" ry="40" fill={color} opacity="0.35" transform="rotate(240 90 90)" />
+        <ellipse
+          cx="90"
+          cy="48"
+          rx="9"
+          ry="40"
+          fill={color}
+          opacity="0.6"
+          transform="rotate(120 90 90)"
+        />
+        <ellipse
+          cx="90"
+          cy="48"
+          rx="9"
+          ry="40"
+          fill={color}
+          opacity="0.35"
+          transform="rotate(240 90 90)"
+        />
       </g>
-      <circle cx="90" cy="90" r="80" stroke={color} strokeWidth="0.6" strokeDasharray="3 4" opacity="0.35" />
+      <circle
+        cx="90"
+        cy="90"
+        r="80"
+        stroke={color}
+        strokeWidth="0.6"
+        strokeDasharray="3 4"
+        opacity="0.35"
+      />
       <rect x="86" y="136" width="8" height="55" rx="3" fill="#8A9E8C" />
       <rect x="68" y="189" width="44" height="7" rx="2" fill="#8A9E8C" />
     </svg>
@@ -125,19 +186,67 @@ function TurbineViz({ color }: { color: string }) {
 
 function HepaViz({ color }: { color: string }) {
   return (
-    <svg viewBox="0 0 180 210" fill="none" style={{ width: "100%", maxWidth: 180, height: "auto" }}>
+    <svg
+      viewBox="0 0 180 210"
+      fill="none"
+      style={{ width: "100%", maxWidth: 180, height: "auto" }}
+    >
       <rect x="30" y="20" width="120" height="150" rx="8" fill="#EDE9E0" />
-      <rect x="30" y="20" width="120" height="150" rx="8" stroke={color} strokeWidth="1.5" />
+      <rect
+        x="30"
+        y="20"
+        width="120"
+        height="150"
+        rx="8"
+        stroke={color}
+        strokeWidth="1.5"
+      />
       {[50, 75, 100, 125].map((y, i) => (
         <g key={i}>
-          <rect x="44" y={y} width="92" height="12" rx="2" fill={color} opacity={0.15 + i * 0.12} />
-          <line x1="44" y1={y + 6} x2="136" y2={y + 6} stroke={color} strokeWidth="0.6" strokeDasharray="4 3" opacity="0.6" />
+          <rect
+            x="44"
+            y={y}
+            width="92"
+            height="12"
+            rx="2"
+            fill={color}
+            opacity={0.15 + i * 0.12}
+          />
+          <line
+            x1="44"
+            y1={y + 6}
+            x2="136"
+            y2={y + 6}
+            stroke={color}
+            strokeWidth="0.6"
+            strokeDasharray="4 3"
+            opacity="0.6"
+          />
         </g>
       ))}
       {[38, 48, 58, 68, 78, 88, 98, 108, 118, 128, 138].map((x) => (
-        <line key={x} x1={x} y1="22" x2={x} y2="36" stroke={color} strokeWidth="1.5" opacity="0.4" />
+        <line
+          key={x}
+          x1={x}
+          y1="22"
+          x2={x}
+          y2="36"
+          stroke={color}
+          strokeWidth="1.5"
+          opacity="0.4"
+        />
       ))}
-      <text x="90" y="160" textAnchor="middle" fontSize="10" fill={color} fontFamily="DM Sans, sans-serif" opacity="0.7">HEPA H14</text>
+      <text
+        x="90"
+        y="160"
+        textAnchor="middle"
+        fontSize="10"
+        fill={color}
+        fontFamily="DM Sans, sans-serif"
+        opacity="0.7"
+      >
+        HEPA H14
+      </text>
       <rect x="78" y="170" width="24" height="30" rx="3" fill="#8A9E8C" />
       <rect x="58" y="198" width="64" height="8" rx="2" fill="#8A9E8C" />
     </svg>
@@ -145,14 +254,43 @@ function HepaViz({ color }: { color: string }) {
 }
 
 // Derive which viz to show for a product — extend this map as you add products
-function ProductViz({ productId, color }: { productId: string; color: string }) {
+function ProductViz({
+  productId,
+  color,
+}: {
+  productId: string;
+  color: string;
+}) {
   if (productId === "wind-turbine") return <TurbineViz color={color} />;
   if (productId === "hepa-filter") return <HepaViz color={color} />;
   // Default fallback for any new product without a dedicated viz
   return (
-    <svg viewBox="0 0 180 210" fill="none" style={{ width: "100%", maxWidth: 180, height: "auto" }}>
-      <rect x="30" y="40" width="120" height="120" rx="10" fill={color} opacity="0.15" stroke={color} strokeWidth="1.5" />
-      <text x="90" y="108" textAnchor="middle" fontSize="36" fill={color} opacity="0.6">?</text>
+    <svg
+      viewBox="0 0 180 210"
+      fill="none"
+      style={{ width: "100%", maxWidth: 180, height: "auto" }}
+    >
+      <rect
+        x="30"
+        y="40"
+        width="120"
+        height="120"
+        rx="10"
+        fill={color}
+        opacity="0.15"
+        stroke={color}
+        strokeWidth="1.5"
+      />
+      <text
+        x="90"
+        y="108"
+        textAnchor="middle"
+        fontSize="36"
+        fill={color}
+        opacity="0.6"
+      >
+        ?
+      </text>
       <rect x="78" y="168" width="24" height="30" rx="3" fill="#8A9E8C" />
       <rect x="58" y="196" width="64" height="8" rx="2" fill="#8A9E8C" />
     </svg>
@@ -163,51 +301,101 @@ function ProductViz({ productId, color }: { productId: string; color: string }) 
 export default function Products() {
   const [activeProd, setActiveProd] = useState(catalogue[0].id);
   const [activeModels, setActiveModels] = useState<Record<string, string>>(
-    Object.fromEntries(catalogue.map((p) => [p.id, p.models[0].id]))
+    Object.fromEntries(catalogue.map((p) => [p.id, p.models[0].id])),
   );
 
   const product = catalogue.find((p) => p.id === activeProd)!;
   const modelId = activeModels[activeProd];
   const model = product.models.find((m) => m.id === modelId)!;
-  const setModel = (mid: string) => setActiveModels((prev) => ({ ...prev, [activeProd]: mid }));
+  const setModel = (mid: string) =>
+    setActiveModels((prev) => ({ ...prev, [activeProd]: mid }));
 
   // Derived stats — computed from catalogue so they stay accurate as you add products/models
   const totalModels = catalogue.reduce((a, p) => a + p.models.length, 0);
   const zeroKwhLines = catalogue.filter((p) =>
-    p.models.every((m) => m.specs.some((s) => s.label === "Power Draw" && s.value === "0 kWh"))
+    p.models.every((m) =>
+      m.specs.some((s) => s.label === "Power Draw" && s.value === "0 kWh"),
+    ),
   ).length;
 
   const container: React.CSSProperties = { maxWidth: MAX_W, margin: "0 auto" };
 
   return (
     <div style={{ background: "#FAFAF8", paddingTop: 72 }}>
-
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section style={{ padding: `7rem ${PX} 4rem`, background: "linear-gradient(160deg, #F4F3F0, #EDE9E0)" }}>
+      <section
+        style={{
+          padding: `7rem ${PX} 4rem`,
+          background: "linear-gradient(160deg, #F4F3F0, #EDE9E0)",
+        }}
+      >
         <div style={container}>
           <Eyebrow>Products</Eyebrow>
-          <h1 style={{
-            fontFamily: "Cormorant Garamond, serif",
-            fontSize: "clamp(44px, 6vw, 88px)",
-            fontWeight: 300, color: "#1A2420",
-            maxWidth: 600, lineHeight: 1.08, marginBottom: 24,
-          }}>
-            Multiple products.<br />
-            <em style={{ color: "#5A7A5C", fontStyle: "italic" }}>One mission.</em>
+          <h1
+            style={{
+              fontFamily: "Cormorant Garamond, serif",
+              fontSize: "clamp(44px, 6vw, 88px)",
+              fontWeight: 300,
+              color: "#1A2420",
+              maxWidth: 600,
+              lineHeight: 1.08,
+              marginBottom: 24,
+            }}
+          >
+            Multiple products.
+            <br />
+            <em style={{ color: "#5A7A5C", fontStyle: "italic" }}>
+              One mission.
+            </em>
           </h1>
-          <p style={{ fontSize: 15, color: "#8A9E8C", maxWidth: 520, lineHeight: 1.9, fontWeight: 300, marginBottom: 36 }}>
-            From passive wind-driven turbines to active HEPA filtration systems — our growing product range covers every environment and every scale.
+          <p
+            style={{
+              fontSize: 15,
+              color: "#8A9E8C",
+              maxWidth: 520,
+              lineHeight: 1.9,
+              fontWeight: 300,
+              marginBottom: 36,
+            }}
+          >
+            From passive wind-driven turbines to active HEPA filtration systems
+            — our growing product range covers every environment and every
+            scale.
           </p>
           {/* Stats — auto-derived from catalogue */}
-          <div style={{ display: "flex", gap: "clamp(2rem, 5vw, 4rem)", flexWrap: "wrap" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "clamp(2rem, 5vw, 4rem)",
+              flexWrap: "wrap",
+            }}
+          >
             {[
               [String(catalogue.length), "Product Lines"],
               [String(totalModels), "Total Models"],
               ...(zeroKwhLines > 0 ? [["0 kWh", "Power (Turbines)"]] : []),
             ].map(([v, l]) => (
               <div key={l}>
-                <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(32px, 5vw, 44px)", color: "#1A2420", fontWeight: 300 }}>{v}</div>
-                <div style={{ fontSize: 11, letterSpacing: "0.14em", color: "#8A9E8C", textTransform: "uppercase" }}>{l}</div>
+                <div
+                  style={{
+                    fontFamily: "Cormorant Garamond, serif",
+                    fontSize: "clamp(32px, 5vw, 44px)",
+                    color: "#1A2420",
+                    fontWeight: 300,
+                  }}
+                >
+                  {v}
+                </div>
+                <div
+                  style={{
+                    fontSize: 11,
+                    letterSpacing: "0.14em",
+                    color: "#8A9E8C",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {l}
+                </div>
               </div>
             ))}
           </div>
@@ -225,24 +413,44 @@ export default function Products() {
                 style={{
                   flex: "0 0 auto",
                   background: activeProd === p.id ? "#FAFAF8" : "transparent",
-                  border: "none", cursor: "pointer",
-                  padding: "clamp(1rem, 3vw, 1.8rem) clamp(1.25rem, 3vw, 2.5rem)",
-                  display: "flex", alignItems: "center", gap: 10,
-                  transition: "background 0.3s", minWidth: 160,
+                  border: "none",
+                  cursor: "pointer",
+                  padding:
+                    "clamp(1rem, 3vw, 1.8rem) clamp(1.25rem, 3vw, 2.5rem)",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  transition: "background 0.3s",
+                  minWidth: 160,
                 }}
               >
-                <span style={{ fontSize: "clamp(18px, 3vw, 24px)" }}>{p.icon}</span>
+                <span style={{ fontSize: "clamp(18px, 3vw, 24px)" }}>
+                  {p.icon}
+                </span>
                 <div style={{ textAlign: "left" }}>
-                  <div style={{
-                    fontFamily: "Cormorant Garamond, serif",
-                    fontSize: "clamp(15px, 2vw, 18px)",
-                    color: activeProd === p.id ? "#1A2420" : "#FAFAF8",
-                    fontWeight: 300, lineHeight: 1.2, whiteSpace: "nowrap",
-                  }}>{p.name}</div>
-                  <div style={{
-                    fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase",
-                    color: activeProd === p.id ? p.accent : "#5A7A5C", marginTop: 2,
-                  }}>{p.badge}</div>
+                  <div
+                    style={{
+                      fontFamily: "Cormorant Garamond, serif",
+                      fontSize: "clamp(15px, 2vw, 18px)",
+                      color: activeProd === p.id ? "#1A2420" : "#FAFAF8",
+                      fontWeight: 300,
+                      lineHeight: 1.2,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {p.name}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 10,
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      color: activeProd === p.id ? p.accent : "#5A7A5C",
+                      marginTop: 2,
+                    }}
+                  >
+                    {p.badge}
+                  </div>
                 </div>
               </button>
             ))}
@@ -253,25 +461,71 @@ export default function Products() {
       {/* ── PRODUCT OVERVIEW STRIP ────────────────────────────────────────── */}
       <section style={{ padding: `${SEC_SM} ${PX} 0`, background: "#FAFAF8" }}>
         <div style={container}>
-          <div style={{
-            padding: "clamp(1.5rem, 4vw, 2.5rem)",
-            background: "#F4F3F0",
-            borderLeft: `4px solid ${product.accent}`,
-            display: "flex", justifyContent: "space-between", alignItems: "center",
-            gap: "2rem", flexWrap: "wrap",
-          }}>
+          <div
+            style={{
+              padding: "clamp(1.5rem, 4vw, 2.5rem)",
+              background: "#F4F3F0",
+              borderLeft: `4px solid ${product.accent}`,
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              gap: "2rem",
+              flexWrap: "wrap",
+            }}
+          >
             <div style={{ flex: 1, minWidth: 240 }}>
               <GoldLabel>About this product line</GoldLabel>
-              <h2 style={{
-                fontFamily: "Cormorant Garamond, serif",
-                fontSize: "clamp(24px, 3vw, 34px)",
-                color: "#1A2420", fontWeight: 300, marginBottom: 10,
-              }}>{product.name}</h2>
-              <p style={{ fontSize: 14, color: "#5A7A5C", lineHeight: 1.85, fontWeight: 300, maxWidth: 560 }}>{product.longDesc}</p>
+              <h2
+                style={{
+                  fontFamily: "Cormorant Garamond, serif",
+                  fontSize: "clamp(24px, 3vw, 34px)",
+                  color: "#1A2420",
+                  fontWeight: 300,
+                  marginBottom: 10,
+                }}
+              >
+                {product.name}
+              </h2>
+              <p
+                style={{
+                  fontSize: 14,
+                  color: "#5A7A5C",
+                  lineHeight: 1.85,
+                  fontWeight: 300,
+                  maxWidth: 560,
+                }}
+              >
+                {product.longDesc}
+              </p>
             </div>
-            <div style={{ textAlign: "center", padding: "1rem 2rem", background: "#EDE9E0", flexShrink: 0 }}>
-              <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 36, color: "#1A2420", fontWeight: 300 }}>{product.models.length}</div>
-              <div style={{ fontSize: 10, color: "#8A9E8C", letterSpacing: "0.14em", textTransform: "uppercase" }}>Models</div>
+            <div
+              style={{
+                textAlign: "center",
+                padding: "1rem 2rem",
+                background: "#EDE9E0",
+                flexShrink: 0,
+              }}
+            >
+              <div
+                style={{
+                  fontFamily: "Cormorant Garamond, serif",
+                  fontSize: 36,
+                  color: "#1A2420",
+                  fontWeight: 300,
+                }}
+              >
+                {product.models.length}
+              </div>
+              <div
+                style={{
+                  fontSize: 10,
+                  color: "#8A9E8C",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Models
+              </div>
             </div>
           </div>
         </div>
@@ -296,10 +550,15 @@ export default function Products() {
                   borderColor: modelId === m.id ? m.color : "#EDE9E0",
                   background: modelId === m.id ? m.color : "transparent",
                   color: modelId === m.id ? "#FAFAF8" : "#5A7A5C",
-                  fontFamily: "DM Sans, sans-serif", fontSize: 13,
-                  letterSpacing: "0.06em", cursor: "pointer",
-                  display: "flex", alignItems: "center", gap: 8,
-                  transition: "all 0.25s", fontWeight: modelId === m.id ? 400 : 300,
+                  fontFamily: "DM Sans, sans-serif",
+                  fontSize: 13,
+                  letterSpacing: "0.06em",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  transition: "all 0.25s",
+                  fontWeight: modelId === m.id ? 400 : 300,
                   whiteSpace: "nowrap",
                 }}
               >
@@ -314,69 +573,166 @@ export default function Products() {
       {/* ── MODEL DETAIL ─────────────────────────────────────────────────── */}
       <section style={{ padding: `${SEC_PY} ${PX}`, background: "#FAFAF8" }}>
         <div style={container}>
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 380px), 1fr))",
-            gap: "clamp(2.5rem, 6vw, 5rem)",
-            alignItems: "start",
-          }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(min(100%, 380px), 1fr))",
+              gap: "clamp(2.5rem, 6vw, 5rem)",
+              alignItems: "start",
+            }}
+          >
             {/* Left: info */}
             <div>
               <GoldLabel>{model.tag}</GoldLabel>
-              <h2 style={{
-                fontFamily: "Cormorant Garamond, serif",
-                fontSize: "clamp(36px, 5vw, 52px)",
-                fontWeight: 300, color: "#1A2420", marginBottom: 6, lineHeight: 1.1,
-              }}>{model.title}</h2>
-              <p style={{ fontSize: 12, color: "#8A9E8C", letterSpacing: "0.14em", marginBottom: 24, textTransform: "uppercase" }}>
+              <h2
+                style={{
+                  fontFamily: "Cormorant Garamond, serif",
+                  fontSize: "clamp(36px, 5vw, 52px)",
+                  fontWeight: 300,
+                  color: "#1A2420",
+                  marginBottom: 6,
+                  lineHeight: 1.1,
+                }}
+              >
+                {model.title}
+              </h2>
+              <p
+                style={{
+                  fontSize: 12,
+                  color: "#8A9E8C",
+                  letterSpacing: "0.14em",
+                  marginBottom: 24,
+                  textTransform: "uppercase",
+                }}
+              >
                 Model No: {model.subtitle}
               </p>
-              <p style={{ fontSize: 15, color: "#5A7A5C", lineHeight: 1.9, marginBottom: 28, fontWeight: 300 }}>{model.desc}</p>
+              <p
+                style={{
+                  fontSize: 15,
+                  color: "#5A7A5C",
+                  lineHeight: 1.9,
+                  marginBottom: 28,
+                  fontWeight: 300,
+                }}
+              >
+                {model.desc}
+              </p>
 
               <GoldLabel>Ideal For</GoldLabel>
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 32 }}>
+              <div
+                style={{
+                  display: "flex",
+                  gap: 8,
+                  flexWrap: "wrap",
+                  marginBottom: 32,
+                }}
+              >
                 {model.useCases.map((uc, i) => (
-                  <span key={i} style={{ padding: "6px 14px", background: "#EDE9E0", fontSize: 12, color: "#5A7A5C", borderRadius: 2 }}>
+                  <span
+                    key={i}
+                    style={{
+                      padding: "6px 14px",
+                      background: "#EDE9E0",
+                      fontSize: 12,
+                      color: "#5A7A5C",
+                      borderRadius: 2,
+                    }}
+                  >
                     {uc}
                   </span>
                 ))}
               </div>
 
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                <Link href="/query" style={{
-                  background: "#1A2420", color: "#FAFAF8",
-                  padding: "13px 32px", fontSize: 12, letterSpacing: "0.1em",
-                  textTransform: "uppercase", textDecoration: "none",
-                }}>Request Quote</Link>
-                <Link href="/contact" style={{
-                  border: "1px solid #2C3E35", color: "#2C3E35",
-                  padding: "13px 32px", fontSize: 12, letterSpacing: "0.1em",
-                  textTransform: "uppercase", textDecoration: "none",
-                }}>Contact Team</Link>
+                <Link
+                  href="/query"
+                  style={{
+                    background: "#1A2420",
+                    color: "#FAFAF8",
+                    padding: "13px 32px",
+                    fontSize: 12,
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    textDecoration: "none",
+                  }}
+                >
+                  Request Quote
+                </Link>
+                <Link
+                  href="/contact"
+                  style={{
+                    border: "1px solid #2C3E35",
+                    color: "#2C3E35",
+                    padding: "13px 32px",
+                    fontSize: 12,
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    textDecoration: "none",
+                  }}
+                >
+                  Contact Team
+                </Link>
               </div>
             </div>
 
             {/* Right: specs + visual */}
             <div>
               <GoldLabel>Technical Specifications</GoldLabel>
-              <div style={{ background: "#F4F3F0", padding: "1.5rem 2rem", marginBottom: 24 }}>
+              <div
+                style={{
+                  background: "#F4F3F0",
+                  padding: "1.5rem 2rem",
+                  marginBottom: 24,
+                }}
+              >
                 {model.specs.map((s, i) => (
                   <div
                     key={i}
                     style={{
-                      display: "flex", justifyContent: "space-between", alignItems: "center",
-                      padding: "14px 0", gap: 16,
-                      borderBottom: i < model.specs.length - 1 ? "1px solid #EDE9E0" : "none",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      padding: "14px 0",
+                      gap: 16,
+                      borderBottom:
+                        i < model.specs.length - 1
+                          ? "1px solid #EDE9E0"
+                          : "none",
                     }}
                   >
-                    <div style={{ fontSize: 13, color: "#8A9E8C", fontWeight: 300 }}>{s.label}</div>
-                    <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 18, fontWeight: 400, color: "#1A2420", textAlign: "right" }}>
+                    <div
+                      style={{
+                        fontSize: 13,
+                        color: "#8A9E8C",
+                        fontWeight: 300,
+                      }}
+                    >
+                      {s.label}
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: "Cormorant Garamond, serif",
+                        fontSize: 18,
+                        fontWeight: 400,
+                        color: "#1A2420",
+                        textAlign: "right",
+                      }}
+                    >
                       {s.value}
                     </div>
                   </div>
                 ))}
               </div>
-              <div style={{ background: "#EDE9E0", padding: "2.5rem", display: "flex", justifyContent: "center" }}>
+              <div
+                style={{
+                  background: "#EDE9E0",
+                  padding: "2.5rem",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
                 <ProductViz productId={activeProd} color={model.color} />
               </div>
             </div>
@@ -389,11 +745,13 @@ export default function Products() {
         <div style={container}>
           <div style={{ borderTop: "1px solid #EDE9E0", paddingTop: "3rem" }}>
             <Eyebrow>All {product.name} Models</Eyebrow>
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-              gap: "1.25rem",
-            }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                gap: "1.25rem",
+              }}
+            >
               {product.models.map((m) => (
                 <div
                   key={m.id}
@@ -401,17 +759,54 @@ export default function Products() {
                   style={{
                     padding: "1.5rem",
                     border: `1px solid ${modelId === m.id ? m.color : "#EDE9E0"}`,
-                    cursor: "pointer", transition: "all 0.3s",
+                    cursor: "pointer",
+                    transition: "all 0.3s",
                     background: modelId === m.id ? "#F4F3F0" : "transparent",
                   }}
-                  onMouseOver={(e) => (e.currentTarget.style.borderColor = m.color)}
-                  onMouseOut={(e) => (e.currentTarget.style.borderColor = modelId === m.id ? m.color : "#EDE9E0")}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.style.borderColor = m.color)
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.style.borderColor =
+                      modelId === m.id ? m.color : "#EDE9E0")
+                  }
                 >
                   <div style={{ fontSize: 26, marginBottom: 10 }}>{m.icon}</div>
-                  <div style={{ fontSize: 10, letterSpacing: "0.16em", color: m.color, textTransform: "uppercase", marginBottom: 6 }}>{m.tag}</div>
-                  <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 20, color: "#1A2420", fontWeight: 300, marginBottom: 4 }}>{m.title}</div>
-                  <div style={{ fontSize: 11, color: "#8A9E8C", marginBottom: 12 }}>{m.subtitle}</div>
-                  <div style={{ fontSize: 11, color: m.color, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                  <div
+                    style={{
+                      fontSize: 10,
+                      letterSpacing: "0.16em",
+                      color: m.color,
+                      textTransform: "uppercase",
+                      marginBottom: 6,
+                    }}
+                  >
+                    {m.tag}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: "Cormorant Garamond, serif",
+                      fontSize: 20,
+                      color: "#1A2420",
+                      fontWeight: 300,
+                      marginBottom: 4,
+                    }}
+                  >
+                    {m.title}
+                  </div>
+                  <div
+                    style={{ fontSize: 11, color: "#8A9E8C", marginBottom: 12 }}
+                  >
+                    {m.subtitle}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 11,
+                      color: m.color,
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
+                    }}
+                  >
                     {modelId === m.id ? "● Viewing" : "View →"}
                   </div>
                 </div>
@@ -422,24 +817,52 @@ export default function Products() {
       </section>
 
       {/* ── BOTTOM CTA ────────────────────────────────────────────────────── */}
-      <section style={{ padding: `${SEC_PY} ${PX}`, background: "#1A2420", textAlign: "center" }}>
+      <section
+        style={{
+          padding: `${SEC_PY} ${PX}`,
+          background: "#1A2420",
+          textAlign: "center",
+        }}
+      >
         <div style={{ maxWidth: 600, margin: "0 auto" }}>
-          <h2 style={{
-            fontFamily: "Cormorant Garamond, serif",
-            fontSize: "clamp(28px, 4vw, 40px)",
-            fontWeight: 300, color: "#FAFAF8", marginBottom: 16,
-          }}>Not sure which model fits?</h2>
-          <p style={{ fontSize: 14, color: "#8A9E8C", marginBottom: 32, lineHeight: 1.8 }}>
-            Submit a query with your environment details and our team will recommend the right product and configuration.
+          <h2
+            style={{
+              fontFamily: "Cormorant Garamond, serif",
+              fontSize: "clamp(28px, 4vw, 40px)",
+              fontWeight: 300,
+              color: "#FAFAF8",
+              marginBottom: 16,
+            }}
+          >
+            Not sure which model fits?
+          </h2>
+          <p
+            style={{
+              fontSize: 14,
+              color: "#8A9E8C",
+              marginBottom: 32,
+              lineHeight: 1.8,
+            }}
+          >
+            Submit a query with your environment details and our team will
+            recommend the right product and configuration.
           </p>
-          <Link href="/query" style={{
-            background: "#5A7A5C", color: "#FAFAF8",
-            padding: "14px 42px", fontSize: 13, letterSpacing: "0.08em",
-            textTransform: "uppercase", textDecoration: "none",
-          }}>Submit a Query</Link>
+          <Link
+            href="/query"
+            style={{
+              background: "#5A7A5C",
+              color: "#FAFAF8",
+              padding: "14px 42px",
+              fontSize: 13,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              textDecoration: "none",
+            }}
+          >
+            Submit a Query
+          </Link>
         </div>
       </section>
-
     </div>
   );
 }
