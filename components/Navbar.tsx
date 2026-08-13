@@ -1,7 +1,16 @@
 "use client";
+
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import { Audiowide } from "next/font/google";
+
+const audiowide = Audiowide({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-audiowide",
+});
 
 const links = [
   { href: "/", label: "Home" },
@@ -23,6 +32,23 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  // Close menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   return (
     <header
       style={{
@@ -31,13 +57,15 @@ export default function Navbar() {
         left: 0,
         right: 0,
         zIndex: 100,
-        backgroundColor: scrolled ? "rgba(250,250,248,0.96)" : "transparent",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
-        borderBottom: scrolled
-          ? "1px solid rgba(212,221,214,0.5)"
-          : "1px solid transparent",
+        backgroundColor:
+          scrolled || menuOpen ? "rgba(250,250,248,0.96)" : "transparent",
+        backdropFilter: scrolled || menuOpen ? "blur(12px)" : "none",
+        borderBottom:
+          scrolled || menuOpen
+            ? "1px solid rgba(212,221,214,0.5)"
+            : "1px solid transparent",
         transition: "all 0.4s ease",
-        padding: "0 2.5rem",
+        padding: "0 1.5rem", // slightly reduced padding on mobile
       }}
     >
       <nav
@@ -48,53 +76,41 @@ export default function Navbar() {
           alignItems: "center",
           justifyContent: "space-between",
           height: 72,
+          position: "relative",
+          zIndex: 20,
         }}
       >
         {/* Logo */}
-        <Link href="/" style={{ textDecoration: "none" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            {/* Turbine Icon */}
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <circle cx="16" cy="16" r="3" fill="#5A7A5C" />
+        <Link href="/" onClick={() => setMenuOpen(false)}>
+          <div className="flex items-center gap-2">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <g
                 style={{
                   transformOrigin: "16px 16px",
                   animation: "spinBlade 8s linear infinite",
                 }}
               >
-                <ellipse
-                  cx="16"
-                  cy="8"
-                  rx="2.5"
-                  ry="7"
+                <path d="M16 16L16 4C21 5 23 9 20 13L16 16Z" fill="#5A7A5C" />
+                <path
+                  d="M16 16L28 16C27 21 23 23 19 20L16 16Z"
                   fill="#5A7A5C"
-                  opacity="0.85"
-                  transform="rotate(0 16 16)"
                 />
-                <ellipse
-                  cx="16"
-                  cy="8"
-                  rx="2.5"
-                  ry="7"
-                  fill="#5A7A5C"
-                  opacity="0.65"
-                  transform="rotate(120 16 16)"
-                />
-                <ellipse
-                  cx="16"
-                  cy="8"
-                  rx="2.5"
-                  ry="7"
-                  fill="#5A7A5C"
-                  opacity="0.45"
-                  transform="rotate(240 16 16)"
-                />
+                <path d="M16 16L16 28C11 27 9 23 12 19L16 16Z" fill="#5A7A5C" />
+                <path d="M16 16L4 16C5 11 9 9 13 12L16 16Z" fill="#5A7A5C" />
               </g>
+              <circle cx="16" cy="16" r="3" fill="#1A2420" />
             </svg>
+
             <div>
               <div
+                className={audiowide.className}
                 style={{
-                  fontFamily: "Cormorant Garamond, serif",
                   fontSize: 17,
                   fontWeight: 600,
                   color: "#1A2420",
@@ -103,6 +119,9 @@ export default function Navbar() {
                 }}
               >
                 THAPAK
+                <span style={{ fontSize: "0.5em", verticalAlign: "super" }}>
+                  ®
+                </span>
               </div>
               <div
                 style={{
@@ -121,11 +140,8 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop links */}
-        <div
-          style={{ display: "flex", alignItems: "center", gap: 32 }}
-          className="hidden-mobile"
-        >
+        {/* Desktop navigation */}
+        <div className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -146,47 +162,66 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Mobile menu button */}
+        {/* Mobile menu button - larger touch target + forced pointer-events */}
         <button
-          onClick={() => setMenuOpen(!menuOpen)}
+          type="button"
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label={
+            menuOpen ? "Close navigation menu" : "Open navigation menu"
+          }
+          aria-expanded={menuOpen}
+          className="md:hidden"
           style={{
-            background: "none",
+            display: "hidden",
+            alignItems: "center",
+            justifyContent: "center",
+            width: 48, // larger than before
+            height: 48,
             border: "none",
+            background: "transparent",
+            padding: 0,
             cursor: "pointer",
-            padding: 8,
-            display: "none",
+            pointerEvents: "auto",
+            zIndex: 30,
+            position: "relative",
           }}
-          className="show-mobile"
         >
-          <div
-            style={{
-              width: 24,
-              height: 2,
-              background: "#1A2420",
-              marginBottom: 5,
-              transition: "all 0.3s",
-            }}
-          />
-          <div
-            style={{
-              width: 16,
-              height: 2,
-              background: "#1A2420",
-              marginBottom: 5,
-            }}
-          />
-          <div style={{ width: 24, height: 2, background: "#1A2420" }} />
+          {menuOpen ? (
+            <X size={26} color="#1A2420" strokeWidth={1.5} />
+          ) : (
+            <Menu size={26} color="#1A2420" strokeWidth={1.5} />
+          )}
         </button>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Backdrop (closes menu when tapped) */}
+      {menuOpen && (
+        <div
+          onClick={() => setMenuOpen(false)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            backgroundColor: "rgba(0,0,0,0.25)",
+            zIndex: 10,
+          }}
+        />
+      )}
+
+      {/* Mobile menu panel */}
       {menuOpen && (
         <div
           style={{
-            background: "#FAFAF8",
+            position: "absolute",
+            top: "100%",
+            left: 0,
+            right: 0,
+            backgroundColor: "#FAFAF8",
             borderTop: "1px solid #D4DDD6",
-            padding: "1.5rem 2.5rem",
+            boxShadow: "0 10px 30px rgba(26, 36, 32, 0.08)",
+            zIndex: 20,
+            padding: "1rem 1.5rem 1.5rem",
           }}
+          className="md:hidden"
         >
           {links.map((link) => (
             <Link
@@ -195,12 +230,14 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
               style={{
                 display: "block",
-                padding: "0.75rem 0",
+                padding: "14px 0",
+                borderBottom: "1px solid #EDE9E0",
                 fontFamily: "DM Sans, sans-serif",
-                fontSize: 15,
+                fontSize: 16,
+                fontWeight: pathname === link.href ? 400 : 300,
                 color: pathname === link.href ? "#5A7A5C" : "#2C3E35",
                 textDecoration: "none",
-                borderBottom: "1px solid #EDE9E0",
+                letterSpacing: "0.04em",
               }}
             >
               {link.label}
@@ -209,13 +246,33 @@ export default function Navbar() {
         </div>
       )}
 
-      <style>{`
-        @media (max-width: 900px) {
-          .hidden-mobile { display: none !important; }
-          .show-mobile { display: block !important; }
+      <style jsx>{`
+        @keyframes spinBlade {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
         }
-        @media (min-width: 901px) {
-          .show-mobile { display: none !important; }
+        .hover-underline {
+          position: relative;
+        }
+        .hover-underline::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -5px;
+          width: 100%;
+          height: 1px;
+          background: #5a7a5c;
+          transform: scaleX(0);
+          transform-origin: right;
+          transition: transform 0.3s ease;
+        }
+        .hover-underline:hover::after {
+          transform: scaleX(1);
+          transform-origin: left;
         }
       `}</style>
     </header>

@@ -28,7 +28,6 @@ export default function Query() {
     e.preventDefault();
     setLoading(true);
     setError("");
-
     try {
       const res = await fetch("/api/query", {
         method: "POST",
@@ -42,7 +41,6 @@ export default function Query() {
           msg: form.message,
         }),
       });
-
       if (!res.ok) throw new Error("Submission failed");
       setSubmitted(true);
     } catch {
@@ -52,64 +50,18 @@ export default function Query() {
     }
   };
 
-  const inputStyle = {
-    width: "100%",
-    padding: "14px 16px",
-    background: "#F4F3F0",
-    border: "1px solid #EDE9E0",
-    fontFamily: "DM Sans, sans-serif",
-    fontSize: 14,
-    color: "#1A2420",
-    outline: "none",
-    transition: "border-color 0.25s",
-    fontWeight: 300,
-  };
-
   return (
-    <div style={{ background: "#FAFAF8", paddingTop: 72 }}>
+    <div className="page">
       {/* Hero */}
-      <section
-        style={{
-          padding: "7rem 2.5rem 4rem",
-          background: "linear-gradient(160deg, #F4F3F0, #EDE9E0)",
-        }}
-      >
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div
-            style={{
-              fontSize: 11,
-              letterSpacing: "0.22em",
-              color: "#8A9E8C",
-              textTransform: "uppercase",
-              marginBottom: 20,
-            }}
-          >
-            Submit a Query
-          </div>
-          <h1
-            style={{
-              fontFamily: "Cormorant Garamond, serif",
-              fontSize: "clamp(44px, 6vw, 80px)",
-              fontWeight: 300,
-              color: "#1A2420",
-              maxWidth: 600,
-              lineHeight: 1.08,
-              marginBottom: 24,
-            }}
-          >
+      <section className="hero">
+        <div className="container">
+          <div className="eyebrow eyebrow-muted">Submit a Query</div>
+          <h1 className="heroTitle">
             Ask us
             <br />
-            <em style={{ color: "#5A7A5C", fontStyle: "italic" }}>anything.</em>
+            <em className="heroEm">anything.</em>
           </h1>
-          <p
-            style={{
-              fontSize: 15,
-              color: "#8A9E8C",
-              maxWidth: 480,
-              lineHeight: 1.9,
-              fontWeight: 300,
-            }}
-          >
+          <p className="heroText">
             Whether you are a potential client, investor, researcher, or simply
             curious — we are here. Every query receives a personal response
             within 48 hours.
@@ -118,74 +70,21 @@ export default function Query() {
       </section>
 
       {/* Form */}
-      <section style={{ padding: "7rem 2.5rem", background: "#FAFAF8" }}>
-        <div
-          style={{
-            maxWidth: 1280,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "1fr 2fr",
-            gap: "6rem",
-          }}
-        >
+      <section className="section">
+        <div className="container formGrid">
           {/* Sidebar info */}
-          <div>
-            <div
-              style={{
-                fontSize: 11,
-                letterSpacing: "0.2em",
-                color: "#C4A45A",
-                textTransform: "uppercase",
-                marginBottom: 24,
-              }}
-            >
-              Response Time
-            </div>
-            <div
-              style={{
-                fontFamily: "Cormorant Garamond, serif",
-                fontSize: 52,
-                color: "#1A2420",
-                fontWeight: 300,
-                marginBottom: 8,
-              }}
-            >
-              48 hrs
-            </div>
-            <div
-              style={{
-                fontSize: 14,
-                color: "#8A9E8C",
-                fontWeight: 300,
-                lineHeight: 1.8,
-                marginBottom: 40,
-              }}
-            >
+          <div className="sidebar">
+            <div className="eyebrow eyebrow-gold">Response Time</div>
+            <div className="responseTime">48 hrs</div>
+            <div className="responseDesc">
               We personally read and respond to every inquiry. No bots, no form
               letters.
             </div>
-
-            <div style={{ borderTop: "1px solid #EDE9E0", paddingTop: 32 }}>
-              {[
-                // { label: "General Enquiries", val: "hello@thapakresearch.in" },
-                { label: "support", val: "support@thapak.co.in" },
-                // { label: "Research Desk", val: "lab@thapakresearch.in" },
-                // { label: "Phone", val: "+91 98765 43210" },
-              ].map((c) => (
-                <div key={c.label} style={{ marginBottom: 20 }}>
-                  <div
-                    style={{
-                      fontSize: 11,
-                      color: "#8A9E8C",
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {c.label}
-                  </div>
-                  <div style={{ fontSize: 13, color: "#1A2420", marginTop: 4 }}>
-                    {c.val}
-                  </div>
+            <div className="contactList">
+              {[{ label: "support", val: "support@thapak.co.in" }].map((c) => (
+                <div key={c.label} className="contactItem">
+                  <div className="contactLabel">{c.label}</div>
+                  <div className="contactVal">{c.val}</div>
                 </div>
               ))}
             </div>
@@ -193,46 +92,10 @@ export default function Query() {
 
           {/* Form */}
           {submitted ? (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                minHeight: 400,
-                textAlign: "center",
-              }}
-            >
-              <div
-                style={{
-                  fontFamily: "Cormorant Garamond, serif",
-                  fontSize: 64,
-                  color: "#5A7A5C",
-                  marginBottom: 20,
-                }}
-              >
-                ✓
-              </div>
-              <h2
-                style={{
-                  fontFamily: "Cormorant Garamond, serif",
-                  fontSize: 40,
-                  color: "#1A2420",
-                  fontWeight: 300,
-                  marginBottom: 16,
-                }}
-              >
-                Query Received
-              </h2>
-              <p
-                style={{
-                  fontSize: 15,
-                  color: "#8A9E8C",
-                  maxWidth: 400,
-                  lineHeight: 1.8,
-                  fontWeight: 300,
-                }}
-              >
+            <div className="successWrap">
+              <div className="successCheck">✓</div>
+              <h2 className="successTitle">Query Received</h2>
+              <p className="successText">
                 Thank you for reaching out. A member of our team will respond to{" "}
                 {form.email} within 48 hours.
               </p>
@@ -248,89 +111,39 @@ export default function Query() {
                     message: "",
                   });
                 }}
-                style={{
-                  marginTop: 32,
-                  background: "none",
-                  border: "1px solid #2C3E35",
-                  color: "#2C3E35",
-                  padding: "12px 28px",
-                  fontSize: 13,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  cursor: "pointer",
-                }}
+                className="submitAnotherBtn"
               >
                 Submit Another
               </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "1.5rem",
-                  marginBottom: "1.5rem",
-                }}
-              >
+              <div className="fieldGrid">
                 <div>
-                  <label
-                    style={{
-                      display: "block",
-                      fontSize: 11,
-                      color: "#8A9E8C",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      marginBottom: 8,
-                    }}
-                  >
-                    Full Name *
-                  </label>
+                  <label className="fieldLabel">Full Name *</label>
                   <input
                     required
-                    style={inputStyle}
+                    className="formInput"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label
-                    style={{
-                      display: "block",
-                      fontSize: 11,
-                      color: "#8A9E8C",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      marginBottom: 8,
-                    }}
-                  >
-                    Organisation
-                  </label>
+                  <label className="fieldLabel">Organisation</label>
                   <input
-                    style={inputStyle}
+                    className="formInput"
                     value={form.org}
                     onChange={(e) => setForm({ ...form, org: e.target.value })}
                     placeholder="Company / Institution"
                   />
                 </div>
                 <div>
-                  <label
-                    style={{
-                      display: "block",
-                      fontSize: 11,
-                      color: "#8A9E8C",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      marginBottom: 8,
-                    }}
-                  >
-                    Email Address *
-                  </label>
+                  <label className="fieldLabel">Email Address *</label>
                   <input
                     required
                     type="email"
-                    style={inputStyle}
+                    className="formInput"
                     value={form.email}
                     onChange={(e) =>
                       setForm({ ...form, email: e.target.value })
@@ -339,20 +152,9 @@ export default function Query() {
                   />
                 </div>
                 <div>
-                  <label
-                    style={{
-                      display: "block",
-                      fontSize: 11,
-                      color: "#8A9E8C",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      marginBottom: 8,
-                    }}
-                  >
-                    Phone
-                  </label>
+                  <label className="fieldLabel">Phone</label>
                   <input
-                    style={inputStyle}
+                    className="formInput"
                     value={form.phone}
                     onChange={(e) =>
                       setForm({ ...form, phone: e.target.value })
@@ -362,22 +164,11 @@ export default function Query() {
                 </div>
               </div>
 
-              <div style={{ marginBottom: "1.5rem" }}>
-                <label
-                  style={{
-                    display: "block",
-                    fontSize: 11,
-                    color: "#8A9E8C",
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    marginBottom: 8,
-                  }}
-                >
-                  Query Type *
-                </label>
+              <div className="fieldBlock">
+                <label className="fieldLabel">Query Type *</label>
                 <select
                   required
-                  style={{ ...inputStyle, cursor: "pointer" }}
+                  className="formInput selectInput"
                   value={form.queryType}
                   onChange={(e) =>
                     setForm({ ...form, queryType: e.target.value })
@@ -392,23 +183,12 @@ export default function Query() {
                 </select>
               </div>
 
-              <div style={{ marginBottom: "2.5rem" }}>
-                <label
-                  style={{
-                    display: "block",
-                    fontSize: 11,
-                    color: "#8A9E8C",
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    marginBottom: 8,
-                  }}
-                >
-                  Your Message *
-                </label>
+              <div className="fieldBlock fieldBlockLarge">
+                <label className="fieldLabel">Your Message *</label>
                 <textarea
                   required
                   rows={6}
-                  style={{ ...inputStyle, resize: "vertical" }}
+                  className="formInput textareaInput"
                   value={form.message}
                   onChange={(e) =>
                     setForm({ ...form, message: e.target.value })
@@ -417,34 +197,12 @@ export default function Query() {
                 />
               </div>
 
-              {error && (
-                <p style={{ fontSize: 13, color: "#C0392B", marginBottom: 16 }}>
-                  {error}
-                </p>
-              )}
+              {error && <p className="errorText">{error}</p>}
 
               <button
                 type="submit"
                 disabled={loading}
-                style={{
-                  background: loading ? "#8A9E8C" : "#1A2420",
-                  color: "#FAFAF8",
-                  padding: "16px 48px",
-                  fontFamily: "DM Sans, sans-serif",
-                  fontSize: 13,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  border: "none",
-                  cursor: loading ? "not-allowed" : "pointer",
-                  fontWeight: 400,
-                  transition: "background 0.3s",
-                }}
-                onMouseOver={(e) => {
-                  if (!loading) e.currentTarget.style.background = "#5A7A5C";
-                }}
-                onMouseOut={(e) => {
-                  if (!loading) e.currentTarget.style.background = "#1A2420";
-                }}
+                className={`submitBtn ${loading ? "submitBtnLoading" : ""}`}
               >
                 {loading ? "Submitting…" : "Submit Query →"}
               </button>
@@ -452,6 +210,292 @@ export default function Query() {
           )}
         </div>
       </section>
+
+      <style jsx>{`
+        .page {
+          background: #fafaf8;
+          padding-top: 72px;
+        }
+        .container {
+          max-width: 1280px;
+          margin: 0 auto;
+        }
+        .eyebrow {
+          font-size: 11px;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+        }
+        .eyebrow-muted {
+          color: #8a9e8c;
+          margin-bottom: 20px;
+        }
+        .eyebrow-gold {
+          color: #c4a45a;
+          margin-bottom: 24px;
+        }
+
+        /* Hero */
+        .hero {
+          padding: 7rem 2.5rem 4rem;
+          background: linear-gradient(160deg, #f4f3f0, #ede9e0);
+        }
+        .heroTitle {
+          font-family: "Cormorant Garamond", serif;
+          font-size: clamp(38px, 8vw, 80px);
+          font-weight: 300;
+          color: #1a2420;
+          max-width: 600px;
+          line-height: 1.08;
+          margin-bottom: 24px;
+        }
+        .heroEm {
+          color: #5a7a5c;
+          font-style: italic;
+        }
+        .heroText {
+          font-size: 15px;
+          color: #8a9e8c;
+          max-width: 480px;
+          line-height: 1.9;
+          font-weight: 300;
+        }
+
+        /* Form section */
+        .section {
+          padding: 7rem 2.5rem;
+          background: #fafaf8;
+        }
+        .formGrid {
+          display: grid;
+          grid-template-columns: 1fr 2fr;
+          gap: 6rem;
+        }
+
+        /* Sidebar */
+        .responseTime {
+          font-family: "Cormorant Garamond", serif;
+          font-size: 52px;
+          color: #1a2420;
+          font-weight: 300;
+          margin-bottom: 8px;
+        }
+        .responseDesc {
+          font-size: 14px;
+          color: #8a9e8c;
+          font-weight: 300;
+          line-height: 1.8;
+          margin-bottom: 40px;
+        }
+        .contactList {
+          border-top: 1px solid #ede9e0;
+          padding-top: 32px;
+        }
+        .contactItem {
+          margin-bottom: 20px;
+        }
+        .contactLabel {
+          font-size: 11px;
+          color: #8a9e8c;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+        }
+        .contactVal {
+          font-size: 13px;
+          color: #1a2420;
+          margin-top: 4px;
+        }
+
+        /* Success state */
+        .successWrap {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          min-height: 400px;
+          text-align: center;
+        }
+        .successCheck {
+          font-family: "Cormorant Garamond", serif;
+          font-size: 64px;
+          color: #5a7a5c;
+          margin-bottom: 20px;
+        }
+        .successTitle {
+          font-family: "Cormorant Garamond", serif;
+          font-size: 40px;
+          color: #1a2420;
+          font-weight: 300;
+          margin-bottom: 16px;
+        }
+        .successText {
+          font-size: 15px;
+          color: #8a9e8c;
+          max-width: 400px;
+          line-height: 1.8;
+          font-weight: 300;
+        }
+        .submitAnotherBtn {
+          margin-top: 32px;
+          background: none;
+          border: 1px solid #2c3e35;
+          color: #2c3e35;
+          padding: 12px 28px;
+          font-size: 13px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          cursor: pointer;
+        }
+
+        /* Form fields */
+        .fieldGrid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1.5rem;
+          margin-bottom: 1.5rem;
+        }
+        .fieldBlock {
+          margin-bottom: 1.5rem;
+        }
+        .fieldBlockLarge {
+          margin-bottom: 2.5rem;
+        }
+        .fieldLabel {
+          display: block;
+          font-size: 11px;
+          color: #8a9e8c;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          margin-bottom: 8px;
+        }
+        .formInput {
+          width: 100%;
+          padding: 14px 16px;
+          background: #f4f3f0;
+          border: 1px solid #ede9e0;
+          font-family: "DM Sans", sans-serif;
+          font-size: 14px;
+          color: #1a2420;
+          outline: none;
+          transition: border-color 0.25s;
+          font-weight: 300;
+          box-sizing: border-box;
+        }
+        .formInput:focus {
+          border-color: #5a7a5c;
+        }
+        .selectInput {
+          cursor: pointer;
+        }
+        .textareaInput {
+          resize: vertical;
+        }
+        .errorText {
+          font-size: 13px;
+          color: #c0392b;
+          margin-bottom: 16px;
+        }
+        .submitBtn {
+          background: #1a2420;
+          color: #fafaf8;
+          padding: 16px 48px;
+          font-family: "DM Sans", sans-serif;
+          font-size: 13px;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          border: none;
+          cursor: pointer;
+          font-weight: 400;
+          transition: background 0.3s;
+          width: auto;
+        }
+        .submitBtn:not(:disabled):hover {
+          background: #5a7a5c;
+        }
+        .submitBtnLoading {
+          background: #8a9e8c;
+          cursor: not-allowed;
+        }
+
+        /* ===== Tablet ===== */
+        @media (max-width: 900px) {
+          .hero {
+            padding: 5rem 1.75rem 3rem;
+          }
+          .section {
+            padding: 4.5rem 1.75rem;
+          }
+          .formGrid {
+            grid-template-columns: 1fr;
+            gap: 3.5rem;
+          }
+          .sidebar {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+
+        /* ===== Mobile ===== */
+        @media (max-width: 600px) {
+          .page {
+            padding-top: 56px;
+          }
+          .hero {
+            padding: 3.5rem 1.25rem 2.5rem;
+          }
+          .section {
+            padding: 3.5rem 1.25rem;
+          }
+          .heroText {
+            font-size: 14px;
+          }
+          .responseTime {
+            font-size: 42px;
+          }
+          .responseDesc {
+            margin-bottom: 28px;
+          }
+          .contactList {
+            padding-top: 24px;
+          }
+
+          /* Two-column name/org/email/phone collapses to one column */
+          .fieldGrid {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+          }
+          .fieldBlock {
+            margin-bottom: 1.25rem;
+          }
+          .fieldBlockLarge {
+            margin-bottom: 2rem;
+          }
+          .formInput {
+            padding: 12px 14px;
+            font-size: 16px; /* avoids iOS auto-zoom on focus */
+          }
+
+          /* Full-width submit button on small screens */
+          .submitBtn {
+            width: 100%;
+            padding: 15px 24px;
+            text-align: center;
+          }
+          .submitAnotherBtn {
+            width: 100%;
+          }
+
+          .successCheck {
+            font-size: 52px;
+          }
+          .successTitle {
+            font-size: 32px;
+          }
+          .successText {
+            font-size: 14px;
+          }
+        }
+      `}</style>
     </div>
   );
 }

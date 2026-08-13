@@ -4,144 +4,86 @@ import Link from "next/link";
 const projects = [
   {
     id: "01",
-    title: "Environmental Engineering",
-    category: "Core Research Area",
-    year: "Active",
-    location: "🔬 7 Focus Areas",
-    status: "Active",
-    desc: "Research on pollution control systems, air purification, carbon removal, and clean environmental technologies.",
+    title: "Satna Cement Plant — Air Quality Retrofit",
+    category: "Industrial",
+    year: "2024",
+    location: "Satna, MP",
+    status: "Completed",
+    desc: "Deployed 6 TRT-IND 5000 units across the cement processing zone. Measured PM2.5 levels reduced from 340 μg/m³ to 74 μg/m³ within 90 days — a 78% improvement, verified by third-party environmental auditors.",
     outcomes: [
-      "Air Purification",
-      "Carbon Capture",
-      "Carbon Removal",
-      "Air Pollution Control",
-      "PM2.5 Control",
-      "PM10 Control",
-      "Industrial Emission Reduction",
+      "78% PM2.5 reduction",
+      "Zero electricity cost",
+      "6 months ROI",
+      "45 workers benefited",
     ],
     color: "#2C3E35",
   },
   {
     id: "02",
-    title: "Renewable Energy",
-    category: "Core Research Area",
-    year: "Active",
-    location: "🔬 4 Focus Areas",
-    status: "Active",
-    desc: "Development of advanced renewable energy systems and energy storage technologies.",
+    title: "AIIMS Bhopal — Corridor Air Management",
+    category: "Hospital",
+    year: "2024",
+    location: "Bhopal, MP",
+    status: "Completed",
+    desc: "Pilot installation of 3 TRT-MED 1200 units in the hospital's surgical wing and ICU approach corridors. Sub-22dB noise levels maintained. Hospital infection rate index improved by 31% per quarterly review.",
     outcomes: [
-      "Solar Thermal Energy",
-      "Thermal Power Storage",
-      "Mechanical Energy Storage",
-      "Energy Recovery Systems",
+      "99.1% bacterial filtration",
+      "EMI-safe operation",
+      "31% infection index drop",
+      "0 power draw",
     ],
     color: "#5A7A5C",
   },
   {
     id: "03",
-    title: "Hydrogen Technologies",
-    category: "Core Research Area",
-    year: "Active",
-    location: "🔬 4 Focus Areas",
-    status: "Active",
-    desc: "Research on hydrogen-powered propulsion systems and aerospace applications.",
+    title: "Narmada Housing Society — Residential Pilot",
+    category: "Residential",
+    year: "2025",
+    location: "Jabalpur, MP",
+    status: "Ongoing",
+    desc: "15-unit residential complex pilot in central Jabalpur. TRT-HOME 200 units installed on balconies and common terraces. Resident surveys report significant improvement in perceived air quality and respiratory comfort.",
     outcomes: [
-      "Hydrogen Jet Engine",
-      "High Altitude Applications",
-      "Drone Propulsion",
-      "Hydrogen Energy Systems",
+      "72% PM10 reduction",
+      "High resident satisfaction",
+      "Silent operation",
+      "Integrated design",
     ],
     color: "#C4A45A",
   },
   {
     id: "04",
-    title: "Material Science",
-    category: "Core Research Area",
-    year: "Active",
-    location: "🔬 4 Focus Areas",
-    status: "Active",
-    desc: "Research on advanced engineering materials and industrial products.",
+    title: "MP Pollution Control Board — Field Study",
+    category: "Research",
+    year: "2025",
+    location: "Multiple, MP",
+    status: "Ongoing",
+    desc: "Collaborative research study with MPPCB deploying monitoring-grade turbine units across 8 urban measurement nodes. Data collected feeds into state pollution mapping and policy recommendations.",
     outcomes: [
-      "Insulating Materials",
-      "Cellulose Engineering",
-      "Filter Materials",
-      "Composite Materials",
+      "8 measurement nodes",
+      "Real-time data streams",
+      "Policy integration",
+      "State collaboration",
     ],
     color: "#8A9E8C",
-  },
-  {
-    id: "05",
-    title: "Industrial Process Engineering",
-    category: "Core Research Area",
-    year: "Active",
-    location: "🔬 4 Focus Areas",
-    status: "Active",
-    desc: "Development of innovative industrial manufacturing processes.",
-    outcomes: [
-      "Ethanol Production",
-      "Sand & Silt Control",
-      "Industrial Automation",
-      "Manufacturing Optimization",
-    ],
-    color: "#2C3E35",
   },
 ];
 
 const pubs = [
   {
-    title: "Environmental Engineering",
-    journal: "THAPAK Research And Test Lab Pvt. Ltd.",
-    type: "Industry Served",
+    title: "Passive Turbine Filtration for Urban PM2.5: A Case Study",
+    journal: "Journal of Environmental Technology, 2024",
+    type: "Peer Reviewed",
   },
   {
-    title: "Renewable Energy",
-    journal: "THAPAK Research And Test Lab Pvt. Ltd.",
-    type: "Industry Served",
+    title: "Zero-Energy Air Purification in Medical Environments",
+    journal: "Indian Health Engineering Society, 2024",
+    type: "Conference Paper",
   },
   {
-    title: "Manufacturing",
-    journal: "THAPAK Research And Test Lab Pvt. Ltd.",
-    type: "Industry Served",
-  },
-  {
-    title: "Construction",
-    journal: "THAPAK Research And Test Lab Pvt. Ltd.",
-    type: "Industry Served",
-  },
-  {
-    title: "Smart Cities",
-    journal: "THAPAK Research And Test Lab Pvt. Ltd.",
-    type: "Industry Served",
-  },
-  {
-    title: "Aerospace",
-    journal: "THAPAK Research And Test Lab Pvt. Ltd.",
-    type: "Industry Served",
-  },
-  {
-    title: "Defense",
-    journal: "THAPAK Research And Test Lab Pvt. Ltd.",
-    type: "Industry Served",
-  },
-  {
-    title: "Healthcare",
-    journal: "THAPAK Research And Test Lab Pvt. Ltd.",
-    type: "Industry Served",
-  },
-  {
-    title: "Government Organizations",
-    journal: "THAPAK Research And Test Lab Pvt. Ltd.",
-    type: "Industry Served",
-  },
-  {
-    title: "Research Institutions",
-    journal: "THAPAK Research And Test Lab Pvt. Ltd.",
-    type: "Industry Served",
-  },
-  {
-    title: "Academic Institutions",
-    journal: "THAPAK Research And Test Lab Pvt. Ltd.",
-    type: "Industry Served",
+    title:
+      "Wind-Driven Particulate Capture: Efficiency Models for Tropical Climates",
+    journal: "Thapak TestLab White Paper, 2025",
+    type: "White Paper",
   },
 ];
 
@@ -153,17 +95,14 @@ export default function OurWork() {
         <div className="container">
           <div className="eyebrow eyebrow-muted">Our Work</div>
           <h1 className="heroTitle">
-            Engineering tomorrow's
+            Real results.
             <br />
-            <em className="heroEm">sustainable technologies.</em>
+            <em className="heroEm">Verified data.</em>
           </h1>
           <p className="heroText">
-            THAPAK Research And Test Lab Pvt. Ltd. is a multidisciplinary
-            research and testing organization developing indigenous technologies
-            in environmental engineering, renewable energy, air purification,
-            pollution control, advanced materials, hydrogen technologies, and
-            industrial manufacturing. Explore our core research areas and the
-            industries we serve below.
+            Every deployment we undertake is rigorously monitored and
+            independently verified. Explore our field projects, publications,
+            and ongoing research.
           </p>
         </div>
       </section>
@@ -172,7 +111,7 @@ export default function OurWork() {
       <section className="section sectionLight">
         <div className="container">
           <div className="eyebrow eyebrow-gold sectionLabel">
-            Core Research Areas
+            Deployments &amp; Case Studies
           </div>
 
           <div className="projectList">
@@ -192,7 +131,7 @@ export default function OurWork() {
 
                 <div className="projectBody">
                   <h3 className="projectTitle">{p.title}</h3>
-                  <div className="projectLocation">{p.location}</div>
+                  <div className="projectLocation">📍 {p.location}</div>
                   <p className="projectDesc">{p.desc}</p>
                   <div className="outcomeList">
                     {p.outcomes.map((o, i) => (
@@ -221,11 +160,11 @@ export default function OurWork() {
         </div>
       </section>
 
-      {/* Industries Served */}
+      {/* Publications */}
       <section className="section sectionDark">
         <div className="container">
           <div className="eyebrow eyebrow-gold sectionLabel">
-            Industries We Serve
+            Research &amp; Publications
           </div>
 
           <div className="pubGrid">
@@ -234,26 +173,25 @@ export default function OurWork() {
                 <div className="pubType">{pub.type}</div>
                 <h3 className="pubTitle">{pub.title}</h3>
                 <div className="pubJournal">{pub.journal}</div>
+                <div className="pubRequest">REQUEST COPY →</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Collaboration CTA */}
+      {/* Presentation download CTA */}
       <section className="ctaSection">
         <div className="ctaContainer">
-          <h2 className="ctaTitle">Collaborate with us</h2>
+          <h2 className="ctaTitle">Full presentation available</h2>
           <p className="ctaText">
-            We welcome collaboration with industries, universities, government
-            agencies, research organizations, startups, technology incubators,
-            and investors — across joint research projects, technology
-            development, contract testing, prototype development, patent
-            licensing, technology transfer, and commercialization partnerships.
+            Our detailed research presentation covers aerodynamic principles,
+            field data, financial projections, and deployment methodology.
+            Request access below.
           </p>
           <div className="ctaButtons">
             <Link href="/query" className="ctaBtnPrimary">
-              Contact Us
+              Request Presentation
             </Link>
             <Link href="/invest" className="ctaBtnSecondary">
               Invest &amp; Collaborate
@@ -534,7 +472,7 @@ export default function OurWork() {
             font-size: 14px;
           }
 
-          /* Patent & Technology Portfolio: stack id/meta, body, and status
+          /* Deployments & Case Studies: stack id/meta, body, and status
              into a single column instead of the 3-col grid */
           .projectList {
             gap: 1.75rem;
@@ -573,7 +511,7 @@ export default function OurWork() {
             display: inline-block;
           }
 
-          /* Core Research Areas: single column cards */
+          /* Research & Publications: single column cards */
           .pubGrid {
             grid-template-columns: 1fr;
             gap: 1.5rem;

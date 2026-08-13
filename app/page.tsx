@@ -19,6 +19,7 @@ export default function Home() {
       >
         {/* Background decorative circles */}
         <div
+          className="hero-decoration"
           style={{
             position: "absolute",
             right: "-10%",
@@ -31,6 +32,7 @@ export default function Home() {
           }}
         />
         <div
+          className="hero-decoration"
           style={{
             position: "absolute",
             right: "-5%",
@@ -44,7 +46,7 @@ export default function Home() {
         />
         {/* Animated Turbine SVG */}
         <div
-          className="float-anim"
+          className="float-anim hero-decoration"
           style={{
             position: "absolute",
             right: "8%",
@@ -211,168 +213,76 @@ export default function Home() {
       {/* WHAT WE DO */}
       <section style={{ padding: "8rem 2.5rem", background: "#F4F3F0" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "5rem",
-              alignItems: "center",
-            }}
-          >
-            <div>
-              <div
-                style={{
-                  fontSize: 11,
-                  letterSpacing: "0.2em",
-                  color: "#C4A45A",
-                  textTransform: "uppercase",
-                  marginBottom: 20,
-                }}
-              >
-                Our Mission
-              </div>
-              <h2
-                style={{
-                  fontFamily: "Cormorant Garamond, serif",
-                  fontSize: "clamp(36px, 4vw, 56px)",
-                  fontWeight: 300,
-                  color: "#1A2420",
-                  marginBottom: 24,
-                  lineHeight: 1.2,
-                }}
-              >
-                Technology that breathes
-                <br />
-                <em style={{ fontStyle: "italic", color: "#5A7A5C" }}>
-                  life back into air
-                </em>
-              </h2>
-              <p
-                style={{
-                  fontSize: 15,
-                  color: "#5A7A5C",
-                  lineHeight: 1.9,
-                  marginBottom: 16,
-                  fontWeight: 300,
-                }}
-              >
-                At Thapak Research & TestLab, we believe clean air is a right —
-                not a luxury. Our patented wind turbine design harnesses natural
-                wind movement to actively filter and circulate air without
-                drawing a single watt from the grid.
-              </p>
-              <p
-                style={{
-                  fontSize: 15,
-                  color: "#5A7A5C",
-                  lineHeight: 1.9,
-                  marginBottom: 32,
-                  fontWeight: 300,
-                }}
-              >
-                Founded by engineers and environmentalists, we operate at the
-                intersection of aerodynamics, materials science, and sustainable
-                design — creating solutions that work in hospitals, factories,
-                and homes alike.
-              </p>
-              <Link
-                href="/about"
-                style={{
-                  fontSize: 13,
-                  color: "#1A2420",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  textDecoration: "none",
-                  borderBottom: "1px solid #1A2420",
-                  paddingBottom: 2,
-                }}
-              >
-                Learn About Us →
-              </Link>
-            </div>
-            {/* Decorative turbine graphic */}
+          <div style={{ maxWidth: 700 }}>
             <div
               style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+                fontSize: 11,
+                letterSpacing: "0.2em",
+                color: "#C4A45A",
+                textTransform: "uppercase",
+                marginBottom: 20,
               }}
             >
-              <div style={{ position: "relative", width: 320, height: 320 }}>
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    borderRadius: "50%",
-                    background: "linear-gradient(135deg, #EDE9E0, #D4DDD6)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <svg
-                    width="260"
-                    height="260"
-                    viewBox="0 0 200 200"
-                    fill="none"
-                  >
-                    <circle cx="100" cy="100" r="8" fill="#5A7A5C" />
-                    <g className="turbine-blade">
-                      <ellipse
-                        cx="100"
-                        cy="50"
-                        rx="11"
-                        ry="48"
-                        fill="#5A7A5C"
-                        opacity="0.9"
-                      />
-                      <ellipse
-                        cx="100"
-                        cy="50"
-                        rx="11"
-                        ry="48"
-                        fill="#8A9E8C"
-                        opacity="0.65"
-                        transform="rotate(120 100 100)"
-                      />
-                      <ellipse
-                        cx="100"
-                        cy="50"
-                        rx="11"
-                        ry="48"
-                        fill="#C4A45A"
-                        opacity="0.45"
-                        transform="rotate(240 100 100)"
-                      />
-                    </g>
-                    <circle
-                      cx="100"
-                      cy="100"
-                      r="90"
-                      stroke="#8A9E8C"
-                      strokeWidth="0.8"
-                      strokeDasharray="3 5"
-                    />
-                    <circle
-                      cx="100"
-                      cy="100"
-                      r="70"
-                      stroke="#8A9E8C"
-                      strokeWidth="0.4"
-                      strokeDasharray="2 4"
-                    />
-                    <rect
-                      x="96"
-                      y="148"
-                      width="8"
-                      height="40"
-                      rx="2"
-                      fill="#2C3E35"
-                    />
-                  </svg>
-                </div>
-              </div>
+              Our Mission
             </div>
+            <h2
+              style={{
+                fontFamily: "Cormorant Garamond, serif",
+                fontSize: "clamp(36px, 4vw, 56px)",
+                fontWeight: 300,
+                color: "#1A2420",
+                marginBottom: 24,
+                lineHeight: 1.2,
+              }}
+            >
+              Technology that breathes
+              <br />
+              <em style={{ fontStyle: "italic", color: "#5A7A5C" }}>
+                life back into air
+              </em>
+            </h2>
+            <p
+              style={{
+                fontSize: 15,
+                color: "#5A7A5C",
+                lineHeight: 1.9,
+                marginBottom: 16,
+                fontWeight: 300,
+              }}
+            >
+              At Thapak Research & TestLab, we believe clean air is a right —
+              not a luxury. Our patented wind turbine design harnesses natural
+              wind movement to actively filter and circulate air without drawing
+              a single watt from the grid.
+            </p>
+            <p
+              style={{
+                fontSize: 15,
+                color: "#5A7A5C",
+                lineHeight: 1.9,
+                marginBottom: 32,
+                fontWeight: 300,
+              }}
+            >
+              Founded by engineers and environmentalists, we operate at the
+              intersection of aerodynamics, materials science, and sustainable
+              design — creating solutions that work in hospitals, factories, and
+              homes alike.
+            </p>
+            <Link
+              href="/about"
+              style={{
+                fontSize: 13,
+                color: "#1A2420",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                textDecoration: "none",
+                borderBottom: "1px solid #1A2420",
+                paddingBottom: 2,
+              }}
+            >
+              Learn About Us →
+            </Link>
           </div>
         </div>
       </section>

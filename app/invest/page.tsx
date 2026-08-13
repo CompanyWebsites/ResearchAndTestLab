@@ -4,50 +4,38 @@ import { useState } from "react";
 
 const opportunities = [
   {
-    type: "Seed Investment",
-    amount: "₹25L – ₹1Cr",
-    desc: "Early-stage equity participation as we scale our manufacturing and expand field deployments across Central India.",
+    type: "Production Partnership",
+    amount: "Infrastructure-based",
+    desc: "Land, facility, and infrastructure support to scale manufacturing of our patented air purification, filtration, and pollution-control technologies.",
+    benefits: [
+      "Manufacturing facility access",
+      "Land & infrastructure support",
+      "Priority production capacity",
+      "Long-term supply agreements",
+    ],
+    icon: "🏭",
+  },
+  {
+    type: "Capital Investment",
+    amount: "starting from ₹50Cr",
+    desc: "Equity participation as we scale commercialization of our patent portfolio across environmental engineering, renewable energy, and advanced materials.",
     benefits: [
       "Equity stake",
       "Board observer rights",
-      "First access to new models",
+      "First access to new technologies",
       "Quarterly investor briefings",
     ],
     icon: "🌱",
   },
   {
-    type: "Strategic Partnership",
-    amount: "Custom",
-    desc: "Joint ventures with hospitals, municipalities, industrial groups, or real-estate developers to co-deploy our turbine systems at scale.",
+    type: "Debt Funding",
+    amount: "Structured Debt",
+    desc: "Structured financing to support prototype-to-commercialization scale-up, equipment procurement, and technology licensing across our research areas.",
     benefits: [
-      "Revenue sharing model",
-      "Co-branding rights",
-      "Priority deployment",
-      "Joint IP on site-specific innovations",
-    ],
-    icon: "🤝",
-  },
-  {
-    type: "Research Collaboration",
-    amount: "Grant / MoU",
-    desc: "Academic institutions, IITs, NITs, and research bodies — partner with our TestLab on aerodynamics, materials, or environmental science research.",
-    benefits: [
-      "Lab access",
-      "Data co-ownership",
-      "Joint publication rights",
-      "Fellowship opportunities",
-    ],
-    icon: "🔬",
-  },
-  {
-    type: "Government & CSR",
-    amount: "Project-based",
-    desc: "We work with state governments, municipal corporations, and CSR mandates to deploy clean-air solutions in public spaces, schools, and hospitals.",
-    benefits: [
-      "Policy alignment",
-      "Public health impact",
-      "ESG reporting support",
-      "Named project credit",
+      "Fixed repayment terms",
+      "Asset-backed structuring",
+      "Milestone-based disbursement",
+      "Priority repayment terms",
     ],
     icon: "🏛️",
   },
@@ -55,20 +43,50 @@ const opportunities = [
 
 const faqs = [
   {
-    q: "What stage is Thapak at?",
-    a: "We are a post-prototype, pre-Series A company. We have completed 4 field deployments and are actively scaling manufacturing.",
+    q: "What stage is THAPAK at?",
+    a: "THAPAK Research And Test Lab is an innovation-driven research organization active across scientific research, engineering design, prototype development, laboratory testing, and technology commercialization.",
   },
   {
     q: "Is the technology patented?",
-    a: "Our core blade geometry and passive filtration mechanism are filed under provisional patent with the Indian Patent Office. Full patent pending as of Q1 2025.",
+    a: "Yes. THAPAK holds a significant intellectual property portfolio, including six process patents and three PCT applications for our air purification and carbon removal systems, alongside multiple additional applied and granted patents across renewable energy, hydrogen propulsion, and material science.",
   },
   {
-    q: "What are your revenue projections?",
-    a: "Detailed financial models are available in our investor deck. Request access via the query form and we will schedule a call.",
+    q: "What kinds of funding can I offer?",
+    a: "We welcome production partnerships (facility and infrastructure support), capital investment (equity participation), and debt funding (structured financing), across environmental engineering, renewable energy, hydrogen technologies, material science, and industrial process engineering.",
   },
   {
     q: "How do I start a collaboration?",
-    a: "Use the form below or email us at invest@thapakresearch.in. We respond within 48 hours to all inquiries.",
+    a: "Use the form below or email us directly. We respond within 48 hours to all inquiries from industries, universities, government agencies, research organizations, startups, and investors.",
+  },
+];
+
+const stats = [
+  ["16", "Patents & Applications"],
+  ["6", "Process Patents"],
+  ["3", "PCT Applications"],
+  // ["74%", "Solar Thermal Recovery"],
+];
+
+const metrics = [
+  {
+    label: "Intellectual Property Portfolio",
+    value: "16 Patents",
+    sub: "Applied and granted assets across engineering domains",
+  },
+  // {
+  //   label: "Solar Thermal Power Storage",
+  //   value: "74%",
+  //   sub: "Thermal recovery performance",
+  // },
+  {
+    label: "Insulating Board Performance",
+    value: "99.99%",
+    sub: "High performance insulating capacity",
+  },
+  {
+    label: "Research Focus",
+    value: "Multidisciplinary R&D",
+    sub: "Environmental engineering, renewable energy, hydrogen & materials",
   },
 ];
 
@@ -76,84 +94,28 @@ export default function Invest() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <div style={{ background: "#FAFAF8", paddingTop: 72 }}>
+    <div className="page">
       {/* Hero */}
-      <section
-        style={{
-          padding: "7rem 2.5rem 4rem",
-          background: "linear-gradient(160deg, #1A2420, #2C3E35)",
-        }}
-      >
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div
-            style={{
-              fontSize: 11,
-              letterSpacing: "0.22em",
-              color: "#C4A45A",
-              textTransform: "uppercase",
-              marginBottom: 20,
-            }}
-          >
-            Invest & Collaborate
-          </div>
-          <h1
-            style={{
-              fontFamily: "Cormorant Garamond, serif",
-              fontSize: "clamp(44px, 6vw, 88px)",
-              fontWeight: 300,
-              color: "#FAFAF8",
-              maxWidth: 700,
-              lineHeight: 1.08,
-              marginBottom: 24,
-            }}
-          >
-            Be part of
+      <section className="hero">
+        <div className="container">
+          <div className="eyebrow eyebrow-gold">Invest &amp; Collaborate</div>
+          <h1 className="heroTitle">
+            Engineer
             <br />
-            <em style={{ color: "#8A9E8C", fontStyle: "italic" }}>
-              what comes next.
-            </em>
+            <em className="heroEm">tomorrow, with us.</em>
           </h1>
-          <p
-            style={{
-              fontSize: 15,
-              color: "#8A9E8C",
-              maxWidth: 520,
-              lineHeight: 1.9,
-              fontWeight: 300,
-            }}
-          >
-            Thapak Research & TestLab is seeking investors, partners, and
-            collaborators who believe the future of clean air is passive,
-            scalable, and zero-energy.
+          <p className="heroText">
+            THAPAK Research And Test Lab Pvt. Ltd. is seeking investors,
+            partners, and collaborators to help scale our indigenous
+            technologies in environmental engineering, renewable energy,
+            advanced materials, and clean technology.
           </p>
-          <div style={{ marginTop: 40, display: "flex", gap: "4rem" }}>
-            {[
-              ["₹0", "Electricity Used"],
-              ["78%", "PM2.5 Reduction"],
-              ["4", "Live Deployments"],
-              ["2025", "Patent Filed"],
-            ].map(([v, l]) => (
-              <div key={l}>
-                <div
-                  style={{
-                    fontFamily: "Cormorant Garamond, serif",
-                    fontSize: 40,
-                    color: "#FAFAF8",
-                    fontWeight: 300,
-                  }}
-                >
-                  {v}
-                </div>
-                <div
-                  style={{
-                    fontSize: 11,
-                    color: "#5A7A5C",
-                    letterSpacing: "0.14em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {l}
-                </div>
+
+          <div className="statRow">
+            {stats.map(([v, l]) => (
+              <div key={l} className="statItem">
+                <div className="statValue">{v}</div>
+                <div className="statLabel">{l}</div>
               </div>
             ))}
           </div>
@@ -161,120 +123,26 @@ export default function Invest() {
       </section>
 
       {/* Opportunities */}
-      <section style={{ padding: "7rem 2.5rem", background: "#FAFAF8" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "4.5rem" }}>
-            <div
-              style={{
-                fontSize: 11,
-                letterSpacing: "0.2em",
-                color: "#C4A45A",
-                textTransform: "uppercase",
-                marginBottom: 16,
-              }}
-            >
-              Pathways
-            </div>
-            <h2
-              style={{
-                fontFamily: "Cormorant Garamond, serif",
-                fontSize: "clamp(32px, 4vw, 52px)",
-                fontWeight: 300,
-                color: "#1A2420",
-              }}
-            >
-              How you can work with us
-            </h2>
+      <section className="section sectionLight">
+        <div className="container">
+          <div className="sectionHeading">
+            <div className="eyebrow eyebrow-gold">Pathways</div>
+            <h2 className="h2Center">How you can work with us</h2>
           </div>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)",
-              gap: "2rem",
-            }}
-          >
+
+          <div className="opportunityGrid">
             {opportunities.map((o, i) => (
-              <div
-                key={i}
-                style={{
-                  padding: "3rem",
-                  background: "#F4F3F0",
-                  borderTop: "3px solid #EDE9E0",
-                  transition: "border-color 0.3s",
-                }}
-                onMouseOver={(e) =>
-                  (e.currentTarget.style.borderTopColor = "#5A7A5C")
-                }
-                onMouseOut={(e) =>
-                  (e.currentTarget.style.borderTopColor = "#EDE9E0")
-                }
-              >
-                <div style={{ fontSize: 32, marginBottom: 16 }}>{o.icon}</div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "start",
-                    marginBottom: 16,
-                  }}
-                >
-                  <h3
-                    style={{
-                      fontFamily: "Cormorant Garamond, serif",
-                      fontSize: 28,
-                      color: "#1A2420",
-                      fontWeight: 300,
-                    }}
-                  >
-                    {o.type}
-                  </h3>
-                  <span
-                    style={{
-                      fontSize: 12,
-                      color: "#C4A45A",
-                      letterSpacing: "0.06em",
-                      fontFamily: "DM Sans, sans-serif",
-                      fontWeight: 400,
-                      marginTop: 6,
-                    }}
-                  >
-                    {o.amount}
-                  </span>
+              <div key={i} className="oppCard">
+                <div className="oppIcon">{o.icon}</div>
+                <div className="oppHeader">
+                  <h3 className="oppTitle">{o.type}</h3>
+                  <span className="oppAmount">{o.amount}</span>
                 </div>
-                <p
-                  style={{
-                    fontSize: 14,
-                    color: "#5A7A5C",
-                    lineHeight: 1.8,
-                    fontWeight: 300,
-                    marginBottom: 20,
-                  }}
-                >
-                  {o.desc}
-                </p>
-                <ul style={{ listStyle: "none", padding: 0 }}>
+                <p className="oppDesc">{o.desc}</p>
+                <ul className="oppList">
                   {o.benefits.map((b, j) => (
-                    <li
-                      key={j}
-                      style={{
-                        fontSize: 13,
-                        color: "#8A9E8C",
-                        padding: "6px 0",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 8,
-                      }}
-                    >
-                      <span
-                        style={{
-                          width: 4,
-                          height: 4,
-                          borderRadius: "50%",
-                          background: "#5A7A5C",
-                          display: "inline-block",
-                          flexShrink: 0,
-                        }}
-                      />
+                    <li key={j} className="oppListItem">
+                      <span className="oppDot" />
                       {b}
                     </li>
                   ))}
@@ -286,124 +154,38 @@ export default function Invest() {
       </section>
 
       {/* Why Invest */}
-      <section style={{ padding: "7rem 2.5rem", background: "#F4F3F0" }}>
-        <div
-          style={{
-            maxWidth: 1280,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "6rem",
-            alignItems: "center",
-          }}
-        >
+      <section className="section sectionAlt">
+        <div className="container whyGrid">
           <div>
-            <div
-              style={{
-                fontSize: 11,
-                letterSpacing: "0.2em",
-                color: "#C4A45A",
-                textTransform: "uppercase",
-                marginBottom: 20,
-              }}
-            >
-              Why Thapak
-            </div>
-            <h2
-              style={{
-                fontFamily: "Cormorant Garamond, serif",
-                fontSize: 46,
-                fontWeight: 300,
-                color: "#1A2420",
-                lineHeight: 1.2,
-                marginBottom: 28,
-              }}
-            >
-              The market is ready.
+            <div className="eyebrow eyebrow-gold">Why THAPAK</div>
+            <h2 className="h2">
+              The research is proven.
               <br />
-              <em style={{ fontStyle: "italic", color: "#5A7A5C" }}>
-                The technology is proven.
-              </em>
+              <em className="h2Em">The portfolio is ready to scale.</em>
             </h2>
-            <p
-              style={{
-                fontSize: 15,
-                color: "#5A7A5C",
-                lineHeight: 1.9,
-                fontWeight: 300,
-                marginBottom: 20,
-              }}
-            >
-              India's air quality crisis affects 1.4 billion people.
-              Pollution-related health costs exceed ₹30 lakh crore annually.
-              Government mandates for industrial air quality are tightening. The
-              demand is vast and urgent.
+            <p className="bodyText">
+              THAPAK's mission is to develop breakthrough engineering
+              technologies, build a strong intellectual property portfolio, and
+              convert research into commercially viable products across
+              environmental engineering, renewable energy, and industrial
+              process engineering.
             </p>
-            <p
-              style={{
-                fontSize: 15,
-                color: "#5A7A5C",
-                lineHeight: 1.9,
-                fontWeight: 300,
-              }}
-            >
-              Thapak's zero-electricity model makes it uniquely cost-effective —
-              with no operational energy costs, payback periods are measured in
-              months, not years.
+            <p className="bodyText bodyTextLast">
+              With a portfolio spanning air purification, carbon removal,
+              hydrogen propulsion, and advanced materials, THAPAK offers a
+              multidisciplinary foundation for production partnerships, capital
+              investment, and structured debt funding.
             </p>
           </div>
+
           <div>
-            {[
-              {
-                label: "Total Addressable Market",
-                value: "₹18,000 Cr",
-                sub: "Air purification in India by 2028",
-              },
-              {
-                label: "Operating Cost",
-                value: "₹0 / month",
-                sub: "No electricity. No consumables.",
-              },
-              {
-                label: "Deployment Timeline",
-                value: "14 days",
-                sub: "Average site setup time",
-              },
-              {
-                label: "Expected Payback",
-                value: "6–18 months",
-                sub: "Depending on model and scale",
-              },
-            ].map((m, i) => (
-              <div
-                key={i}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  padding: "20px 0",
-                  borderBottom: "1px solid #D4DDD6",
-                }}
-              >
+            {metrics.map((m, i) => (
+              <div key={i} className="metricRow">
                 <div>
-                  <div
-                    style={{ fontSize: 13, color: "#8A9E8C", fontWeight: 300 }}
-                  >
-                    {m.label}
-                  </div>
-                  <div style={{ fontSize: 11, color: "#D4DDD6", marginTop: 2 }}>
-                    {m.sub}
-                  </div>
+                  <div className="metricLabel">{m.label}</div>
+                  <div className="metricSub">{m.sub}</div>
                 </div>
-                <div
-                  style={{
-                    fontFamily: "Cormorant Garamond, serif",
-                    fontSize: 30,
-                    color: "#1A2420",
-                    fontWeight: 300,
-                  }}
-                >
-                  {m.value}
-                </div>
+                <div className="metricValue">{m.value}</div>
               </div>
             ))}
           </div>
@@ -411,161 +193,487 @@ export default function Invest() {
       </section>
 
       {/* FAQ */}
-      <section style={{ padding: "7rem 2.5rem", background: "#FAFAF8" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <div
-              style={{
-                fontSize: 11,
-                letterSpacing: "0.2em",
-                color: "#C4A45A",
-                textTransform: "uppercase",
-                marginBottom: 16,
-              }}
-            >
-              FAQ
-            </div>
-            <h2
-              style={{
-                fontFamily: "Cormorant Garamond, serif",
-                fontSize: 44,
-                fontWeight: 300,
-                color: "#1A2420",
-              }}
-            >
-              Investor questions
-            </h2>
+      <section className="section sectionLight">
+        <div className="faqContainer">
+          <div className="sectionHeading">
+            <div className="eyebrow eyebrow-gold">FAQ</div>
+            <h2 className="h2Center">Investor questions</h2>
           </div>
+
           {faqs.map((faq, i) => (
-            <div
-              key={i}
-              style={{ borderTop: "1px solid #EDE9E0", overflow: "hidden" }}
-            >
+            <div key={i} className="faqItem">
               <button
                 onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                style={{
-                  width: "100%",
-                  background: "none",
-                  border: "none",
-                  padding: "22px 0",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  cursor: "pointer",
-                  textAlign: "left",
-                }}
+                className="faqBtn"
               >
+                <span className="faqQ">{faq.q}</span>
                 <span
+                  className="faqIcon"
                   style={{
-                    fontFamily: "Cormorant Garamond, serif",
-                    fontSize: 22,
-                    color: "#1A2420",
-                    fontWeight: 300,
-                  }}
-                >
-                  {faq.q}
-                </span>
-                <span
-                  style={{
-                    fontSize: 22,
-                    color: "#5A7A5C",
                     transform: openFaq === i ? "rotate(45deg)" : "none",
-                    transition: "transform 0.3s",
                   }}
                 >
                   +
                 </span>
               </button>
               {openFaq === i && (
-                <div style={{ paddingBottom: 24 }}>
-                  <p
-                    style={{
-                      fontSize: 14,
-                      color: "#8A9E8C",
-                      lineHeight: 1.8,
-                      fontWeight: 300,
-                    }}
-                  >
-                    {faq.a}
-                  </p>
+                <div className="faqAnswerWrap">
+                  <p className="faqAnswer">{faq.a}</p>
                 </div>
               )}
             </div>
           ))}
-          <div style={{ borderTop: "1px solid #EDE9E0" }} />
+          <div className="faqDivider" />
         </div>
       </section>
 
       {/* CTA */}
-      <section
-        style={{
-          padding: "6rem 2.5rem",
-          background: "#1A2420",
-          textAlign: "center",
-        }}
-      >
-        <div style={{ maxWidth: 600, margin: "0 auto" }}>
-          <h2
-            style={{
-              fontFamily: "Cormorant Garamond, serif",
-              fontSize: 44,
-              fontWeight: 300,
-              color: "#FAFAF8",
-              marginBottom: 16,
-            }}
-          >
-            Ready to get started?
-          </h2>
-          <p
-            style={{
-              fontSize: 14,
-              color: "#8A9E8C",
-              marginBottom: 36,
-              lineHeight: 1.8,
-            }}
-          >
+      <section className="ctaSection">
+        <div className="ctaContainer">
+          <h2 className="ctaTitle">Ready to get started?</h2>
+          <p className="ctaText">
             Send us your details and we will schedule a discovery call within 48
             hours.
           </p>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: 16,
-              flexWrap: "wrap",
-            }}
-          >
-            <Link
-              href="/query"
-              style={{
-                background: "#5A7A5C",
-                color: "#FAFAF8",
-                padding: "14px 42px",
-                fontSize: 13,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                textDecoration: "none",
-              }}
-            >
+          <div className="ctaButtons">
+            <Link href="/query" className="ctaBtnPrimary">
               Submit Interest
             </Link>
             <a
-              href="mailto:invest@thapakresearch.in"
-              style={{
-                border: "1px solid #2C3E35",
-                color: "#8A9E8C",
-                padding: "14px 42px",
-                fontSize: 13,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                textDecoration: "none",
-              }}
+              href="mailto:support@research.thapak.co.in"
+              className="ctaBtnSecondary"
             >
               Email Directly
             </a>
           </div>
         </div>
       </section>
+
+      <style jsx>{`
+        .page {
+          background: #fafaf8;
+          padding-top: 72px;
+        }
+        .container {
+          max-width: 1280px;
+          margin: 0 auto;
+        }
+        .eyebrow {
+          font-size: 11px;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+        }
+        .eyebrow-gold {
+          color: #c4a45a;
+          margin-bottom: 20px;
+        }
+        .sectionHeading {
+          text-align: center;
+          margin-bottom: 4.5rem;
+        }
+        .h2Center {
+          font-family: "Cormorant Garamond", serif;
+          font-size: clamp(30px, 5vw, 52px);
+          font-weight: 300;
+          color: #1a2420;
+        }
+        .h2 {
+          font-family: "Cormorant Garamond", serif;
+          font-size: 46px;
+          font-weight: 300;
+          color: #1a2420;
+          line-height: 1.2;
+          margin-bottom: 28px;
+        }
+        .h2Em {
+          font-style: italic;
+          color: #5a7a5c;
+        }
+        .bodyText {
+          font-size: 15px;
+          color: #5a7a5c;
+          line-height: 1.9;
+          font-weight: 300;
+          margin-bottom: 20px;
+        }
+        .bodyTextLast {
+          margin-bottom: 0;
+        }
+
+        /* Hero */
+        .hero {
+          padding: 7rem 2.5rem 4rem;
+          background: linear-gradient(160deg, #1a2420, #2c3e35);
+        }
+        .heroTitle {
+          font-family: "Cormorant Garamond", serif;
+          font-size: clamp(38px, 8vw, 88px);
+          font-weight: 300;
+          color: #fafaf8;
+          max-width: 700px;
+          line-height: 1.08;
+          margin-bottom: 24px;
+        }
+        .heroEm {
+          color: #8a9e8c;
+          font-style: italic;
+        }
+        .heroText {
+          font-size: 15px;
+          color: #8a9e8c;
+          max-width: 520px;
+          line-height: 1.9;
+          font-weight: 300;
+        }
+        .statRow {
+          margin-top: 40px;
+          display: flex;
+          gap: 4rem;
+          flex-wrap: wrap;
+        }
+        .statValue {
+          font-family: "Cormorant Garamond", serif;
+          font-size: 40px;
+          color: #fafaf8;
+          font-weight: 300;
+        }
+        .statLabel {
+          font-size: 11px;
+          color: #5a7a5c;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+        }
+
+        /* Sections */
+        .section {
+          padding: 7rem 2.5rem;
+        }
+        .sectionLight {
+          background: #fafaf8;
+        }
+        .sectionAlt {
+          background: #f4f3f0;
+        }
+
+        /* Opportunities */
+        .opportunityGrid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+        }
+        .oppCard {
+          padding: 3rem;
+          background: #f4f3f0;
+          border-top: 3px solid #ede9e0;
+          transition: border-color 0.3s;
+        }
+        .oppCard:hover {
+          border-top-color: #5a7a5c;
+        }
+        .oppIcon {
+          font-size: 32px;
+          margin-bottom: 16px;
+        }
+        .oppHeader {
+          display: flex;
+          justify-content: space-between;
+          align-items: start;
+          gap: 12px;
+          margin-bottom: 16px;
+        }
+        .oppTitle {
+          font-family: "Cormorant Garamond", serif;
+          font-size: 28px;
+          color: #1a2420;
+          font-weight: 300;
+        }
+        .oppAmount {
+          font-size: 12px;
+          color: #c4a45a;
+          letter-spacing: 0.06em;
+          font-family: "DM Sans", sans-serif;
+          font-weight: 400;
+          margin-top: 6px;
+          white-space: nowrap;
+        }
+        .oppDesc {
+          font-size: 14px;
+          color: #5a7a5c;
+          line-height: 1.8;
+          font-weight: 300;
+          margin-bottom: 20px;
+        }
+        .oppList {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .oppListItem {
+          font-size: 13px;
+          color: #8a9e8c;
+          padding: 6px 0;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .oppDot {
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background: #5a7a5c;
+          display: inline-block;
+          flex-shrink: 0;
+        }
+
+        /* Why Invest */
+        .whyGrid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 6rem;
+          align-items: center;
+        }
+        .metricRow {
+          display: flex;
+          justify-content: space-between;
+          gap: 16px;
+          padding: 20px 0;
+          border-bottom: 1px solid #d4ddd6;
+        }
+        .metricLabel {
+          font-size: 13px;
+          color: #8a9e8c;
+          font-weight: 300;
+        }
+        .metricSub {
+          font-size: 11px;
+          color: #d4ddd6;
+          margin-top: 2px;
+        }
+        .metricValue {
+          font-family: "Cormorant Garamond", serif;
+          font-size: 30px;
+          color: #1a2420;
+          font-weight: 300;
+          white-space: nowrap;
+        }
+
+        /* FAQ */
+        .faqContainer {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 0 2.5rem;
+        }
+        .faqItem {
+          border-top: 1px solid #ede9e0;
+          overflow: hidden;
+        }
+        .faqBtn {
+          width: 100%;
+          background: none;
+          border: none;
+          padding: 22px 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 16px;
+          cursor: pointer;
+          text-align: left;
+        }
+        .faqQ {
+          font-family: "Cormorant Garamond", serif;
+          font-size: 22px;
+          color: #1a2420;
+          font-weight: 300;
+        }
+        .faqIcon {
+          font-size: 22px;
+          color: #5a7a5c;
+          transition: transform 0.3s;
+          flex-shrink: 0;
+        }
+        .faqAnswerWrap {
+          padding-bottom: 24px;
+        }
+        .faqAnswer {
+          font-size: 14px;
+          color: #8a9e8c;
+          line-height: 1.8;
+          font-weight: 300;
+        }
+        .faqDivider {
+          border-top: 1px solid #ede9e0;
+        }
+
+        /* CTA */
+        .ctaSection {
+          padding: 6rem 2.5rem;
+          background: #1a2420;
+          text-align: center;
+        }
+        .ctaContainer {
+          max-width: 600px;
+          margin: 0 auto;
+        }
+        .ctaTitle {
+          font-family: "Cormorant Garamond", serif;
+          font-size: 44px;
+          font-weight: 300;
+          color: #fafaf8;
+          margin-bottom: 16px;
+        }
+        .ctaText {
+          font-size: 14px;
+          color: #8a9e8c;
+          margin-bottom: 36px;
+          line-height: 1.8;
+        }
+        .ctaButtons {
+          display: flex;
+          justify-content: center;
+          gap: 16px;
+          flex-wrap: wrap;
+        }
+        .ctaBtnPrimary {
+          background: #5a7a5c;
+          color: #fafaf8;
+          padding: 14px 42px;
+          font-size: 13px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          text-decoration: none;
+        }
+        .ctaBtnSecondary {
+          border: 1px solid #2c3e35;
+          color: #8a9e8c;
+          padding: 14px 42px;
+          font-size: 13px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          text-decoration: none;
+        }
+
+        /* ===== Tablet ===== */
+        @media (max-width: 900px) {
+          .hero {
+            padding: 5rem 1.75rem 3rem;
+          }
+          .section {
+            padding: 4.5rem 1.75rem;
+          }
+          .sectionHeading {
+            margin-bottom: 3rem;
+          }
+          .opportunityGrid {
+            grid-template-columns: 1fr;
+          }
+          .whyGrid {
+            grid-template-columns: 1fr;
+            gap: 3.5rem;
+          }
+          .statRow {
+            gap: 2.5rem;
+          }
+          .faqContainer {
+            padding: 0 1.75rem;
+          }
+          .ctaSection {
+            padding: 4.5rem 1.75rem;
+          }
+        }
+
+        /* ===== Mobile ===== */
+        @media (max-width: 600px) {
+          .page {
+            padding-top: 56px;
+          }
+          .hero {
+            padding: 3.5rem 1.25rem 2.75rem;
+          }
+          .section {
+            padding: 3.5rem 1.25rem;
+          }
+          .sectionHeading {
+            margin-bottom: 2.5rem;
+          }
+          .heroText {
+            font-size: 14px;
+          }
+
+          /* Stat row: 2 columns instead of a cramped 4-in-a-row */
+          .statRow {
+            margin-top: 32px;
+            gap: 1.5rem 2rem;
+          }
+          .statItem {
+            width: calc(50% - 1rem);
+          }
+          .statValue {
+            font-size: 32px;
+          }
+
+          /* Opportunity cards */
+          .oppCard {
+            padding: 2rem 1.5rem;
+          }
+          .oppTitle {
+            font-size: 23px;
+          }
+          .oppHeader {
+            flex-direction: column;
+            gap: 4px;
+          }
+          .oppAmount {
+            margin-top: 0;
+          }
+
+          /* Why invest */
+          .h2 {
+            font-size: 32px;
+            margin-bottom: 22px;
+          }
+          .metricRow {
+            padding: 16px 0;
+          }
+          .metricValue {
+            font-size: 24px;
+          }
+
+          /* FAQ */
+          .faqContainer {
+            padding: 0 1.25rem;
+          }
+          .faqQ {
+            font-size: 19px;
+          }
+          .faqBtn {
+            padding: 18px 0;
+          }
+
+          /* CTA */
+          .ctaSection {
+            padding: 3.5rem 1.25rem;
+          }
+          .ctaTitle {
+            font-size: 30px;
+          }
+          .ctaButtons {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+          }
+          .ctaBtnPrimary,
+          .ctaBtnSecondary {
+            padding: 14px 24px;
+            text-align: center;
+          }
+        }
+
+        @media (max-width: 380px) {
+          .statItem {
+            width: 100%;
+          }
+        }
+      `}</style>
     </div>
   );
 }

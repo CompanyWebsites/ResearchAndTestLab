@@ -53,7 +53,7 @@ export default function Footer() {
               }}
             >
               Pioneering sustainable energy solutions through innovative wind
-              turbine design — clean air, zero electricity consumed.
+              turbine design clean air, zero electricity consumed.
             </p>
             <div style={{ marginTop: 24, display: "flex", gap: 12 }}>
               {["Li", "Tw", "Yt"].map((s) => (
