@@ -6,6 +6,10 @@ if (!MONGODB_URI) {
   throw new Error("Please define MONGODB_URI");
 }
 
+declare global {
+  var mongoose: any;
+}
+
 let cached: any = global.mongoose;
 
 if (!cached) {
