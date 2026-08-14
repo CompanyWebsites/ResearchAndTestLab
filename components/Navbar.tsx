@@ -130,11 +130,11 @@ export default function Navbar() {
                   fontWeight: 300,
                   color: "#8A9E8C",
                   letterSpacing: "0.18em",
-                  textTransform: "uppercase",
+                  // textTransform: "uppercase",
                   lineHeight: 1,
                 }}
               >
-                Research & TestLab
+                Research & TestLab Pvt. Ltd.
               </div>
             </div>
           </div>

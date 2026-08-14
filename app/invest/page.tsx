@@ -61,8 +61,8 @@ const faqs = [
 ];
 
 const stats = [
-  ["16", "Patents & Applications"],
-  ["6", "Process Patents"],
+  ["35", "Patents & Applications"],
+  ["8", "Granted Patents"],
   ["3", "PCT Applications"],
   // ["74%", "Solar Thermal Recovery"],
 ];
@@ -114,7 +114,7 @@ export default function Invest() {
           <div className="statRow">
             {stats.map(([v, l]) => (
               <div key={l} className="statItem">
-                <div className="statValue">{v}</div>
+                <div className="statValue ">{v}</div>
                 <div className="statLabel">{l}</div>
               </div>
             ))}

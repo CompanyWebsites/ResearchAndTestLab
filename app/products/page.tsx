@@ -2,14 +2,12 @@
 import Link from "next/link";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { catalogue } from "@/data/products";
-
 // ─── SHARED LAYOUT TOKENS ────────────────────────────────────────────────────
 const MAX_W = 1280;
 const PX = "clamp(1.25rem, 5vw, 2.5rem)";
 const SEC_PY = "clamp(3rem, 7vw, 6rem)";
 const SEC_SM = "clamp(2rem, 4vw, 3.5rem)";
 // ─────────────────────────────────────────────────────────────────────────────
-
 function ScrollRow({
   children,
   style,
@@ -22,14 +20,12 @@ function ScrollRow({
   const rowRef = useRef<HTMLDivElement>(null);
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(false);
-
   const checkScroll = useCallback(() => {
     const el = rowRef.current;
     if (!el) return;
     setCanLeft(el.scrollLeft > 4);
     setCanRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
   }, []);
-
   useEffect(() => {
     const el = rowRef.current;
     if (!el) return;
@@ -42,13 +38,11 @@ function ScrollRow({
       ro.disconnect();
     };
   }, [checkScroll]);
-
   const scroll = (dir: "left" | "right") => {
     const el = rowRef.current;
     if (!el) return;
     el.scrollBy({ left: dir === "left" ? -220 : 220, behavior: "smooth" });
   };
-
   const arrowBase: React.CSSProperties = {
     position: "absolute",
     top: 0,
@@ -66,7 +60,6 @@ function ScrollRow({
     fontSize: 18,
     transition: "opacity 0.2s",
   };
-
   return (
     <div style={{ position: "relative", ...style }}>
       {canLeft && (
@@ -106,7 +99,6 @@ function ScrollRow({
     </div>
   );
 }
-
 // ─── Shared sub-components ────────────────────────────────────────────────────
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
@@ -123,7 +115,6 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
-
 function GoldLabel({ children }: { children: React.ReactNode }) {
   return (
     <div
@@ -139,187 +130,18 @@ function GoldLabel({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
-
-function TurbineViz({ color }: { color: string }) {
-  return (
-    <svg
-      viewBox="0 0 180 210"
-      fill="none"
-      style={{ width: "100%", maxWidth: 180, height: "auto" }}
-    >
-      <circle cx="90" cy="90" r="6" fill={color} />
-      <g>
-        <ellipse cx="90" cy="48" rx="9" ry="40" fill={color} opacity="0.9" />
-        <ellipse
-          cx="90"
-          cy="48"
-          rx="9"
-          ry="40"
-          fill={color}
-          opacity="0.6"
-          transform="rotate(120 90 90)"
-        />
-        <ellipse
-          cx="90"
-          cy="48"
-          rx="9"
-          ry="40"
-          fill={color}
-          opacity="0.35"
-          transform="rotate(240 90 90)"
-        />
-      </g>
-      <circle
-        cx="90"
-        cy="90"
-        r="80"
-        stroke={color}
-        strokeWidth="0.6"
-        strokeDasharray="3 4"
-        opacity="0.35"
-      />
-      <rect x="86" y="136" width="8" height="55" rx="3" fill="#8A9E8C" />
-      <rect x="68" y="189" width="44" height="7" rx="2" fill="#8A9E8C" />
-    </svg>
-  );
-}
-
-function HepaViz({ color }: { color: string }) {
-  return (
-    <svg
-      viewBox="0 0 180 210"
-      fill="none"
-      style={{ width: "100%", maxWidth: 180, height: "auto" }}
-    >
-      <rect x="30" y="20" width="120" height="150" rx="8" fill="#EDE9E0" />
-      <rect
-        x="30"
-        y="20"
-        width="120"
-        height="150"
-        rx="8"
-        stroke={color}
-        strokeWidth="1.5"
-      />
-      {[50, 75, 100, 125].map((y, i) => (
-        <g key={i}>
-          <rect
-            x="44"
-            y={y}
-            width="92"
-            height="12"
-            rx="2"
-            fill={color}
-            opacity={0.15 + i * 0.12}
-          />
-          <line
-            x1="44"
-            y1={y + 6}
-            x2="136"
-            y2={y + 6}
-            stroke={color}
-            strokeWidth="0.6"
-            strokeDasharray="4 3"
-            opacity="0.6"
-          />
-        </g>
-      ))}
-      {[38, 48, 58, 68, 78, 88, 98, 108, 118, 128, 138].map((x) => (
-        <line
-          key={x}
-          x1={x}
-          y1="22"
-          x2={x}
-          y2="36"
-          stroke={color}
-          strokeWidth="1.5"
-          opacity="0.4"
-        />
-      ))}
-      <text
-        x="90"
-        y="160"
-        textAnchor="middle"
-        fontSize="10"
-        fill={color}
-        fontFamily="DM Sans, sans-serif"
-        opacity="0.7"
-      >
-        HEPA H14
-      </text>
-      <rect x="78" y="170" width="24" height="30" rx="3" fill="#8A9E8C" />
-      <rect x="58" y="198" width="64" height="8" rx="2" fill="#8A9E8C" />
-    </svg>
-  );
-}
-
-// Derive which viz to show for a product — extend this map as you add products
-function ProductViz({
-  productId,
-  color,
-}: {
-  productId: string;
-  color: string;
-}) {
-  if (productId === "wind-turbine") return <TurbineViz color={color} />;
-  if (productId === "hepa-filter") return <HepaViz color={color} />;
-  // Default fallback for any new product without a dedicated viz
-  return (
-    <svg
-      viewBox="0 0 180 210"
-      fill="none"
-      style={{ width: "100%", maxWidth: 180, height: "auto" }}
-    >
-      <rect
-        x="30"
-        y="40"
-        width="120"
-        height="120"
-        rx="10"
-        fill={color}
-        opacity="0.15"
-        stroke={color}
-        strokeWidth="1.5"
-      />
-      <text
-        x="90"
-        y="108"
-        textAnchor="middle"
-        fontSize="36"
-        fill={color}
-        opacity="0.6"
-      >
-        ?
-      </text>
-      <rect x="78" y="168" width="24" height="30" rx="3" fill="#8A9E8C" />
-      <rect x="58" y="196" width="64" height="8" rx="2" fill="#8A9E8C" />
-    </svg>
-  );
-}
-
 // ─── Page ────────────────────────────────────────────────────────────────────
 export default function Products() {
   const [activeProd, setActiveProd] = useState(catalogue[0].id);
   const [activeModels, setActiveModels] = useState<Record<string, string>>(
     Object.fromEntries(catalogue.map((p) => [p.id, p.models[0].id])),
   );
-
   const product = catalogue.find((p) => p.id === activeProd)!;
   const modelId = activeModels[activeProd];
   const model = product.models.find((m) => m.id === modelId)!;
   const setModel = (mid: string) =>
     setActiveModels((prev) => ({ ...prev, [activeProd]: mid }));
-
-  // Derived stats — computed from catalogue so they stay accurate as you add products/models
-  const totalModels = catalogue.reduce((a, p) => a + p.models.length, 0);
-  const zeroKwhLines = catalogue.filter((p) =>
-    p.models.every((m) =>
-      m.specs.some((s) => s.label === "Power Draw" && s.value === "0 kWh"),
-    ),
-  ).length;
-
   const container: React.CSSProperties = { maxWidth: MAX_W, margin: "0 auto" };
-
   return (
     <div style={{ background: "#FAFAF8", paddingTop: 72 }}>
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
@@ -362,46 +184,8 @@ export default function Products() {
             — our growing product range covers every environment and every
             scale.
           </p>
-          {/* Stats — auto-derived from catalogue */}
-          <div
-            style={{
-              display: "flex",
-              gap: "clamp(2rem, 5vw, 4rem)",
-              flexWrap: "wrap",
-            }}
-          >
-            {[
-              [String(catalogue.length), "Product Lines"],
-              [String(totalModels), "Total Models"],
-              ...(zeroKwhLines > 0 ? [["0 kWh", "Power (Turbines)"]] : []),
-            ].map(([v, l]) => (
-              <div key={l}>
-                <div
-                  style={{
-                    fontFamily: "Cormorant Garamond, serif",
-                    fontSize: "clamp(32px, 5vw, 44px)",
-                    color: "#1A2420",
-                    fontWeight: 300,
-                  }}
-                >
-                  {v}
-                </div>
-                <div
-                  style={{
-                    fontSize: 11,
-                    letterSpacing: "0.14em",
-                    color: "#8A9E8C",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {l}
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
-
       {/* ── PRODUCT LINE TABS (scrollable with arrows when many products) ─── */}
       <section style={{ background: "#1A2420" }}>
         <div style={{ ...container, padding: `0 ${PX}` }}>
@@ -457,7 +241,6 @@ export default function Products() {
           </ScrollRow>
         </div>
       </section>
-
       {/* ── PRODUCT OVERVIEW STRIP ────────────────────────────────────────── */}
       <section style={{ padding: `${SEC_SM} ${PX} 0`, background: "#FAFAF8" }}>
         <div style={container}>
@@ -530,7 +313,6 @@ export default function Products() {
           </div>
         </div>
       </section>
-
       {/* ── MODEL SELECTOR PILLS (scrollable with arrows when many models) ── */}
       <section style={{ padding: `2rem ${PX} 0`, background: "#FAFAF8" }}>
         <div style={container}>
@@ -569,7 +351,6 @@ export default function Products() {
           </ScrollRow>
         </div>
       </section>
-
       {/* ── MODEL DETAIL ─────────────────────────────────────────────────── */}
       <section style={{ padding: `${SEC_PY} ${PX}`, background: "#FAFAF8" }}>
         <div style={container}>
@@ -619,7 +400,6 @@ export default function Products() {
               >
                 {model.desc}
               </p>
-
               <GoldLabel>Ideal For</GoldLabel>
               <div
                 style={{
@@ -644,7 +424,6 @@ export default function Products() {
                   </span>
                 ))}
               </div>
-
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                 <Link
                   href="/query"
@@ -662,15 +441,13 @@ export default function Products() {
                 </Link>
               </div>
             </div>
-
-            {/* Right: specs + visual */}
+            {/* Right: specs */}
             <div>
               <GoldLabel>Technical Specifications</GoldLabel>
               <div
                 style={{
                   background: "#F4F3F0",
                   padding: "1.5rem 2rem",
-                  marginBottom: 24,
                 }}
               >
                 {model.specs.map((s, i) => (
@@ -711,21 +488,10 @@ export default function Products() {
                   </div>
                 ))}
               </div>
-              <div
-                style={{
-                  background: "#EDE9E0",
-                  padding: "2.5rem",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <ProductViz productId={activeProd} color={model.color} />
-              </div>
             </div>
           </div>
         </div>
       </section>
-
       {/* ── BOTTOM CTA ────────────────────────────────────────────────────── */}
       <section
         style={{

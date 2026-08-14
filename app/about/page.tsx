@@ -99,7 +99,7 @@ export default function About() {
         <div className="container">
           <div className="sectionHeading">
             <div className="eyebrow eyebrow-gold">The Team</div>
-            <h2 className="h2Center">The minds behind the mission</h2>
+            <h2 className="h2Center">The mind behind the mission</h2>
           </div>
 
           <div
