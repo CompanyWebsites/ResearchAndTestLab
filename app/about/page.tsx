@@ -1,126 +1,117 @@
 "use client";
 
-const team = [
+const pillars = [
   {
-    name: "Prashant Thapak",
-    role: "Founder & Chief Research Officer",
-    bio: "Leads THAPAK's multidisciplinary R&D strategy across environmental engineering, renewable energy, hydrogen technologies, and advanced materials.",
-    initials: "PT",
-  },
-];
-
-const values = [
-  {
-    title: "Innovation-Driven Research",
-    desc: "We develop breakthrough engineering technologies across environmental sustainability, renewable energy, and advanced materials.",
+    title: "Research",
+    desc: "Original technology development",
+    detail:
+      "Indigenous engineering research across environmental systems, energy, and advanced materials — from concept to working prototype.",
+    num: "01",
   },
   {
-    title: "Strong IP Portfolio",
-    desc: "We build and protect a robust portfolio of patents, PCT applications, and proprietary process technologies.",
+    title: "Testing",
+    desc: "Scientific and technical evaluation",
+    detail:
+      "Rigorous laboratory evaluation and scientific validation to ensure reliability, performance, and real-world readiness.",
+    num: "02",
   },
   {
-    title: "Sustainable Solutions",
-    desc: "We deliver industrial solutions that support cleaner air, reduced emissions, and environmental protection.",
+    title: "Intellectual Property",
+    desc: "Patents and technology protection",
+    detail:
+      "Research outcomes systematically converted into patents, PCT filings, and protectable technology assets.",
+    num: "03",
   },
   {
-    title: "Commercialization Focus",
-    desc: "We convert research into commercially viable products and support industrial and government research initiatives.",
+    title: "Commercialization",
+    desc: "Technology transfer and industrial application",
+    detail:
+      "Bridging lab to industry through technology transfer, licensing, and deployment for industrial adoption.",
+    num: "04",
   },
 ];
 
 export default function About() {
   return (
     <div className="page">
-      {/* Hero */}
       <section className="hero">
         <div className="container">
-          <div className="eyebrow eyebrow-muted">About Us</div>
+          <div className="eyebrow eyebrow-muted">About Us — Established 2017</div>
           <h1 className="heroTitle">
-            Engineering tomorrow's
+            Research Built on Engineering.
             <br />
-            <em className="heroEm">sustainable technologies.</em>
+            <em className="heroEm">Intellectual Property Built on Research.</em>
           </h1>
           <p className="heroText">
-            THAPAK Research And Test Lab Pvt. Ltd. is a multidisciplinary
-            research and testing organization focused on transforming innovative
-            ideas into practical industrial solutions for a cleaner, more
-            sustainable world.
+            THAPAK Research &amp; Test Lab Pvt. Ltd. is a specialized corporate
+            research and testing organization advancing indigenous engineering
+            technologies from laboratory to industry.
           </p>
         </div>
       </section>
 
-      {/* Story */}
       <section className="section sectionLight">
-        <div className="container storyGrid">
-          <div>
-            <div className="eyebrow eyebrow-gold">Our Story</div>
-            <h2 className="h2">From research idea to industrial impact</h2>
+        <div className="container whoGrid">
+          <div className="whoLabel">
+            <div className="eyebrow eyebrow-gold">Who We Are</div>
+            <h2 className="h2">A corporate research &amp; testing organization</h2>
+          </div>
+          <div className="whoBody">
             <p className="bodyText">
-              THAPAK Research And Test Lab Pvt. Ltd. is engaged in scientific
-              research and development, engineering design, prototype
-              development, laboratory testing, patent research, and technology
-              commercialization — with the objective of turning innovative ideas
-              into practical industrial solutions.
-            </p>
-            <p className="bodyText">
-              Our research spans environmental engineering, renewable energy,
-              hydrogen technologies, material science, and industrial process
-              engineering — from air purification systems that work without
-              electricity, to electrostatic precipitators, HEPA rotary filters,
-              solar thermal power storage, and hydrogen jet propulsion for
-              high-altitude and drone applications.
+              THAPAK Research &amp; Test Lab Pvt. Ltd. is a specialized
+              corporate research and testing organization established in{" "}
+              <strong>2017</strong>. Our work focuses on developing indigenous
+              engineering technologies, conducting specialized technical research
+              and testing, and converting research outcomes into intellectual
+              property and commercially applicable technologies.
             </p>
             <p className="bodyText bodyTextLast">
-              Today we work to become one of India's leading engineering
-              research organizations, building a strong intellectual property
-              portfolio and delivering sustainable industrial solutions to
-              industries, government organizations, and research institutions.
+              We operate across environmental engineering, renewable energy,
+              hydrogen technologies, material science, and industrial process
+              engineering — bridging scientific investigation with engineering
+              execution.
             </p>
-          </div>
-
-          {/* Values */}
-          <div>
-            <div className="eyebrow eyebrow-gold">Core Values</div>
-            {values.map((v, i) => (
-              <div key={i} className="valueRow">
-                <div className="valueNum">{i + 1}</div>
-                <div>
-                  <div className="valueTitle">{v.title}</div>
-                  <div className="valueDesc">{v.desc}</div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
 
-      {/* Team */}
+      <section className="philosophy">
+        <div className="container philosophyInner">
+          <div className="eyebrow eyebrow-gold" style={{ marginBottom: 16 }}>
+            Our Philosophy
+          </div>
+          <blockquote className="philosophyQuote">
+            We believe that meaningful research should not end with a report. It
+            should lead to measurable technical outcomes, protectable
+            intellectual property and technologies capable of solving real-world
+            problems.
+          </blockquote>
+          <div className="philosophyRule" />
+          <p className="philosophySub">
+            Every project is evaluated on three criteria: does it work, can it
+            be protected, and can it be deployed.
+          </p>
+        </div>
+      </section>
+
       <section className="section sectionLight">
         <div className="container">
           <div className="sectionHeading">
-            <div className="eyebrow eyebrow-gold">The Team</div>
-            <h2 className="h2Center">The mind behind the mission</h2>
+            <div className="eyebrow eyebrow-gold">What Differentiates THAPAK</div>
+            <h2 className="h2Center">From idea to protected, deployable technology</h2>
+            <p className="sectionSub">
+              Our end-to-end model integrates research, validation, protection,
+              and transfer — ensuring no valuable outcome remains on the shelf.
+            </p>
           </div>
 
-          <div
-            className="teamGrid"
-            style={
-              team.length === 1
-                ? { gridTemplateColumns: "1fr", justifyItems: "center" }
-                : undefined
-            }
-          >
-            {team.map((m, i) => (
-              <div key={i} className="teamCard">
-                <div
-                  className="teamAvatar"
-                  style={{ background: i % 2 === 0 ? "#EDE9E0" : "#D4DDD6" }}
-                >
-                  {m.initials}
-                </div>
-                <div className="teamName">{m.name}</div>
-                <div className="teamRole">{m.role}</div>
-                <div className="teamBio">{m.bio}</div>
+          <div className="pillarGrid">
+            {pillars.map((p) => (
+              <div key={p.title} className="pillarCard">
+                <div className="pillarNum">{p.num}</div>
+                <div className="pillarTitle">{p.title}</div>
+                <div className="pillarDesc">{p.desc}</div>
+                <div className="pillarDetail">{p.detail}</div>
               </div>
             ))}
           </div>
@@ -148,36 +139,34 @@ export default function About() {
         .eyebrow-gold {
           color: #c4a45a;
         }
-
-        /* Hero */
         .hero {
           padding: 7rem 2.5rem 5rem;
           background: linear-gradient(160deg, #f4f3f0, #ede9e0);
         }
         .heroTitle {
           font-family: "Cormorant Garamond", serif;
-          font-size: clamp(40px, 8vw, 88px);
+          font-size: clamp(36px, 6.5vw, 72px);
           font-weight: 300;
           color: #1a2420;
-          max-width: 700px;
+          max-width: 800px;
           line-height: 1.08;
-          margin-bottom: 32px;
+          margin-bottom: 28px;
+          letter-spacing: -0.02em;
         }
         .heroEm {
           color: #5a7a5c;
           font-style: italic;
+          font-weight: 300;
         }
         .heroText {
           font-size: 16px;
           color: #5a7a5c;
-          max-width: 580px;
+          max-width: 560px;
           line-height: 1.9;
           font-weight: 300;
         }
-
-        /* Sections */
         .section {
-          padding: 7rem 2.5rem;
+          padding: 6rem 2.5rem;
         }
         .sectionLight {
           background: #fafaf8;
@@ -187,203 +176,148 @@ export default function About() {
         }
         .sectionHeading {
           text-align: center;
-          margin-bottom: 5rem;
+          margin-bottom: 3.5rem;
+        }
+        .sectionSub {
+          font-size: 15px;
+          color: #8a9e8c;
+          max-width: 560px;
+          margin: 16px auto 0;
+          line-height: 1.8;
+          font-weight: 300;
         }
         .h2 {
           font-family: "Cormorant Garamond", serif;
           font-size: 42px;
           font-weight: 300;
           color: #1a2420;
-          margin-bottom: 28px;
           line-height: 1.2;
         }
         .h2Center {
           font-family: "Cormorant Garamond", serif;
-          font-size: clamp(30px, 5vw, 52px);
+          font-size: clamp(30px, 5vw, 48px);
           font-weight: 300;
           color: #1a2420;
+          line-height: 1.15;
         }
         .bodyText {
-          font-size: 15px;
+          font-size: 15.5px;
           color: #5a7a5c;
           line-height: 1.9;
           margin-bottom: 20px;
           font-weight: 300;
         }
+        .bodyText strong {
+          color: #1a2420;
+          font-weight: 500;
+        }
         .bodyTextLast {
           margin-bottom: 0;
         }
-
-        /* Story grid */
-        .storyGrid {
+        .whoGrid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 6rem;
+          grid-template-columns: 460px 1fr;
+          gap: 4rem;
           align-items: start;
         }
-
-        /* Values */
-        .valueRow {
-          display: flex;
-          gap: 20px;
-          margin-bottom: 28px;
-          padding: 20px 0;
+        .whoLabel .h2 {
+          margin-bottom: 0;
+        }
+        .whoBody {
+          padding-top: 4px;
+          border-left: 1px solid #ede9e0;
+          padding-left: 3rem;
+        }
+        .philosophy {
+          background: #1a2420;
+          padding: 5rem 2.5rem;
+        }
+        .philosophyInner {
+          max-width: 860px;
+          text-align: center;
+        }
+        .philosophyQuote {
+          font-family: "Cormorant Garamond", serif;
+          font-size: clamp(22px, 3.2vw, 32px);
+          font-weight: 300;
+          color: #fafaf8;
+          line-height: 1.45;
+          font-style: italic;
+          margin: 0;
+        }
+        .philosophyRule {
+          width: 48px;
+          height: 1px;
+          background: #c4a45a;
+          margin: 28px auto;
+        }
+        .philosophySub {
+          font-size: 13px;
+          color: #8a9e8c;
+          letter-spacing: 0.06em;
+          line-height: 1.7;
+        }
+        .pillarGrid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.5rem;
+        }
+        .pillarCard {
+          background: #fff;
+          border: 1px solid #ede9e0;
+          padding: 2rem 1.75rem 1.75rem;
+          transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .pillarCard:hover {
+          border-color: #d4ddd6;
+          box-shadow: 0 8px 32px rgba(26, 36, 32, 0.06);
+        }
+        .pillarNum {
+          font-family: "Cormorant Garamond", serif;
+          font-size: 13px;
+          letter-spacing: 0.14em;
+          color: #c4a45a;
+          margin-bottom: 18px;
+          padding-bottom: 14px;
           border-bottom: 1px solid #ede9e0;
         }
-        .valueNum {
-          width: 40px;
-          height: 40px;
-          min-width: 40px;
-          background: #ede9e0;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-family: "Cormorant Garamond", serif;
-          font-size: 18px;
-          color: #5a7a5c;
-        }
-        .valueTitle {
-          font-family: "Cormorant Garamond", serif;
-          font-size: 20px;
-          color: #1a2420;
-          margin-bottom: 6px;
-        }
-        .valueDesc {
-          font-size: 14px;
-          color: #8a9e8c;
-          line-height: 1.7;
-          font-weight: 300;
-        }
-
-        /* Timeline */
-        .timelineWrap {
-          position: relative;
-        }
-        .timelineLine {
-          position: absolute;
-          left: 50%;
-          top: 0;
-          bottom: 0;
-          width: 1px;
-          background: #d4ddd6;
-          transform: translateX(-50%);
-        }
-        .timelineRow {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 3rem;
-          margin-bottom: 3rem;
-          align-items: center;
-        }
-        .timelineSide {
-          padding: 0;
-        }
-        .timelineRight {
-          text-align: right;
-          padding: 0 3rem 0 0;
-        }
-        .timelineLeft {
-          padding: 0 0 0 3rem;
-        }
-        .timelineYear {
-          font-family: "Cormorant Garamond", serif;
-          font-size: 48px;
-          color: #d4ddd6;
-          font-weight: 300;
-        }
-        .timelineEvent {
+        .pillarTitle {
           font-family: "Cormorant Garamond", serif;
           font-size: 22px;
           color: #1a2420;
-          margin-bottom: 8px;
+          margin-bottom: 6px;
+          line-height: 1.2;
         }
-        .timelineDesc {
-          font-size: 14px;
-          color: #8a9e8c;
-          line-height: 1.7;
-          font-weight: 300;
-        }
-        .dot {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-        }
-        .dotGreen {
-          background: #5a7a5c;
-          margin-left: -6px;
-        }
-        .dotGold {
-          background: #c4a45a;
-        }
-        .dotRightAlign {
-          margin-left: auto;
-          margin-right: -6px;
-        }
-        .timelineDotOnly {
-          display: block;
-        }
-
-        /* Team */
-        .teamGrid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 2rem;
-        }
-        .teamCard {
-          text-align: center;
-        }
-        .teamAvatar {
-          width: 100px;
-          height: 100px;
-          border-radius: 50%;
-          margin: 0 auto 20px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-family: "Cormorant Garamond", serif;
-          font-size: 28px;
-          color: #5a7a5c;
-        }
-        .teamName {
-          font-family: "Cormorant Garamond", serif;
-          font-size: 20px;
-          color: #1a2420;
-          margin-bottom: 4px;
-        }
-        .teamRole {
-          font-size: 11px;
+        .pillarDesc {
+          font-size: 12px;
           color: #c4a45a;
-          letter-spacing: 0.12em;
+          letter-spacing: 0.08em;
           text-transform: uppercase;
-          margin-bottom: 12px;
+          margin-bottom: 14px;
+          line-height: 1.5;
         }
-        .teamBio {
-          font-size: 13px;
+        .pillarDetail {
+          font-size: 13.5px;
           color: #8a9e8c;
-          line-height: 1.7;
+          line-height: 1.75;
           font-weight: 300;
         }
-
-        /* ===== Tablet ===== */
-        @media (max-width: 900px) {
-          .hero {
-            padding: 5rem 1.75rem 3.5rem;
-          }
-          .section {
-            padding: 4.5rem 1.75rem;
-          }
-          .storyGrid {
+        @media (max-width: 1000px) {
+          .whoGrid {
             grid-template-columns: 1fr;
-            gap: 3.5rem;
+            gap: 2rem;
           }
-          .teamGrid {
+          .whoBody {
+            border-left: none;
+            padding-left: 0;
+            padding-top: 0;
+            border-top: 1px solid #ede9e0;
+            padding-top: 2rem;
+          }
+          .pillarGrid {
             grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem 1.5rem;
           }
         }
-
-        /* ===== Mobile ===== */
         @media (max-width: 600px) {
           .page {
             padding-top: 56px;
@@ -394,92 +328,14 @@ export default function About() {
           .section {
             padding: 3.5rem 1.25rem;
           }
-          .sectionHeading {
-            margin-bottom: 3rem;
-          }
-          .heroTitle {
-            margin-bottom: 24px;
-          }
-          .heroText {
-            font-size: 15px;
-            max-width: 100%;
+          .philosophy {
+            padding: 3.5rem 1.25rem;
           }
           .h2 {
-            font-size: 32px;
-            margin-bottom: 22px;
+            font-size: 30px;
           }
-
-          /* Core values: switch from 2-col layout to single stacked column,
-             tighten spacing and icon size for small screens */
-          .storyGrid {
-            gap: 3rem;
-          }
-          .valueRow {
-            gap: 14px;
-            margin-bottom: 20px;
-            padding: 16px 0;
-          }
-          .valueNum {
-            width: 34px;
-            height: 34px;
-            min-width: 34px;
-            font-size: 15px;
-          }
-          .valueTitle {
-            font-size: 18px;
-          }
-          .valueDesc {
-            font-size: 13px;
-          }
-
-          /* Timeline collapses to a single left-aligned column; the dot for
-             every entry (even or odd) sits on the vertical line on the left */
-          .timelineLine {
-            left: 6px;
-          }
-          .timelineRow {
-            position: relative;
+          .pillarGrid {
             grid-template-columns: 1fr;
-            gap: 0;
-            margin-bottom: 2.25rem;
-          }
-          .timelineRight,
-          .timelineLeft {
-            text-align: left;
-            padding: 0 0 0 2rem;
-          }
-          .timelineDotOnly {
-            display: block;
-            order: -1;
-          }
-          .dot {
-            position: absolute;
-            top: 6px;
-            left: 0;
-            margin: 0 !important;
-          }
-          .timelineYear {
-            font-size: 34px;
-          }
-          .timelineEvent {
-            font-size: 19px;
-          }
-
-          /* Team grid: single column on small phones */
-          .teamGrid {
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
-          }
-          .teamAvatar {
-            width: 84px;
-            height: 84px;
-            font-size: 24px;
-          }
-        }
-
-        @media (max-width: 380px) {
-          .heroTitle {
-            font-size: clamp(34px, 10vw, 44px);
           }
         }
       `}</style>

@@ -392,7 +392,7 @@ export default function Home() {
                 fontWeight: 400,
               }}
             >
-              Invest & Collaborate
+              Collaborate With THAPAK
             </Link>
             <Link
               href="/query"

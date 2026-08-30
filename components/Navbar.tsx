@@ -15,9 +15,11 @@ const audiowide = Audiowide({
 const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
+  { href: "/intellectual-property", label: "Intellectual Property" },
+  { href: "/consultancy", label: "Consultancy" },
   { href: "/products", label: "Products" },
-  { href: "/our-work", label: "Our Work" },
-  { href: "/invest", label: "Invest & Collaborate" },
+  { href: "/our-work", label: "What We Do" },
+  { href: "/invest", label: "Collaborate With THAPAK" },
   { href: "/query", label: "Query" },
 ];
 

@@ -2,61 +2,101 @@
 import Link from "next/link";
 import { useState } from "react";
 
-const opportunities = [
+const routes = [
   {
-    type: "Production Partnership",
-    amount: "Infrastructure-based",
-    desc: "Land, facility, and infrastructure support to scale manufacturing of our patented air purification, filtration, and pollution-control technologies.",
-    benefits: [
-      "Manufacturing facility access",
-      "Land & infrastructure support",
-      "Priority production capacity",
-      "Long-term supply agreements",
+    id: "01",
+    title: "Joint Research",
+    audience: "Universities, research institutions & industrial R&D",
+    desc: "Co-develop breakthrough solutions alongside THAPAK's multidisciplinary team. Share infrastructure, expertise, and IP to publish, patent, and prototype together.",
+    points: [
+      "Joint publications & patents",
+      "Shared lab & testing infrastructure",
+      "Cross-disciplinary expert teams",
+      "Long-term research MoUs",
     ],
-    icon: "🏭",
+    icon: "◈",
   },
   {
-    type: "Capital Investment",
-    amount: "starting from ₹50Cr",
-    desc: "Equity participation as we scale commercialization of our patent portfolio across environmental engineering, renewable energy, and advanced materials.",
-    benefits: [
-      "Equity stake",
-      "Board observer rights",
-      "First access to new technologies",
-      "Quarterly investor briefings",
+    id: "02",
+    title: "Technology Licensing",
+    audience: "Companies seeking access to THAPAK IP",
+    desc: "License proven, patented technologies — from air purification and carbon removal to advanced materials — for integration into your products and processes.",
+    points: [
+      "Access to granted patents & PCT applications",
+      "Flexible, field-specific licensing models",
+      "Technical documentation & team training",
+      "Ongoing R&D and upgrade support",
     ],
-    icon: "🌱",
+    icon: "⬢",
   },
   {
-    type: "Debt Funding",
-    amount: "Structured Debt",
-    desc: "Structured financing to support prototype-to-commercialization scale-up, equipment procurement, and technology licensing across our research areas.",
-    benefits: [
-      "Fixed repayment terms",
-      "Asset-backed structuring",
-      "Milestone-based disbursement",
-      "Priority repayment terms",
+    id: "03",
+    title: "Technology Transfer",
+    audience: "For industrial commercialization",
+    desc: "Take THAPAK technologies from lab to market with complete know-how transfer, pilot support, and scale-up assistance for manufacturing readiness.",
+    points: [
+      "End-to-end know-how transfer",
+      "Pilot to production handholding",
+      "Manufacturing & scale-up readiness",
+      "Commercial deployment guidance",
     ],
-    icon: "🏛️",
+    icon: "⬡",
   },
+  {
+    id: "04",
+    title: "Contract Research",
+    audience: "Organizations requiring specialized development",
+    desc: "Commission THAPAK to solve a specific technology challenge. Confidential, milestone-driven R&D tailored to your industry, timeline, and outcomes.",
+    points: [
+      "Bespoke problem solving",
+      "Confidential & milestone-based delivery",
+      "Prototype development & lab testing",
+      "Dedicated project team",
+    ],
+    icon: "⬔",
+  },
+  {
+    id: "05",
+    title: "Investment & Commercialization",
+    audience: "Investors scaling proprietary technologies",
+    desc: "Fuel the scale-up of THAPAK's patent portfolio across environmental engineering, renewable energy, and clean tech through equity, partnership, or structured pathways.",
+    points: [
+      "Equity & growth participation",
+      "First access to pipeline technologies",
+      "Commercialization roadmap visibility",
+      "Quarterly portfolio briefings",
+    ],
+    icon: "⬣",
+  },
+];
+
+const process = [
+  { n: "01", t: "Discover", d: "Share your intent via the inquiry form. We respond within 48 hours." },
+  { n: "02", t: "Define", d: "We align on scope, IP terms, timelines, and collaboration model." },
+  { n: "03", t: "Develop", d: "Joint execution with milestone reviews, lab access, and transparent reporting." },
+  { n: "04", t: "Deploy", d: "Transfer, license, publish, or scale — with ongoing support as needed." },
 ];
 
 const faqs = [
   {
-    q: "What stage is THAPAK at?",
-    a: "THAPAK Research And Test Lab is an innovation-driven research organization active across scientific research, engineering design, prototype development, laboratory testing, and technology commercialization.",
+    q: "Who can collaborate with THAPAK?",
+    a: "We work with universities, research institutions, industrial R&D teams, companies seeking IP or manufacturing scale-up, organizations needing contract research, and investors interested in commercialization. If you have a problem we can solve together, there is a pathway for you.",
   },
   {
     q: "Is the technology patented?",
-    a: "Yes. THAPAK holds a significant intellectual property portfolio, including six process patents and three PCT applications for our air purification and carbon removal systems, alongside multiple additional applied and granted patents across renewable energy, hydrogen propulsion, and material science.",
+    a: "Yes. THAPAK holds a significant intellectual property portfolio, including six process patents and three PCT applications for air purification and carbon removal systems, alongside multiple applied and granted patents across renewable energy, hydrogen propulsion, and material science.",
   },
   {
-    q: "What kinds of funding can I offer?",
-    a: "We welcome production partnerships (facility and infrastructure support), capital investment (equity participation), and debt funding (structured financing), across environmental engineering, renewable energy, hydrogen technologies, material science, and industrial process engineering.",
+    q: "What is the difference between licensing and technology transfer?",
+    a: "Licensing grants you rights to use specific THAPAK IP within a defined field and territory while we retain ownership. Technology transfer is a deeper, end-to-end handover — including know-how, prototypes, and scale-up support — to enable you to manufacture and commercialize independently.",
   },
   {
-    q: "How do I start a collaboration?",
-    a: "Use the form below or email us directly. We respond within 48 hours to all inquiries from industries, universities, government agencies, research organizations, startups, and investors.",
+    q: "Do I need a large upfront investment to start?",
+    a: "No. Each pathway is scoped to your needs. Joint research and contract research are milestone-based, licensing is flexible by field, and technology transfer and investment pathways are structured collaboratively — not gated by a fixed entry amount.",
+  },
+  {
+    q: "How do we begin?",
+    a: "Select the route that fits you best and submit an inquiry, or email us directly. We schedule a discovery call within 48 hours to explore fit, scope, and next steps.",
   },
 ];
 
@@ -64,7 +104,6 @@ const stats = [
   ["35", "Patents & Applications"],
   ["8", "Granted Patents"],
   ["3", "PCT Applications"],
-  // ["74%", "Solar Thermal Recovery"],
 ];
 
 const metrics = [
@@ -73,11 +112,6 @@ const metrics = [
     value: "16 Patents",
     sub: "Applied and granted assets across engineering domains",
   },
-  // {
-  //   label: "Solar Thermal Power Storage",
-  //   value: "74%",
-  //   sub: "Thermal recovery performance",
-  // },
   {
     label: "Insulating Board Performance",
     value: "99.99%",
@@ -95,22 +129,25 @@ export default function Invest() {
 
   return (
     <div className="page">
-      {/* Hero */}
       <section className="hero">
         <div className="container">
-          <div className="eyebrow eyebrow-gold">Invest &amp; Collaborate</div>
+          <div className="eyebrow eyebrow-gold">Collaborate With THAPAK</div>
           <h1 className="heroTitle">
-            Engineer
+            Five pathways.
             <br />
-            <em className="heroEm">tomorrow, with us.</em>
+            <em className="heroEm">One shared ambition.</em>
           </h1>
           <p className="heroText">
-            THAPAK Research And Test Lab Pvt. Ltd. is seeking investors,
-            partners, and collaborators to help scale our indigenous
-            technologies in environmental engineering, renewable energy,
-            advanced materials, and clean technology.
+            THAPAK Research And Test Lab Pvt. Ltd. partners with universities,
+            R&amp;D organisations, companies, and investors to co-create,
+            license, transfer, and scale indigenous technologies in environmental
+            engineering, renewable energy, advanced materials, and clean
+            technology — on terms that fit your vision, not a fixed ticket size.
           </p>
-
+          <div className="heroActions">
+            <a href="#routes" className="heroBtnPrimary">Explore Routes</a>
+            <Link href="/query" className="heroBtnSecondary">Start a Conversation</Link>
+          </div>
           <div className="statRow">
             {stats.map(([v, l]) => (
               <div key={l} className="statItem">
@@ -122,59 +159,79 @@ export default function Invest() {
         </div>
       </section>
 
-      {/* Opportunities */}
-      <section className="section sectionLight">
+      <section id="routes" className="section sectionLight">
         <div className="container">
           <div className="sectionHeading">
-            <div className="eyebrow eyebrow-gold">Pathways</div>
-            <h2 className="h2Center">How you can work with us</h2>
+            <div className="eyebrow eyebrow-gold">Collaboration Routes</div>
+            <h2 className="h2Center">Choose how we build together</h2>
+            <p className="sectionSub">
+              No single doorway, no single threshold. Pick the model that matches
+              your organisation — or combine them as your needs evolve.
+            </p>
           </div>
 
-          <div className="opportunityGrid">
-            {opportunities.map((o, i) => (
-              <div key={i} className="oppCard">
-                <div className="oppIcon">{o.icon}</div>
-                <div className="oppHeader">
-                  <h3 className="oppTitle">{o.type}</h3>
-                  <span className="oppAmount">{o.amount}</span>
+          <div className="routeGrid">
+            {routes.map((r) => (
+              <div key={r.title} className="routeCard">
+                <div className="routeTop">
+                  <span className="routeId">{r.id}</span>
+                  <span className="routeIcon">{r.icon}</span>
                 </div>
-                <p className="oppDesc">{o.desc}</p>
-                <ul className="oppList">
-                  {o.benefits.map((b, j) => (
-                    <li key={j} className="oppListItem">
-                      <span className="oppDot" />
-                      {b}
+                <h3 className="routeTitle">{r.title}</h3>
+                <div className="routeAudience">{r.audience}</div>
+                <p className="routeDesc">{r.desc}</p>
+                <ul className="routeList">
+                  {r.points.map((p) => (
+                    <li key={p} className="routeListItem">
+                      <span className="routeDot" />
+                      {p}
                     </li>
                   ))}
                 </ul>
+                <Link href="/query" className="routeLink">Inquire about this route →</Link>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Invest */}
       <section className="section sectionAlt">
+        <div className="container">
+          <div className="eyebrow eyebrow-gold" style={{ textAlign: "center", marginBottom: "1rem" }}>How it works</div>
+          <h2 className="h2Center" style={{ marginBottom: "3.5rem" }}>From first conversation to deployment</h2>
+          <div className="processGrid">
+            {process.map((s) => (
+              <div key={s.n} className="processCard">
+                <div className="processNum">{s.n}</div>
+                <div className="processTitle">{s.t}</div>
+                <div className="processDesc">{s.d}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section sectionLight whySection">
         <div className="container whyGrid">
           <div>
             <div className="eyebrow eyebrow-gold">Why THAPAK</div>
             <h2 className="h2">
-              The research is proven.
+              Research proven.
               <br />
-              <em className="h2Em">The portfolio is ready to scale.</em>
+              <em className="h2Em">Portfolio ready to scale.</em>
             </h2>
             <p className="bodyText">
-              THAPAK's mission is to develop breakthrough engineering
+              THAPAK&apos;s mission is to develop breakthrough engineering
               technologies, build a strong intellectual property portfolio, and
               convert research into commercially viable products across
               environmental engineering, renewable energy, and industrial
               process engineering.
             </p>
             <p className="bodyText bodyTextLast">
-              With a portfolio spanning air purification, carbon removal,
-              hydrogen propulsion, and advanced materials, THAPAK offers a
-              multidisciplinary foundation for production partnerships, capital
-              investment, and structured debt funding.
+              Whether you seek joint research, IP access, manufacturing
+              readiness, bespoke R&amp;D, or commercialization at scale — our
+              portfolio and team adapt to your pathway, not the other way
+              around.
             </p>
           </div>
 
@@ -192,12 +249,11 @@ export default function Invest() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="section sectionLight">
+      <section className="section sectionAlt">
         <div className="faqContainer">
           <div className="sectionHeading">
             <div className="eyebrow eyebrow-gold">FAQ</div>
-            <h2 className="h2Center">Investor questions</h2>
+            <h2 className="h2Center">Common questions</h2>
           </div>
 
           {faqs.map((faq, i) => (
@@ -227,22 +283,19 @@ export default function Invest() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="ctaSection">
         <div className="ctaContainer">
-          <h2 className="ctaTitle">Ready to get started?</h2>
+          <h2 className="ctaTitle">Not sure which route fits?</h2>
           <p className="ctaText">
-            Send us your details and we will schedule a discovery call within 48
-            hours.
+            Tell us about your organisation and goals. We&apos;ll help you find
+            the right collaboration model and schedule a discovery call within
+            48 hours.
           </p>
           <div className="ctaButtons">
             <Link href="/query" className="ctaBtnPrimary">
-              Submit Interest
+              Start a Conversation
             </Link>
-            <a
-              href="mailto:support@research.thapak.co.in"
-              className="ctaBtnSecondary"
-            >
+            <a href="mailto:support@research.thapak.co.in" className="ctaBtnSecondary">
               Email Directly
             </a>
           </div>
@@ -269,7 +322,15 @@ export default function Invest() {
         }
         .sectionHeading {
           text-align: center;
-          margin-bottom: 4.5rem;
+          margin-bottom: 3.5rem;
+        }
+        .sectionSub {
+          max-width: 640px;
+          margin: 16px auto 0;
+          font-size: 14px;
+          color: #8a9e8c;
+          line-height: 1.8;
+          font-weight: 300;
         }
         .h2Center {
           font-family: "Cormorant Garamond", serif;
@@ -299,8 +360,6 @@ export default function Invest() {
         .bodyTextLast {
           margin-bottom: 0;
         }
-
-        /* Hero */
         .hero {
           padding: 7rem 2.5rem 4rem;
           background: linear-gradient(160deg, #1a2420, #2c3e35);
@@ -310,7 +369,7 @@ export default function Invest() {
           font-size: clamp(38px, 8vw, 88px);
           font-weight: 300;
           color: #fafaf8;
-          max-width: 700px;
+          max-width: 760px;
           line-height: 1.08;
           margin-bottom: 24px;
         }
@@ -321,12 +380,38 @@ export default function Invest() {
         .heroText {
           font-size: 15px;
           color: #8a9e8c;
-          max-width: 520px;
+          max-width: 640px;
           line-height: 1.9;
           font-weight: 300;
         }
+        .heroActions {
+          display: flex;
+          gap: 16px;
+          flex-wrap: wrap;
+          margin-top: 32px;
+        }
+        .heroBtnPrimary {
+          background: #5a7a5c;
+          color: #fafaf8;
+          padding: 13px 28px;
+          font-size: 13px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          text-decoration: none;
+          font-weight: 400;
+        }
+        .heroBtnSecondary {
+          border: 1px solid rgba(237, 233, 224, 0.25);
+          color: #ede9e0;
+          padding: 13px 28px;
+          font-size: 13px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          text-decoration: none;
+          font-weight: 300;
+        }
         .statRow {
-          margin-top: 40px;
+          margin-top: 44px;
           display: flex;
           gap: 4rem;
           flex-wrap: wrap;
@@ -343,10 +428,8 @@ export default function Invest() {
           letter-spacing: 0.14em;
           text-transform: uppercase;
         }
-
-        /* Sections */
         .section {
-          padding: 7rem 2.5rem;
+          padding: 6.5rem 2.5rem;
         }
         .sectionLight {
           background: #fafaf8;
@@ -354,69 +437,91 @@ export default function Invest() {
         .sectionAlt {
           background: #f4f3f0;
         }
-
-        /* Opportunities */
-        .opportunityGrid {
+        .routeGrid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 2rem;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.75rem;
         }
-        .oppCard {
-          padding: 3rem;
+        .routeCard {
+          padding: 2.5rem 2rem 2rem;
           background: #f4f3f0;
           border-top: 3px solid #ede9e0;
-          transition: border-color 0.3s;
+          transition: border-color 0.3s, transform 0.3s;
+          display: flex;
+          flex-direction: column;
         }
-        .oppCard:hover {
+        .routeCard:hover {
+          border-top-color: #5a7a5c;
+          transform: translateY(-2px);
+        }
+        .routeCard:nth-child(4),
+        .routeCard:nth-child(5) {
+          background: #ffffff;
+          border: 1px solid #ede9e0;
+          border-top: 3px solid #ede9e0;
+        }
+        .routeCard:nth-child(4):hover,
+        .routeCard:nth-child(5):hover {
           border-top-color: #5a7a5c;
         }
-        .oppIcon {
-          font-size: 32px;
-          margin-bottom: 16px;
-        }
-        .oppHeader {
+        .routeTop {
           display: flex;
           justify-content: space-between;
-          align-items: start;
-          gap: 12px;
-          margin-bottom: 16px;
+          align-items: center;
+          margin-bottom: 20px;
         }
-        .oppTitle {
+        .routeId {
           font-family: "Cormorant Garamond", serif;
-          font-size: 28px;
+          font-size: 13px;
+          letter-spacing: 0.12em;
+          color: #c4a45a;
+          font-weight: 400;
+        }
+        .routeIcon {
+          font-size: 18px;
+          color: #5a7a5c;
+          opacity: 0.9;
+        }
+        .routeTitle {
+          font-family: "Cormorant Garamond", serif;
+          font-size: 24px;
           color: #1a2420;
           font-weight: 300;
+          margin-bottom: 6px;
+          line-height: 1.2;
         }
-        .oppAmount {
-          font-size: 12px;
+        .routeAudience {
+          font-size: 11px;
           color: #c4a45a;
           letter-spacing: 0.06em;
-          font-family: "DM Sans", sans-serif;
+          line-height: 1.5;
+          margin-bottom: 14px;
           font-weight: 400;
-          margin-top: 6px;
-          white-space: nowrap;
         }
-        .oppDesc {
-          font-size: 14px;
+        .routeDesc {
+          font-size: 13.5px;
           color: #5a7a5c;
           line-height: 1.8;
           font-weight: 300;
-          margin-bottom: 20px;
+          margin-bottom: 18px;
+          flex: 1;
         }
-        .oppList {
+        .routeList {
           list-style: none;
           padding: 0;
-          margin: 0;
+          margin: 0 0 20px 0;
+          border-top: 1px solid #ede9e0;
+          padding-top: 16px;
         }
-        .oppListItem {
-          font-size: 13px;
+        .routeListItem {
+          font-size: 12.5px;
           color: #8a9e8c;
-          padding: 6px 0;
+          padding: 5px 0;
           display: flex;
           align-items: center;
           gap: 8px;
         }
-        .oppDot {
+        .routeDot {
           width: 4px;
           height: 4px;
           border-radius: 50%;
@@ -424,8 +529,51 @@ export default function Invest() {
           display: inline-block;
           flex-shrink: 0;
         }
-
-        /* Why Invest */
+        .routeLink {
+          font-size: 11px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #1a2420;
+          text-decoration: none;
+          border-bottom: 1px solid #1a2420;
+          padding-bottom: 2px;
+          align-self: flex-start;
+          transition: color 0.2s, border-color 0.2s;
+        }
+        .routeLink:hover {
+          color: #5a7a5c;
+          border-color: #5a7a5c;
+        }
+        .processGrid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.5rem;
+        }
+        .processCard {
+          background: #fafaf8;
+          padding: 2rem;
+          border-left: 3px solid #d4ddd6;
+        }
+        .processNum {
+          font-family: "Cormorant Garamond", serif;
+          font-size: 28px;
+          color: #c4a45a;
+          font-weight: 300;
+          margin-bottom: 10px;
+        }
+        .processTitle {
+          font-family: "Cormorant Garamond", serif;
+          font-size: 20px;
+          color: #1a2420;
+          font-weight: 300;
+          margin-bottom: 8px;
+        }
+        .processDesc {
+          font-size: 13px;
+          color: #8a9e8c;
+          line-height: 1.7;
+          font-weight: 300;
+        }
         .whyGrid {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -456,8 +604,6 @@ export default function Invest() {
           font-weight: 300;
           white-space: nowrap;
         }
-
-        /* FAQ */
         .faqContainer {
           max-width: 900px;
           margin: 0 auto;
@@ -481,7 +627,7 @@ export default function Invest() {
         }
         .faqQ {
           font-family: "Cormorant Garamond", serif;
-          font-size: 22px;
+          font-size: 20px;
           color: #1a2420;
           font-weight: 300;
         }
@@ -503,8 +649,6 @@ export default function Invest() {
         .faqDivider {
           border-top: 1px solid #ede9e0;
         }
-
-        /* CTA */
         .ctaSection {
           padding: 6rem 2.5rem;
           background: #1a2420;
@@ -551,8 +695,17 @@ export default function Invest() {
           text-transform: uppercase;
           text-decoration: none;
         }
-
-        /* ===== Tablet ===== */
+        @media (max-width: 1024px) {
+          .routeGrid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          .routeCard:nth-child(5) {
+            grid-column: span 2;
+            max-width: 50%;
+            justify-self: center;
+            width: 100%;
+          }
+        }
         @media (max-width: 900px) {
           .hero {
             padding: 5rem 1.75rem 3rem;
@@ -563,8 +716,8 @@ export default function Invest() {
           .sectionHeading {
             margin-bottom: 3rem;
           }
-          .opportunityGrid {
-            grid-template-columns: 1fr;
+          .processGrid {
+            grid-template-columns: repeat(2, 1fr);
           }
           .whyGrid {
             grid-template-columns: 1fr;
@@ -580,8 +733,6 @@ export default function Invest() {
             padding: 4.5rem 1.75rem;
           }
         }
-
-        /* ===== Mobile ===== */
         @media (max-width: 600px) {
           .page {
             padding-top: 56px;
@@ -598,8 +749,13 @@ export default function Invest() {
           .heroText {
             font-size: 14px;
           }
-
-          /* Stat row: 2 columns instead of a cramped 4-in-a-row */
+          .heroActions {
+            flex-direction: column;
+          }
+          .heroBtnPrimary,
+          .heroBtnSecondary {
+            text-align: center;
+          }
           .statRow {
             margin-top: 32px;
             gap: 1.5rem 2rem;
@@ -610,23 +766,22 @@ export default function Invest() {
           .statValue {
             font-size: 32px;
           }
-
-          /* Opportunity cards */
-          .oppCard {
+          .routeGrid {
+            grid-template-columns: 1fr;
+          }
+          .routeCard:nth-child(5) {
+            grid-column: auto;
+            max-width: 100%;
+          }
+          .routeCard {
             padding: 2rem 1.5rem;
           }
-          .oppTitle {
-            font-size: 23px;
+          .routeTitle {
+            font-size: 21px;
           }
-          .oppHeader {
-            flex-direction: column;
-            gap: 4px;
+          .processGrid {
+            grid-template-columns: 1fr;
           }
-          .oppAmount {
-            margin-top: 0;
-          }
-
-          /* Why invest */
           .h2 {
             font-size: 32px;
             margin-bottom: 22px;
@@ -637,19 +792,15 @@ export default function Invest() {
           .metricValue {
             font-size: 24px;
           }
-
-          /* FAQ */
           .faqContainer {
             padding: 0 1.25rem;
           }
           .faqQ {
-            font-size: 19px;
+            font-size: 18px;
           }
           .faqBtn {
             padding: 18px 0;
           }
-
-          /* CTA */
           .ctaSection {
             padding: 3.5rem 1.25rem;
           }
@@ -667,7 +818,6 @@ export default function Invest() {
             text-align: center;
           }
         }
-
         @media (max-width: 380px) {
           .statItem {
             width: 100%;

@@ -45,15 +45,19 @@ export default function Footer() {
             </div>
             <p
               style={{
-                fontSize: 13,
-                fontWeight: 300,
-                color: "#8A9E8C",
-                lineHeight: 1.8,
-                maxWidth: 280,
+                fontSize: 12,
+                fontWeight: 400,
+                color: "#D4DDD6",
+                lineHeight: 1.7,
+                maxWidth: 340,
               }}
             >
-              Pioneering sustainable energy solutions through innovative wind
-              turbine design clean air, zero electricity consumed.
+              THAPAK Research &amp; Test Lab Pvt. Ltd.
+              <br />
+              <span style={{ color: "#8A9E8C", fontWeight: 300 }}>
+                Specialized Research | Testing | Intellectual Property |
+                Engineering Consultancy
+              </span>
             </p>
             <div style={{ marginTop: 24, display: "flex", gap: 12 }}>
               {["Li", "Tw", "Yt"].map((s) => (
@@ -95,9 +99,11 @@ export default function Footer() {
             {[
               ["Home", "/"],
               ["About Us", "/about"],
+              ["Intellectual Property", "/intellectual-property"],
+              ["Consultancy", "/consultancy"],
               ["Products", "/products"],
-              ["Our Work", "/our-work"],
-              ["Invest", "/invest"],
+              ["What We Do", "/our-work"],
+              ["Collaborate", "/invest"],
             ].map(([label, href]) => (
               <Link
                 key={href}

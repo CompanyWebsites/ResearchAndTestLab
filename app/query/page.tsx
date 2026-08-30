@@ -2,10 +2,13 @@
 import { useState } from "react";
 
 const queryTypes = [
+  "Joint Research",
+  "Technology Licensing",
+  "Technology Transfer",
+  "Contract Research",
+  "Investment & Commercialization",
   "Product Information",
   "Request a Quote",
-  "Request Investor Deck",
-  "Research Collaboration",
   "Site Assessment",
   "Media / Press",
   "Other",
