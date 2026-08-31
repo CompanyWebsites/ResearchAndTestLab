@@ -50,7 +50,7 @@ export default function Navbar() {
         }}
       >
         <div style={{ height: 2, background: scrolled ? "linear-gradient(90deg, #C4A45A, #5A7A5C 50%, #1A2420)" : "transparent", opacity: scrolled ? 1 : 0, transition: "opacity 0.4s" }} />
-        <nav style={{ maxWidth: 1280, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 68, padding: "0 2rem", gap: 12, width: "100%", boxSizing: "border-box", minWidth: 0 }}>
+        <nav style={{ maxWidth: "100%", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 68, padding: "0 clamp(1rem, 3vw, 2.5rem)", gap: 24, width: "100%", boxSizing: "border-box", minWidth: 0 }}>
           <Link href="/" onClick={() => setMenuOpen(false)} style={{ textDecoration: "none", flexShrink: 1, minWidth: 0 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
               <div style={{ position: "relative", width: 38, height: 38, minWidth: 38, borderRadius: "50%", background: "#1A2420", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 12px rgba(26,36,32,0.15)", overflow: "hidden", flexShrink: 0 }}>
@@ -75,7 +75,7 @@ export default function Navbar() {
             </div>
           </Link>
 
-          <div className="desktop-nav" style={{ gap: 4 }}>
+          <div className="desktop-nav" style={{ gap: 10 }}>
             {links.map((l) => {
               const active = isActive(l.href);
               return (

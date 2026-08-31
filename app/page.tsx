@@ -95,7 +95,7 @@ export default function Home() {
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
             <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C4A45A", marginBottom: 12 }}>Our Intellectual Property</div>
-            <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(30px,4vw,44px)", fontWeight: 300, color: "#1A2420" }}>Six domains. One purpose — deployable innovation.</h2>
+            <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(30px,4vw,44px)", fontWeight: 300, color: "#1A2420" }}>Six domains. One purpose deployable innovation.</h2>
             <p style={{ fontSize: 14, color: "#8A9E8C", maxWidth: 560, margin: "12px auto 0", lineHeight: 1.8, fontWeight: 300 }}>Each technology is filed or granted, validated in lab, and held for licensing, transfer or joint development.</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1.25rem" }}>
