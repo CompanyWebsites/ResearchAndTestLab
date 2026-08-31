@@ -301,113 +301,116 @@ export default function WhatWeDo() {
       </section>
 
       <style jsx>{`
-        .page { background: #fafaf8; padding-top: 72px; }
-        .container { max-width: 1280px; margin: 0 auto; }
-        .eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; }
+        .page { background: #fafaf8; padding-top: 72px; overflow-x: hidden; width: 100%; }
+        .container { max-width: 1280px; margin: 0 auto; width: 100%; min-width: 0; box-sizing: border-box; }
+        .eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; overflow-wrap: break-word; }
         .eyebrow-gold { color: #c4a45a; margin-bottom: 16px; }
         .hero {
           padding: 7rem 2.5rem 3.5rem;
           background: linear-gradient(160deg, #f4f3f0, #ede9e0);
+          overflow: hidden;
+          width: 100%;
+          box-sizing: border-box;
         }
         .heroTitle {
           font-family: "Cormorant Garamond", serif;
-          font-size: clamp(42px, 7vw, 80px);
-          font-weight: 300; color: #1a2420; line-height: 1.08; margin-bottom: 20px;
+          font-size: clamp(32px, 7vw, 80px);
+          font-weight: 300; color: #1a2420; line-height: 1.08; margin-bottom: 20px; overflow-wrap: break-word; word-break: break-word;
         }
         .heroEm { color: #5a7a5c; font-style: italic; }
         .heroText {
-          font-size: 15px; color: #5a7a5c; max-width: 640px; line-height: 1.9; font-weight: 300;
+          font-size: 15px; color: #5a7a5c; max-width: 640px; line-height: 1.9; font-weight: 300; overflow-wrap: break-word;
         }
         .chain {
           display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-          margin-top: 40px; padding: 16px 20px; background: #fff; border: 1px solid #ede9e0; max-width: fit-content;
+          margin-top: 40px; padding: 16px 20px; background: #fff; border: 1px solid #ede9e0; max-width: 100%; width: fit-content; box-sizing: border-box;
         }
-        .chainItem { font-size: 11px; letter-spacing: 0.12em; color: #1a2420; font-weight: 400; }
+        .chainItem { font-size: 11px; letter-spacing: 0.12em; color: #1a2420; font-weight: 400; white-space: nowrap; }
         .chainArrow { color: #c4a45a; margin: 0 2px; }
         .chainItemWrap { display: flex; align-items: center; gap: 10px; }
 
-        .section { padding: 6rem 2.5rem; }
+        .section { padding: 6rem 2.5rem; width: 100%; box-sizing: border-box; overflow: hidden; }
         .sectionLight { background: #fafaf8; }
         .sectionAlt { background: #f4f3f0; }
         .sectionDark { background: #1a2420; }
-        .sectionHeading { text-align: center; margin-bottom: 3rem; }
-        .h2 { font-family: "Cormorant Garamond", serif; font-size: 42px; font-weight: 300; color: #1a2420; line-height: 1.2; margin-bottom: 16px; }
+        .sectionHeading { text-align: center; margin-bottom: 3rem; min-width: 0; overflow-wrap: break-word; }
+        .h2 { font-family: "Cormorant Garamond", serif; font-size: clamp(28px, 4.5vw, 42px); font-weight: 300; color: #1a2420; line-height: 1.2; margin-bottom: 16px; overflow-wrap: break-word; }
         .h2Em { color: #5a7a5c; font-style: italic; }
-        .h2Center { font-family: "Cormorant Garamond", serif; font-size: clamp(28px, 4.5vw, 46px); font-weight: 300; color: #1a2420; line-height: 1.15; }
-        .h2CenterLight { font-family: "Cormorant Garamond", serif; font-size: clamp(28px, 4.5vw, 46px); font-weight: 300; color: #fafaf8; line-height: 1.15; text-align: center; }
+        .h2Center { font-family: "Cormorant Garamond", serif; font-size: clamp(28px, 4.5vw, 46px); font-weight: 300; color: #1a2420; line-height: 1.15; overflow-wrap: break-word; }
+        .h2CenterLight { font-family: "Cormorant Garamond", serif; font-size: clamp(28px, 4.5vw, 46px); font-weight: 300; color: #fafaf8; line-height: 1.15; text-align: center; overflow-wrap: break-word; }
         .h2EmLight { color: #8a9e8c; font-style: italic; }
-        .bodyText { font-size: 15px; color: #5a7a5c; line-height: 1.9; font-weight: 300; margin-bottom: 24px; }
-        .sectionSub { max-width: 640px; margin: 12px auto 0; font-size: 14px; color: #8a9e8c; line-height: 1.8; font-weight: 300; }
-        .sectionSubLight { max-width: 640px; margin: 16px auto 0; font-size: 14px; color: #8a9e8c; line-height: 1.8; font-weight: 300; text-align: center; }
-        .btnDark { display: inline-block; background: #1a2420; color: #fafaf8; padding: 13px 24px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; }
+        .bodyText { font-size: 15px; color: #5a7a5c; line-height: 1.9; font-weight: 300; margin-bottom: 24px; overflow-wrap: break-word; }
+        .sectionSub { max-width: 640px; margin: 12px auto 0; font-size: 14px; color: #8a9e8c; line-height: 1.8; font-weight: 300; overflow-wrap: break-word; }
+        .sectionSubLight { max-width: 640px; margin: 16px auto 0; font-size: 14px; color: #8a9e8c; line-height: 1.8; font-weight: 300; text-align: center; overflow-wrap: break-word; }
+        .btnDark { display: inline-block; background: #1a2420; color: #fafaf8; padding: 13px 24px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; max-width: 100%; box-sizing: border-box; text-align: center; overflow-wrap: break-word; }
 
-        .grid2 { display: grid; grid-template-columns: 520px 1fr; gap: 4rem; align-items: start; }
+        .grid2 { display: grid; grid-template-columns: 520px 1fr; gap: 4rem; align-items: start; min-width: 0; }
         .areasLabel { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8a9e8c; margin-bottom: 16px; }
-        .areasGrid { display: flex; flex-wrap: wrap; gap: 10px; }
-        .areaChip { background: #fff; border: 1px solid #ede9e0; padding: 8px 14px; font-size: 12.5px; color: #5a7a5c; }
+        .areasGrid { display: flex; flex-wrap: wrap; gap: 10px; min-width: 0; }
+        .areaChip { background: #fff; border: 1px solid #ede9e0; padding: 8px 14px; font-size: 12.5px; color: #5a7a5c; overflow-wrap: break-word; min-width: 0; }
 
-        .testGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-        .testCard { background: #fff; border: 1px solid #ede9e0; padding: 2rem; position: relative; }
+        .testGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; min-width: 0; }
+        .testCard { background: #fff; border: 1px solid #ede9e0; padding: 2rem; position: relative; min-width: 0; overflow-wrap: break-word; }
         .testHighlight { border-color: #c4a45a; box-shadow: 0 8px 32px rgba(196,164,90,0.12); }
-        .testBadge { position: absolute; top: -10px; left: 20px; background: #c4a45a; color: #fff; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; }
-        .testTitle { font-family: "Cormorant Garamond", serif; font-size: 19px; color: #1a2420; font-weight: 400; margin-bottom: 8px; }
-        .testDesc { font-size: 13px; color: #8a9e8c; line-height: 1.7; font-weight: 300; }
-        .ctaStrip { margin-top: 2rem; background: #fff; border: 1px solid #ede9e0; border-left: 3px solid #c4a45a; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-        .ctaStripTitle { font-family: "Cormorant Garamond", serif; font-size: 20px; color: #1a2420; }
-        .ctaStripText { font-size: 12.5px; color: #8a9e8c; margin-top: 4px; }
+        .testBadge { position: absolute; top: -10px; left: 20px; background: #c4a45a; color: #fff; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; white-space: nowrap; }
+        .testTitle { font-family: "Cormorant Garamond", serif; font-size: 19px; color: #1a2420; font-weight: 400; margin-bottom: 8px; overflow-wrap: break-word; }
+        .testDesc { font-size: 13px; color: #8a9e8c; line-height: 1.7; font-weight: 300; overflow-wrap: break-word; }
+        .ctaStrip { margin-top: 2rem; background: #fff; border: 1px solid #ede9e0; border-left: 3px solid #c4a45a; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; min-width: 0; box-sizing: border-box; }
+        .ctaStripTitle { font-family: "Cormorant Garamond", serif; font-size: 20px; color: #1a2420; overflow-wrap: break-word; }
+        .ctaStripText { font-size: 12.5px; color: #8a9e8c; margin-top: 4px; overflow-wrap: break-word; }
 
-        .vChain { display: flex; justify-content: center; gap: 0; margin: 3rem auto 2rem; max-width: 900px; }
-        .vChainItem { display: flex; flex-direction: column; align-items: center; flex: 1; position: relative; }
+        .vChain { display: flex; justify-content: center; gap: 0; margin: 3rem auto 2rem; max-width: 900px; width: 100%; box-sizing: border-box; min-width: 0; }
+        .vChainItem { display: flex; flex-direction: column; align-items: center; flex: 1; position: relative; min-width: 0; }
         .vChainDotWrap { display: flex; flex-direction: column; align-items: center; width: 100%; }
-        .vChainDot { width: 12px; height: 12px; border-radius: 50%; background: #c4a45a; border: 2px solid #1a2420; box-shadow: 0 0 0 4px rgba(196,164,90,0.15); }
+        .vChainDot { width: 12px; height: 12px; border-radius: 50%; background: #c4a45a; border: 2px solid #1a2420; box-shadow: 0 0 0 4px rgba(196,164,90,0.15); flex-shrink: 0; }
         .vChainDot.light { background: #c4a45a; border-color: #f4f3f0; }
         .vChainLine { width: 100%; height: 2px; background: #2c3e35; margin-top: -7px; z-index: 0; }
         .vChainLine.light { background: #d4ddd6; }
-        .vChainText { font-size: 10px; letter-spacing: 0.1em; color: #ede9e0; margin-top: 12px; text-align: center; font-weight: 400; }
+        .vChainText { font-size: 10px; letter-spacing: 0.1em; color: #ede9e0; margin-top: 12px; text-align: center; font-weight: 400; overflow-wrap: break-word; word-break: break-word; }
         .vChainText.dark { color: #1a2420; }
-        .envCardsHeading { text-align: center; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #c4a45a; margin: 2.5rem 0 1.5rem; }
-        .envGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+        .envCardsHeading { text-align: center; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #c4a45a; margin: 2.5rem 0 1.5rem; overflow-wrap: break-word; }
+        .envGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; min-width: 0; }
         .envGrid > div:nth-child(4) { grid-column: 1 / 2; }
         .envGrid > div:nth-child(5) { grid-column: 2 / 4; }
-        .envCard { background: rgba(255,255,255,0.04); border: 1px solid #2c3e35; padding: 1.5rem; }
-        .envCardTitle { font-family: "Cormorant Garamond", serif; font-size: 16px; color: #fafaf8; margin-bottom: 6px; }
-        .envCardDesc { font-size: 12.5px; color: #8a9e8c; line-height: 1.6; font-weight: 300; }
+        .envCard { background: rgba(255,255,255,0.04); border: 1px solid #2c3e35; padding: 1.5rem; min-width: 0; overflow-wrap: break-word; }
+        .envCardTitle { font-family: "Cormorant Garamond", serif; font-size: 16px; color: #fafaf8; margin-bottom: 6px; overflow-wrap: break-word; }
+        .envCardDesc { font-size: 12.5px; color: #8a9e8c; line-height: 1.6; font-weight: 300; overflow-wrap: break-word; }
 
-        .consultGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-        .consultCard { background: #fff; border: 1px solid #ede9e0; padding: 2rem; transition: border-color 0.2s; }
+        .consultGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; min-width: 0; }
+        .consultCard { background: #fff; border: 1px solid #ede9e0; padding: 2rem; transition: border-color 0.2s; min-width: 0; overflow-wrap: break-word; }
         .consultCard:hover { border-color: #d4ddd6; }
         .consultIcon { font-size: 18px; color: #5a7a5c; margin-bottom: 12px; }
-        .consultTitle { font-family: "Cormorant Garamond", serif; font-size: 18px; color: #1a2420; margin-bottom: 6px; }
-        .consultDesc { font-size: 12.5px; color: #8a9e8c; line-height: 1.6; }
+        .consultTitle { font-family: "Cormorant Garamond", serif; font-size: 18px; color: #1a2420; margin-bottom: 6px; overflow-wrap: break-word; }
+        .consultDesc { font-size: 12.5px; color: #8a9e8c; line-height: 1.6; overflow-wrap: break-word; }
 
-        .hChain { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; background: #fff; border: 1px solid #ede9e0; padding: 1.25rem 1rem; }
-        .hChainItemWrap { display: flex; align-items: center; gap: 8px; }
+        .hChain { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; background: #fff; border: 1px solid #ede9e0; padding: 1.25rem 1rem; width: 100%; box-sizing: border-box; min-width: 0; }
+        .hChainItemWrap { display: flex; align-items: center; gap: 8px; min-width: 0; }
         .hChainItem { font-size: 11px; letter-spacing: 0.08em; color: #1a2420; font-weight: 400; white-space: nowrap; }
-        .hArrow { color: #c4a45a; font-size: 12px; }
+        .hArrow { color: #c4a45a; font-size: 12px; flex-shrink: 0; }
         .hChainMobile { display: none; }
-        .devStatement { max-width: 760px; margin: 2.5rem auto 0; text-align: center; background: #1a2420; padding: 2rem 2.5rem; border-left: 3px solid #c4a45a; }
-        .devText { font-family: "Cormorant Garamond", serif; font-size: 20px; color: #fafaf8; font-style: italic; line-height: 1.6; font-weight: 300; margin: 0; }
+        .devStatement { max-width: 760px; margin: 2.5rem auto 0; text-align: center; background: #1a2420; padding: 2rem 2.5rem; border-left: 3px solid #c4a45a; box-sizing: border-box; width: 100%; overflow-wrap: break-word; }
+        .devText { font-family: "Cormorant Garamond", serif; font-size: 20px; color: #fafaf8; font-style: italic; line-height: 1.6; font-weight: 300; margin: 0; overflow-wrap: break-word; }
 
-        .techGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
-        .techCard { background: #fff; border: 1px solid #ede9e0; padding: 1.5rem; display: flex; flex-direction: column; }
-        .techHead { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 12px; }
+        .techGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; min-width: 0; }
+        .techCard { background: #fff; border: 1px solid #ede9e0; padding: 1.5rem; display: flex; flex-direction: column; min-width: 0; overflow-wrap: break-word; }
+        .techHead { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; min-width: 0; }
         .techStatus { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; background: #1a2420; color: #fafaf8; padding: 3px 8px; white-space: nowrap; }
-        .techArea { font-size: 10px; color: #c4a45a; letter-spacing: 0.06em; text-align: right; }
-        .techTitle { font-family: "Cormorant Garamond", serif; font-size: 15px; color: #1a2420; line-height: 1.4; margin-bottom: 14px; flex: 1; }
-        .techRow { display: flex; align-items: center; gap: 6px; border-top: 1px solid #ede9e0; padding-top: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+        .techArea { font-size: 10px; color: #c4a45a; letter-spacing: 0.06em; text-align: right; overflow-wrap: break-word; min-width: 0; }
+        .techTitle { font-family: "Cormorant Garamond", serif; font-size: 15px; color: #1a2420; line-height: 1.4; margin-bottom: 14px; flex: 1; overflow-wrap: break-word; min-width: 0; }
+        .techRow { display: flex; align-items: center; gap: 6px; border-top: 1px solid #ede9e0; padding-top: 10px; margin-bottom: 12px; flex-wrap: wrap; min-width: 0; }
         .techLabel { font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase; color: #8a9e8c; }
         .techArrow { font-size: 9px; color: #c4a45a; }
         .techLink { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #1a2420; text-decoration: none; border-bottom: 1px solid #1a2420; align-self: flex-start; padding-bottom: 2px; }
-        .techFooter { margin-top: 2rem; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-top: 1px solid #ede9e0; padding-top: 1.5rem; }
-        .techFooter span { font-size: 11px; letter-spacing: 0.12em; color: #8a9e8c; text-transform: uppercase; }
+        .techFooter { margin-top: 2rem; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-top: 1px solid #ede9e0; padding-top: 1.5rem; min-width: 0; }
+        .techFooter span { font-size: 11px; letter-spacing: 0.12em; color: #8a9e8c; text-transform: uppercase; overflow-wrap: break-word; }
 
-        .ctaSection { padding: 5rem 2.5rem; background: #1a2420; text-align: center; }
-        .ctaContainer { max-width: 640px; margin: 0 auto; }
-        .ctaTitle { font-family: "Cormorant Garamond", serif; font-size: 42px; font-weight: 300; color: #fafaf8; margin-bottom: 16px; }
-        .ctaText { font-size: 14px; color: #8a9e8c; line-height: 1.8; margin-bottom: 32px; }
-        .ctaButtons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
-        .ctaBtnPrimary { background: #5a7a5c; color: #fafaf8; padding: 14px 36px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; }
-        .ctaBtnSecondary { border: 1px solid #2c3e35; color: #8a9e8c; padding: 14px 36px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; }
+        .ctaSection { padding: 5rem 2.5rem; background: #1a2420; text-align: center; width: 100%; box-sizing: border-box; overflow: hidden; }
+        .ctaContainer { max-width: 640px; margin: 0 auto; width: 100%; min-width: 0; box-sizing: border-box; }
+        .ctaTitle { font-family: "Cormorant Garamond", serif; font-size: clamp(30px, 4.5vw, 42px); font-weight: 300; color: #fafaf8; margin-bottom: 16px; overflow-wrap: break-word; }
+        .ctaText { font-size: 14px; color: #8a9e8c; line-height: 1.8; margin-bottom: 32px; overflow-wrap: break-word; }
+        .ctaButtons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; width: 100%; box-sizing: border-box; }
+        .ctaBtnPrimary { background: #5a7a5c; color: #fafaf8; padding: 14px 36px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; text-align: center; box-sizing: border-box; overflow-wrap: break-word; }
+        .ctaBtnSecondary { border: 1px solid #2c3e35; color: #8a9e8c; padding: 14px 36px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; text-align: center; box-sizing: border-box; overflow-wrap: break-word; }
 
         @media (max-width: 1100px) {
           .grid2 { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -417,23 +420,37 @@ export default function WhatWeDo() {
           .envGrid { grid-template-columns: repeat(2, 1fr); }
           .envGrid > div:nth-child(4), .envGrid > div:nth-child(5) { grid-column: auto; }
         }
-        @media (max-width: 900px) {
-          .hero { padding: 5rem 1.75rem 3rem; }
-          .section { padding: 4.5rem 1.75rem; }
-          .vChain { overflow-x: auto; justify-content: flex-start; padding-bottom: 8px; }
-          .hChain { display: none; }
-          .hChainMobile { display: flex; flex-direction: column; gap: 0; background: #fff; border: 1px solid #ede9e0; padding: 1.5rem; }
-          .hChainMobile .vChainItem { flex-direction: row; align-items: flex-start; gap: 16px; flex: none; }
-          .hChainMobile .vChainDotWrap { width: auto; flex-direction: column; align-items: center; }
-          .hChainMobile .vChainLine { width: 2px; height: 24px; margin-top: 4px; margin-left: 0; }
-          .hChainMobile .vChainText { margin-top: 0; text-align: left; }
+        @media (max-width: 1024px) {
+          .hChainItem { font-size: 10px; }
         }
-        @media (max-width: 600px) {
+        @media (max-width: 900px) {
+          .hero { padding: 6rem 1.75rem 3rem; }
+          .section { padding: 4.5rem 1.75rem; }
+          .ctaSection { padding: 4rem 1.75rem; }
+          .vChain { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px 8px; justify-items: center; }
+          .vChainItem { flex: none; width: 100%; }
+          .vChainDotWrap { width: auto; }
+          .vChainLine { display: none; }
+          .vChainText { font-size: 9px; }
+          .hChain { display: none; }
+          .hChainMobile { display: flex; flex-direction: column; gap: 0; background: #fff; border: 1px solid #ede9e0; padding: 1.5rem; width: 100%; box-sizing: border-box; }
+          .hChainMobile .vChainItem { flex-direction: row; align-items: flex-start; gap: 16px; flex: none; width: 100%; }
+          .hChainMobile .vChainDotWrap { width: auto; flex-direction: column; align-items: center; }
+          .hChainMobile .vChainLine { display: block; width: 2px; height: 24px; margin-top: 4px; margin-left: 0; }
+          .hChainMobile .vChainText { margin-top: 0; text-align: left; font-size: 11px; }
+        }
+        @media (max-width: 768px) {
+          .vChain { grid-template-columns: repeat(3, 1fr); gap: 16px 8px; }
+          .chain { width: 100%; max-width: 100%; }
+        }
+        @media (max-width: 640px) {
           .page { padding-top: 56px; }
-          .hero { padding: 3.5rem 1.25rem 2.5rem; }
+          .hero { padding: 5rem 1.25rem 2.5rem; }
           .section { padding: 3.5rem 1.25rem; }
-          .chain { padding: 12px 14px; gap: 6px; }
-          .chainItem { font-size: 10px; }
+          .ctaSection { padding: 3.5rem 1.25rem; }
+          .chain { padding: 12px 14px; gap: 6px 8px; width: 100%; }
+          .chainItem { font-size: 10px; letter-spacing: 0.08em; }
+          .chainItemWrap { gap: 6px; }
           .h2 { font-size: 30px; }
           .testGrid { grid-template-columns: 1fr; }
           .consultGrid { grid-template-columns: 1fr; }
@@ -441,13 +458,27 @@ export default function WhatWeDo() {
           .techGrid { grid-template-columns: 1fr; }
           .devStatement { padding: 1.5rem 1.25rem; }
           .devText { font-size: 17px; }
-          .ctaSection { padding: 3.5rem 1.25rem; }
-          .ctaTitle { font-size: 30px; }
           .ctaButtons { flex-direction: column; align-items: stretch; }
-          .ctaBtnPrimary, .ctaBtnSecondary { text-align: center; }
-          .ctaStrip { flex-direction: column; align-items: flex-start; }
-          .vChain { gap: 4px; }
+          .ctaBtnPrimary, .ctaBtnSecondary { width: 100%; padding: 14px 20px; }
+          .ctaStrip { flex-direction: column; align-items: flex-start; padding: 1.25rem; }
+          .ctaStrip .btnDark { width: 100%; text-align: center; }
+          .vChain { grid-template-columns: repeat(2, 1fr); gap: 14px 8px; }
           .vChainText { font-size: 9px; }
+          .techFooter { flex-direction: column; align-items: stretch; }
+          .techFooter .btnDark { width: 100%; text-align: center; }
+          .areasGrid { gap: 8px; }
+          .areaChip { font-size: 12px; padding: 7px 12px; }
+        }
+        @media (max-width: 380px) {
+          .hero { padding: 4.5rem 1rem 2rem; }
+          .section { padding: 3rem 1rem; }
+          .ctaSection { padding: 3rem 1rem; }
+          .vChain { grid-template-columns: 1fr; gap: 12px; }
+          .vChainItem { flex-direction: row; gap: 12px; justify-content: flex-start; }
+          .vChainItem .vChainDotWrap { width: auto; }
+          .vChainItem .vChainText { margin-top: 0; text-align: left; }
+          .chain { gap: 6px; }
+          .hChainMobile { padding: 1.25rem; }
         }
       `}</style>
     </div>

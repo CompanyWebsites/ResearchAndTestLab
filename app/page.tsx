@@ -39,33 +39,33 @@ const collaborate = [
 
 export default function Home() {
   return (
-    <div style={{ background: "#FAFAF8" }}>
-      <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", padding: "8.5rem 2.5rem 4rem", position: "relative", overflow: "hidden", background: "linear-gradient(160deg, #FAFAF8 0%, #F4F3F0 55%, #EDE9E0 100%)" }}>
-        <div style={{ position: "absolute", right: "-10%", top: "10%", width: 600, height: 600, borderRadius: "50%", border: "1px solid rgba(138,158,140,0.15)", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", right: "-5%", top: "15%", width: 450, height: 450, borderRadius: "50%", border: "1px solid rgba(138,158,140,0.1)", pointerEvents: "none" }} />
-        <div className="float-anim" style={{ position: "absolute", right: "8%", top: "50%", transform: "translateY(-50%)", opacity: 0.1 }}>
-          <svg width="380" height="380" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="6" fill="#5A7A5C" /><g className="turbine-blade"><ellipse cx="100" cy="55" rx="9" ry="44" fill="#5A7A5C" /><ellipse cx="100" cy="55" rx="9" ry="44" fill="#5A7A5C" transform="rotate(120 100 100)" /><ellipse cx="100" cy="55" rx="9" ry="44" fill="#5A7A5C" transform="rotate(240 100 100)" /></g><circle cx="100" cy="100" r="95" stroke="#5A7A5C" strokeWidth="0.5" /><circle cx="100" cy="100" r="75" stroke="#5A7A5C" strokeWidth="0.3" strokeDasharray="4 6" /></svg>
+    <div style={{ background: "#FAFAF8", overflowX: "hidden", width: "100%" }}>
+      <section className="hero-section" style={{ minHeight: "100vh", display: "flex", alignItems: "center", padding: "8.5rem 2.5rem 4rem", position: "relative", overflow: "hidden", background: "linear-gradient(160deg, #FAFAF8 0%, #F4F3F0 55%, #EDE9E0 100%)" }}>
+        <div className="hero-circle hero-circle-1" style={{ position: "absolute", right: "-10%", top: "10%", width: 600, height: 600, borderRadius: "50%", border: "1px solid rgba(138,158,140,0.15)", pointerEvents: "none" }} />
+        <div className="hero-circle hero-circle-2" style={{ position: "absolute", right: "-5%", top: "15%", width: 450, height: 450, borderRadius: "50%", border: "1px solid rgba(138,158,140,0.1)", pointerEvents: "none" }} />
+        <div className="float-anim hero-turbine" style={{ position: "absolute", right: "8%", top: "50%", transform: "translateY(-50%)", opacity: 0.1 }}>
+          <svg width="380" height="380" viewBox="0 0 200 200" fill="none" style={{ maxWidth: "100%", height: "auto" }}><circle cx="100" cy="100" r="6" fill="#5A7A5C" /><g className="turbine-blade"><ellipse cx="100" cy="55" rx="9" ry="44" fill="#5A7A5C" /><ellipse cx="100" cy="55" rx="9" ry="44" fill="#5A7A5C" transform="rotate(120 100 100)" /><ellipse cx="100" cy="55" rx="9" ry="44" fill="#5A7A5C" transform="rotate(240 100 100)" /></g><circle cx="100" cy="100" r="95" stroke="#5A7A5C" strokeWidth="0.5" /><circle cx="100" cy="100" r="75" stroke="#5A7A5C" strokeWidth="0.3" strokeDasharray="4 6" /></svg>
         </div>
-        <div style={{ maxWidth: 1280, margin: "0 auto", width: "100%", position: "relative", zIndex: 2 }}>
-          <div className="animate-fade-up opacity-0 animate-delay-1" style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C4A45A", marginBottom: 20, fontWeight: 400 }}>THAPAK Research & Test Lab Pvt. Ltd.</div>
-          <h1 className="animate-fade-up opacity-0 animate-delay-1" style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(42px, 7vw, 88px)", fontWeight: 300, color: "#1A2420", lineHeight: 1, maxWidth: 720, marginBottom: 24 }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", width: "100%", position: "relative", zIndex: 2, minWidth: 0 }}>
+          <div className="animate-fade-up opacity-0 animate-delay-1" style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C4A45A", marginBottom: 20, fontWeight: 400, overflowWrap: "break-word" }}>THAPAK Research & Test Lab Pvt. Ltd.</div>
+          <h1 className="animate-fade-up opacity-0 animate-delay-1" style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(36px, 7vw, 88px)", fontWeight: 300, color: "#1A2420", lineHeight: 1, maxWidth: 720, marginBottom: 24, overflowWrap: "break-word" }}>
             WHERE RESEARCH<br /><em style={{ color: "#5A7A5C", fontStyle: "italic", fontWeight: 300 }}>BECOMES</em><br />INTELLECTUAL PROPERTY.
           </h1>
           <p className="animate-fade-up opacity-0 animate-delay-2" style={{ fontSize: 15, color: "#5A7A5C", maxWidth: 520, lineHeight: 1.9, fontWeight: 300, marginBottom: 40 }}>
             Specialized corporate research and testing organization developing proprietary engineering technologies, patented solutions and commercially applicable innovations.
           </p>
-          <div className="animate-fade-up opacity-0 animate-delay-3" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <Link href="/about" style={{ background: "#1A2420", color: "#FAFAF8", padding: "14px 28px", fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none" }}>Our Research</Link>
-            <Link href="/intellectual-property" style={{ background: "#C4A45A", color: "#1A2420", padding: "14px 28px", fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", fontWeight: 500 }}>Our IP</Link>
-            <Link href="/invest" style={{ border: "1px solid #1A2420", color: "#1A2420", padding: "13px 28px", fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none" }}>Collaborate With Us</Link>
+          <div className="animate-fade-up opacity-0 animate-delay-3 hero-cta" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <Link href="/about" style={{ background: "#1A2420", color: "#FAFAF8", padding: "14px 28px", fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", textAlign: "center" }}>Our Research</Link>
+            <Link href="/intellectual-property" style={{ background: "#C4A45A", color: "#1A2420", padding: "14px 28px", fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", fontWeight: 500, textAlign: "center" }}>Our IP</Link>
+            <Link href="/invest" style={{ border: "1px solid #1A2420", color: "#1A2420", padding: "13px 28px", fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", textAlign: "center" }}>Collaborate With Us</Link>
           </div>
         </div>
       </section>
 
-      <section style={{ background: "#1A2420", padding: "2.5rem 2.5rem" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "1.5rem" }}>
+      <section className="stats-section" style={{ background: "#1A2420", padding: "2.5rem 2.5rem" }}>
+        <div className="stats-grid" style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "1.5rem" }}>
           {[{ v: "2017", l: "Established" }, { v: "29", l: "Patent Applications" }, { v: "8", l: "Granted Patents" }, { v: "3", l: "PCT Applications" }].map((s) => (
-            <div key={s.l} style={{ textAlign: "center", borderRight: s.l !== "PCT Applications" ? "1px solid rgba(212,221,214,0.12)" : "none", padding: "0.5rem 0" }}>
+            <div key={s.l} className="stats-item" style={{ textAlign: "center", borderRight: s.l !== "PCT Applications" ? "1px solid rgba(212,221,214,0.12)" : "none", padding: "0.5rem 0" }}>
               <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 44, color: "#FAFAF8", fontWeight: 300, lineHeight: 1 }}>{s.v}</div>
               <div style={{ fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: "#8A9E8C", marginTop: 8 }}>{s.l}</div>
             </div>
@@ -79,9 +79,9 @@ export default function Home() {
             <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C4A45A", marginBottom: 12 }}>What We Do</div>
             <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(30px,4.5vw,48px)", fontWeight: 300, color: "#1A2420", lineHeight: 1.15 }}>Research that moves from lab<br /><em style={{ fontStyle: "italic", color: "#5A7A5C" }}>to real-world impact.</em></h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1.5rem" }}>
+          <div className="whatwedo-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1.5rem" }}>
             {whatWeDo.map((c) => (
-              <div key={c.n} style={{ background: "#fff", border: "1px solid #EDE9E0", padding: "2rem 1.75rem", borderTop: "2px solid #EDE9E0" }}>
+              <div key={c.n} style={{ background: "#fff", border: "1px solid #EDE9E0", padding: "2rem 1.75rem", borderTop: "2px solid #EDE9E0", minWidth: 0, overflowWrap: "break-word" }}>
                 <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 12, letterSpacing: "0.14em", color: "#C4A45A", marginBottom: 16, paddingBottom: 12, borderBottom: "1px solid #EDE9E0" }}>{c.n}</div>
                 <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 19, color: "#1A2420", lineHeight: 1.3, marginBottom: 10 }}>{c.title}</div>
                 <div style={{ fontSize: 13, color: "#8A9E8C", lineHeight: 1.75, fontWeight: 300 }}>{c.desc}</div>
@@ -98,9 +98,9 @@ export default function Home() {
             <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(30px,4vw,44px)", fontWeight: 300, color: "#1A2420" }}>Six domains. One purpose deployable innovation.</h2>
             <p style={{ fontSize: 14, color: "#8A9E8C", maxWidth: 560, margin: "12px auto 0", lineHeight: 1.8, fontWeight: 300 }}>Each technology is filed or granted, validated in lab, and held for licensing, transfer or joint development.</p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1.25rem" }}>
+          <div className="ip-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1.25rem" }}>
             {ipDomains.map((d) => (
-              <div key={d.title} style={{ background: "#FAFAF8", border: "1px solid #EDE9E0", padding: "1.75rem", display: "flex", flexDirection: "column", gap: 8 }}>
+              <div key={d.title} style={{ background: "#FAFAF8", border: "1px solid #EDE9E0", padding: "1.75rem", display: "flex", flexDirection: "column", gap: 8, minWidth: 0, overflowWrap: "break-word" }}>
                 <div style={{ fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: "#C4A45A" }}>{d.title}</div>
                 <div style={{ fontSize: 13, color: "#5A7A5C", lineHeight: 1.7, fontWeight: 300 }}>{d.desc}</div>
               </div>
@@ -114,16 +114,16 @@ export default function Home() {
 
       <section style={{ padding: "6rem 2.5rem", background: "#FAFAF8" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", flexWrap: "wrap", gap: "1rem", marginBottom: "2.5rem" }}>
-            <div>
+          <div className="tech-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "end", flexWrap: "wrap", gap: "1rem", marginBottom: "2.5rem" }}>
+            <div style={{ minWidth: 0 }}>
               <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C4A45A", marginBottom: 12 }}>Selected Patented Technologies</div>
               <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(28px,4vw,42px)", fontWeight: 300, color: "#1A2420" }}>Built for deployment, not for display.</h2>
             </div>
-            <Link href="/intellectual-property" style={{ fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", color: "#5A7A5C", textDecoration: "none", borderBottom: "1px solid #5A7A5C", paddingBottom: 2 }}>View All 8 Technologies →</Link>
+            <Link href="/intellectual-property" style={{ fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", color: "#5A7A5C", textDecoration: "none", borderBottom: "1px solid #5A7A5C", paddingBottom: 2, whiteSpace: "nowrap" }}>View All 8 Technologies →</Link>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "1.25rem" }}>
+          <div className="tech-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "1.25rem" }}>
             {technologies.map((t) => (
-              <div key={t.id} style={{ background: "#fff", border: "1px solid #EDE9E0", borderTop: "3px solid #EDE9E0", padding: "1.75rem 1.5rem" }}>
+              <div key={t.id} style={{ background: "#fff", border: "1px solid #EDE9E0", borderTop: "3px solid #EDE9E0", padding: "1.75rem 1.5rem", minWidth: 0, overflowWrap: "break-word" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
                   <span style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 12, letterSpacing: "0.14em", color: "#C4A45A" }}>{t.id}</span>
                   <span style={{ fontSize: 10, letterSpacing: "0.1em", textTransform: "uppercase", background: "#1A2420", color: "#FAFAF8", padding: "3px 8px" }}>{t.status}</span>
@@ -151,11 +151,11 @@ export default function Home() {
         <div style={{ maxWidth: 1280, margin: "0 auto", textAlign: "center" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C4A45A", marginBottom: 12 }}>From Research to Application</div>
           <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(26px,4vw,40px)", fontWeight: 300, color: "#1A2420", marginBottom: "2.5rem" }}>The journey of every technology</h2>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 0 }}>
+          <div className="pipeline-wrap" style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "8px" }}>
             {pipeline.map((step, i) => (
-              <div key={step} style={{ display: "flex", alignItems: "center", gap: 0 }}>
-                <div style={{ background: step === "IP" ? "#C4A45A" : "#fff", color: step === "IP" ? "#1A2420" : "#1A2420", border: "1px solid #EDE9E0", padding: "12px 18px", fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", fontWeight: step === "IP" ? 500 : 300, minWidth: 90, textAlign: "center" }}>{step}</div>
-                {i < pipeline.length - 1 && <span style={{ color: "#8A9E8C", padding: "0 6px", fontSize: 14 }}>→</span>}
+              <div key={step} style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                <div style={{ background: step === "IP" ? "#C4A45A" : "#fff", color: "#1A2420", border: "1px solid #EDE9E0", padding: "10px 14px", fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", fontWeight: step === "IP" ? 500 : 300, minWidth: 0, textAlign: "center", whiteSpace: "nowrap" }}>{step}</div>
+                {i < pipeline.length - 1 && <span className="pipeline-arrow" style={{ color: "#8A9E8C", padding: "0 2px", fontSize: 14 }}>→</span>}
               </div>
             ))}
           </div>
@@ -169,9 +169,9 @@ export default function Home() {
             <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(30px,4vw,46px)", fontWeight: 300, color: "#1A2420", lineHeight: 1.15 }}>Research is better <em style={{ fontStyle: "italic", color: "#5A7A5C" }}>when shared.</em></h2>
             <p style={{ fontSize: 14, color: "#8A9E8C", lineHeight: 1.8, fontWeight: 300, marginTop: 12 }}>Whether you want to co-research, license, test or invest — there is a structured route to work together.</p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1.25rem", marginBottom: "2.5rem" }}>
+          <div className="collab-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1.25rem", marginBottom: "2.5rem" }}>
             {collaborate.map((c) => (
-              <div key={c.title} style={{ background: "#fff", border: "1px solid #EDE9E0", padding: "1.5rem" }}>
+              <div key={c.title} style={{ background: "#fff", border: "1px solid #EDE9E0", padding: "1.5rem", minWidth: 0, overflowWrap: "break-word" }}>
                 <div style={{ fontSize: 13, fontWeight: 500, color: "#1A2420", letterSpacing: "0.04em", marginBottom: 6 }}>{c.title}</div>
                 <div style={{ fontSize: 13, color: "#8A9E8C", lineHeight: 1.6, fontWeight: 300 }}>{c.desc}</div>
               </div>
@@ -182,11 +182,49 @@ export default function Home() {
       </section>
 
       <section style={{ background: "#EDE9E0", padding: "2rem 2.5rem", textAlign: "center" }}>
-        <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 18, color: "#1A2420", fontWeight: 300 }}>THAPAK Research & Test Lab Pvt. Ltd.</div>
+        <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 18, color: "#1A2420", fontWeight: 300, overflowWrap: "break-word" }}>THAPAK Research & Test Lab Pvt. Ltd.</div>
         <div style={{ fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "#8A9E8C", marginTop: 4 }}>Research &nbsp;|&nbsp; Testing &nbsp;|&nbsp; Intellectual Property &nbsp;|&nbsp; Engineering</div>
       </section>
 
-      <style>{`@media(max-width:900px){section{padding-left:1.75rem!important;padding-right:1.75rem!important}}@media(max-width:640px){section{padding-left:1.25rem!important;padding-right:1.25rem!important}}`}</style>
+      <style>{`
+        @media(max-width:1024px){
+          .whatwedo-grid{grid-template-columns:repeat(2,1fr)!important}
+          .ip-grid{grid-template-columns:repeat(2,1fr)!important}
+          .tech-grid{grid-template-columns:repeat(2,1fr)!important}
+          .collab-grid{grid-template-columns:repeat(2,1fr)!important}
+          .hero-turbine{opacity:0.06!important; right:2%!important}
+          .hero-turbine svg{width:300px!important; height:300px!important}
+        }
+        @media(max-width:768px){
+          .hero-section{padding:7rem 1.5rem 3rem!important; min-height:auto!important}
+          .stats-grid{grid-template-columns:repeat(2,1fr)!important; gap:0!important}
+          .stats-item{border-right:none!important; border-bottom:1px solid rgba(212,221,214,0.12); padding:1.25rem 0.5rem!important}
+          .stats-item:nth-child(odd){border-right:1px solid rgba(212,221,214,0.12)!important}
+          .stats-item:nth-last-child(-n+2){border-bottom:none!important}
+          .tech-header{flex-direction:column!important; align-items:flex-start!important}
+          .hero-circle{display:none!important}
+          .hero-turbine{display:none!important}
+        }
+        @media(max-width:640px){
+          section{padding-left:1.25rem!important; padding-right:1.25rem!important}
+          .hero-section{padding-left:1.25rem!important; padding-right:1.25rem!important}
+          .whatwedo-grid{grid-template-columns:1fr!important}
+          .ip-grid{grid-template-columns:1fr!important}
+          .tech-grid{grid-template-columns:1fr!important}
+          .collab-grid{grid-template-columns:1fr!important}
+          .stats-grid{grid-template-columns:repeat(2,1fr)!important}
+          .hero-cta{flex-direction:column!important}
+          .hero-cta a{width:100%; text-align:center}
+          .pipeline-wrap{gap:6px!important}
+          .pipeline-arrow{transform:rotate(0deg)}
+        }
+        @media(max-width:380px){
+          .stats-grid{grid-template-columns:1fr!important}
+          .stats-item{border-right:none!important; border-bottom:1px solid rgba(212,221,214,0.12)!important}
+          .stats-item:last-child{border-bottom:none!important}
+          .stats-item:nth-child(odd){border-right:none!important}
+        }
+      `}</style>
     </div>
   );
 }
