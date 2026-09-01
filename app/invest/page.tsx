@@ -101,7 +101,7 @@ const faqs = [
 ];
 
 const stats = [
-  ["35", "Patents & Applications"],
+  ["29", "Patents & Applications"],
   ["8", "Granted Patents"],
   ["3", "PCT Applications"],
 ];
